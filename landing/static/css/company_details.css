@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #1a0439;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #1a0439;
+    border-bottom: 1px solid #bab6b6;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    width: 50px;
+    margin-right: 20px;
+    border-radius: 50px;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2b0554;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.company-details, .account-details {
+    width: 45%;
+}
+
+h2 {
+    color: #fff;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #fff;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1a0439;
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4f0af5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+button:hover {
+    background-color: #3c08c3;
+}
+
+

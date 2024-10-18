@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    height: 100vh;
+    background: url('../Image/backgrnd.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.container {
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    color: white;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    border-radius: 150px;
+    padding: 5px;
+}
+
+.title {
+    font-size: 25px;
+    margin: 0;
+}
+
+.content{
+    margin-top: 150px;
+    padding: 70px;
+}
+.content .main-heading {
+    font-size: 50px;
+    margin: 0 0 10px 0;
+    margin-bottom: 50px;
+}
+
+.description {
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.get-started-btn {
+    background-color: #434443;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.get-started-btn:hover {
+    background-color: #45a049;
+}

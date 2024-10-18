@@ -1,0 +1,261 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f0f0;
+}
+
+header {
+    background-color: #123456;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 500px;
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    border-radius: 150px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 25px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #cceeff;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icons .icon {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    margin-left: 16px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.highlighted {
+    background-color: #57abc5; 
+    border-radius: 20px;
+}
+
+.search-icon {
+    background-image: url('icons/search.svg');
+}
+
+.notification-icon {
+    background-image: url('icons/notification.svg');
+}
+
+.profile-icon {
+    background-image: url('icons/profile.svg');
+}
+
+.menu-icon {
+    background-image: url('icons/menu.svg');
+}
+
+main {
+    padding: 20px;
+    background-color: #f5f0f0;
+}
+
+.profile-section {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header {
+    position: relative;
+    width: 100%;
+}
+
+.cover-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-picture-container {
+    position: absolute;
+    bottom: -50px;
+    left: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border: 5px solid #ffffff;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.edit-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.profile-details {
+    padding: 60px 20px 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.profile-details h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    color: #666666;
+}
+
+.university-logo {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.social-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0077b5; 
+}
+
+.social-link.linkedin { background-color: #0077b5; }
+.social-link.github { background-color: #333333; }
+.social-link.instagram { background-color: #e4405f; }
+
+.skills, .profile-language, .public-profile {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+    font-size: 20px;
+}
+
+.skills h3, .profile-language h3, .public-profile h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.skills-list, .language-list, .profile-link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.skills-list span, .language-list span, .profile-link a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.profile-edit-section {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.profile-edit-section input, .profile-edit-section select {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.profile-edit-section .save-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #123456;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-edit-section .save-button:hover {
+    background-color: #0f2a40;
+}
+
+.public-profile a {
+    color: #1a0dab;
+    text-decoration: none;
+}
+
+.public-profile a:hover {
+    text-decoration: underline;
+}
+
+.edit-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    fill: #123456;
+}
+
+.edit-icon:hover {
+    fill: #0f2a40;
+}
+
+.profile-section{
+    display: flex;
+}

@@ -1,0 +1,133 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f0f0;
+}
+
+header {
+    background-color: #123456;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 500px;
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    border-radius: 150px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 25px;
+    font-weight: bold;
+    
+}
+
+.nav-links a:hover {
+    color: #cceeff;
+}
+
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icons .icon {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    margin-left: 16px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.search-icon {
+    background-image: url('icons/search.svg');
+}
+
+.notification-icon {
+    background-image: url('icons/notification.svg');
+}
+
+.profile-icon {
+    background-image: url('icons/profile.svg');
+}
+
+.menu-icon {
+    background-image: url('icons/menu.svg');
+}
+
+
+.hero {
+    text-align: center;
+    padding: 40px;
+    background-color: #f5f0f0;
+    margin-top: 40px;
+}
+
+.hero h2 {
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 80px;
+}
+
+.enter-button {
+    font-size: 20px;
+    color: #123456;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 2px solid #123456;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.enter-button:hover {
+    background-color: #123456;
+    color: #ffffff;
+}
+
+.job-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 16px;
+    padding: 32px 0;
+}
+
+.category {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 16px 32px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.category:hover {
+    background-color: #f0f0f0;
+    border-color: #123456;
+}
