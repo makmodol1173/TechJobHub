@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    const enterButton = document.querySelector('.enter-button');
-    enterButton.addEventListener('click', function () {
-        window.location.href = 'job-listings.html'; // Redirect to a job listings page
-    });
+    // const enterButton = document.querySelector('.enter-button');
+    // enterButton.addEventListener('click', function () {
+    //     window.location.href = 'job-listings.html'; // Redirect to a job listings page
+    // });
 
     const categories = document.querySelectorAll('.category');
     
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const profileIcon = document.querySelector('.profile-icon');
     profileIcon.addEventListener('click', function () {
-        window.location.href = 'profile.html'; 
+        window.location.href = "/profile'"; 
     });
 
     const menuIcon = document.querySelector('.menu-icon');

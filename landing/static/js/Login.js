@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
  
-        window.location.href = "{% url 'f2' %}";
+        window.location.href = "/landing-page";
     });
 });

@@ -26,7 +26,7 @@ notificationIcon.addEventListener('click', function() {
 
 const profileIcon = document.querySelector('.profile-icon');
 profileIcon.addEventListener('click', function() {
-    window.location.href = '../HTML/Profile.html';
+    window.location.href = "/profile";
 });
 
 const companyRatings = document.querySelectorAll('.company');

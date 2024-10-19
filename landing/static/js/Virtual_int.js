@@ -13,7 +13,7 @@ notificationIcon.addEventListener('click', function() {
 
 const profileIcon = document.querySelector('.profile-icon');
 profileIcon.addEventListener('click', function() {
-    window.location.href = '../HTML/Profile.html';
+    window.location.href = "/profile";
 });
 
 const menuIcon = document.querySelector('.menu-icon');
