@@ -9,6 +9,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const password = document.getElementById('password').value;
         const role = document.getElementById('role').value;
  
-        window.location.href = '../HTML/F6.html';
+        window.location.href = "/landing-page";
     });
 });

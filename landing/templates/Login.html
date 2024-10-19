@@ -6,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/F4.css' %}" />
-    <script src="{% static 'js/F4.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+    <script src="{% static 'js/Login.js' %}" defer></script>
   </head>
   <body>
     <div class="overlay">
@@ -25,22 +25,21 @@
             growth for both new and experienced professionals.
           </p>
         </div>
-        <div class="forget-password-form">
+        <div class="sign-in-form">
           <div class="form-header">
-            <a href="{% url 'F2' %}">Sign In</a>
-          </div>
-          <div class="forget-password">
-            <h3>Forget Password</h3>
+            <h3>Sign In &nbsp</h3>
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
           </div>
           <form class="form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
             <label for="email">Email</label>
             <input type="email" id="email" name="email" />
-            <label for="password">New Password</label>
-            <input type="password" id="new-password" name="password" />
-            <label for="password">Confirm Password</label>
-            <input type="password" id="cur-password" name="password" />
-            <button type="submit" class="send-btn">Send</button>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" />
+            <button type="submit" class="sign-in-btn">Sign In</button>
           </form>
+          <a href="{% url 'forget_pass' %}" class="forgot-password">Forgot Password?</a>
         </div>
       </div>
     </div>

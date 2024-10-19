@@ -1,31 +1,31 @@
 from django.shortcuts import render
 
-def F1(request):
-    return render(request, 'F1.html')
+def Home(request):
+    return render(request, 'Home.html')
 
-def F2(request):
-    return render(request, 'F2.html')
+def Login(request):
+    return render(request, 'Login.html')
 
-def F3(request):
-    return render(request, 'F3.html')
+def Signup(request):
+    return render(request, 'Signup.html')
 
-def F4(request):
-    return render(request, 'F4.html')
+def Forget_pass(request):
+    return render(request, 'Forget_pass.html')
 
-def F6(request):
-    return render(request, 'F6.html')
+def Landing_page(request):
+    return render(request, 'Landing_page.html')
 
-def F7(request):
-    return render(request, 'F7.html')
+def Create_post(request):
+    return render(request, 'Create_post.html')
 
-def F11(request):
-    return render(request, 'F11.html')
+def Menu_options(request):
+    return render(request, 'Menu_options.html')
 
-def F11_1(request):
-    return render(request, 'F11_1.html')
+def Bookmarks(request):
+    return render(request, 'Bookmarks.html')
 
-def F12(request):
-    return render(request, 'F12.html')
+def Drop_resume(request):
+    return render(request, 'Drop_resume.html')
 
 def Profile(request):
     return render(request, 'Profile.html')

@@ -6,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/F3.css' %}" />
-    <script src="{% static 'js/F3.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/Signup.css' %}" />
+    <script src="{% static 'js/Signup.js' %}" defer></script>
   </head>
   <body>
     <div class="overlay">
@@ -31,7 +31,7 @@
         <div class="sign-up-form">
           <div class="form-header">
             <h3>Sign Up</h3>
-            <a href="{% url 'F2' %}">Sign In</a>
+            <a href="{% url 'Login' %}">Sign In</a>
           </div>
           <form class="form">
             <label for="fname">First Name</label>
@@ -49,7 +49,7 @@
               <option value="Startup"></option>
               <option value="Job Seeker"></option>
             </datalist>
-            <a class="sign-up-btn" href="{% url 'F6' %}"> Sign Up</a>
+            <a class="sign-up-btn" href="{% url 'Landing_page' %}"> Sign Up</a>
           </form>
         </div>
       </div>

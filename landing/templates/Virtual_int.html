@@ -18,8 +18,8 @@
                 <h1>TechJobHub</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="{% url 'F11_1' %}"><span class="icon">&#128213;</span> Bookmarks</a></li>
-                <li><a href="{% url 'F12' %}" class="active"><span class="icon">&#128193;</span> Drop Resume</a></li>
+                <li><a href="{% url 'Bookmarks' %}"><span class="icon">&#128213;</span> Bookmarks</a></li>
+                <li><a href="{% url 'Drop_resume' %}" class="active"><span class="icon">&#128193;</span> Drop Resume</a></li>
                 <li><a href="{% url 'rec_job' %}"><span class="icon">&#9881;</span> Recommended Job</a></li>
                 <li><a href="{% url 'apply_list' %}"><span class="icon">&#9998;</span> Apply List</a></li>
                 <li><a href="#"><span class="icon">&#128196;</span> Assessify</a>
@@ -40,7 +40,7 @@
             <!-- Top Navigation -->
             <div class="top-nav">
                 <div class="topbutton">
-                    <a href="{% url 'F6' %}">Home</a>
+                    <a href="{% url 'Landing_page' %}">Home</a>
                     <a href="#">About Us</a>
                     <a href="#">Contact</a>
                 </div>
@@ -60,7 +60,7 @@
                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                         </svg>
                     </a>                       
-                    <a href="#" title="Menu" class="icon menu-icon highlighted">
+                    <a href="{% url 'Menu_options' %}" title="Menu" class="icon menu-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
                             <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
                         </svg>
