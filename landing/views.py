@@ -12,8 +12,8 @@ def Signup(request):
 def Forget_pass(request):
     return render(request, 'Forget_pass.html')
 
-def Landing_page(request):
-    return render(request, 'Landing_page.html')
+def Dashboard(request):
+    return render(request, 'Dashboard.html')
 
 def Create_post(request):
     return render(request, 'Create_post.html')

@@ -6,8 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/Landing_page.css' %}">
-    <script src="{% static 'js/Landing_page.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Dashboard.css' %}">
   </head>
   <body>
     <header>
@@ -18,7 +17,7 @@
         </div>        
         <div class="nav-links">
           <a href="{% url 'Create_post' %}">Create Post</a>
-          <a href="{% url 'Landing_page' %}">Home</a>
+          <a href="{% url 'Dashboard' %}">Home</a>
           <a href="#">About Us</a>
           <a href="#">Contact</a>
         </div>
@@ -69,5 +68,6 @@
         <div class="category">Cloud Engineer</div>
       </section>
     </main>
+    <script src="{% static 'js/Dashboard.js' %}"></script>
   </body>
 </html>
