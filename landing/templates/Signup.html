@@ -48,13 +48,14 @@
             <input type="password" id="password" name="password" required />
             
             <label for="role">Role</label>
-            <input list="con" />
+            <input list="con" name="role" id="role" required />
             <datalist id="con">
               <option value="Recruiter"></option>
               <option value="Startup"></option>
               <option value="Job Seeker"></option>
             </datalist>
-            <a class="sign-up-btn" href="{% url 'Landing_page' %}"> Sign Up</a>
+            
+            <button type="submit" class="sign-up-btn">Sign Up</button>
           </form>
         </div>
       </div>
