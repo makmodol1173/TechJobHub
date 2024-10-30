@@ -29,6 +29,12 @@ def signaction(request):
         c= "insert into users Values('{}','{}','{}','{}','{}')".format(fn,ln,em,pwd,r)
         cursor.execute(c)
         m.commit()
+        # if m and (r=="Recruiter" or r=="Startup"):
+        #     return redirect("/company-details")
+        # elif m and r=="Job Seeker":
+        #     return redirect("/dashboard")
+        # else:
+        #     return redirect('login')
         return redirect('login')
     return render(request,"Signup.html")
 

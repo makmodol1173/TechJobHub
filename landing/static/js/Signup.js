@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const roleInput = document.getElementById("role");
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault();
     clearErrors();
 
     const fname = fnameInput.value.trim();
@@ -54,15 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
       isValid = false;
     }
 
-    if (isValid) {
-      // console.log(fname, lname, email, password, role)
-      if (role == "Recruiter" || role == "Startup") {
-        location.href = "/company-details";
-      } else if (role == "Job Seeker") {
-        location.href = "/dashboard";
-      }
-    } else {
+    if (!isValid) {
       alert("Something went wrong");
+    } else {
+      console.log(fname, lname, email, password, role);
     }
   });
 
