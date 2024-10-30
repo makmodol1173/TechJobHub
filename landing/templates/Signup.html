@@ -33,23 +33,29 @@
             <h3>Sign Up</h3>
             <a href="{% url 'Login' %}">Sign In</a>
           </div>
-          <form class="form">
+          <form action="{% url 'signaction' %}" method="post">
+            {% csrf_token %}
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname" />
+            <input type="text" id="fname" name="fname" required />
+            
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname" />
+            <input type="text" id="lname" name="lname" required />
+            
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" required />
+            
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password" required />
+            
             <label for="role">Role</label>
-            <input list="con" />
+            <input list="con" name="role" id="role" required />
             <datalist id="con">
               <option value="Recruiter"></option>
               <option value="Startup"></option>
               <option value="Job Seeker"></option>
             </datalist>
-            <a class="sign-up-btn" href="{% url 'Landing_page' %}"> Sign Up</a>
+            
+            <button type="submit" class="sign-up-btn">Sign Up</button>
           </form>
         </div>
       </div>
