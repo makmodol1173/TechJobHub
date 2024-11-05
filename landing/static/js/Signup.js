@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isValid) {
       alert("Something went wrong");
+      event.preventDefault();
     } else {
       console.log(fname, lname, email, password, role);
     }
