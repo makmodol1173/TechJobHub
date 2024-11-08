@@ -1,11 +1,15 @@
 from django.shortcuts import redirect, render
 import mysql.connector as sql
 from django.urls import reverse
+
+em=''
+pwd=''
+
 # Create your views here.
 def loginaction(request):
     global em,pwd
     if request.method=="POST":
-        m=sql.connect(host="localhost",user="root",password="Moumi@17#",database="website")
+        m= sql.connect(host="localhost",user="root",password="73060694moaz@",database="techjobhub")
         cursor=m.cursor()
         d=request.POST
         for key,value in d.items():
@@ -16,11 +20,8 @@ def loginaction(request):
         c="select * from users where email='{}' and password='{}'".format(em,pwd)
         cursor.execute(c)
         t= tuple(cursor.fetchall())
-        
-        if t==():
-            return render(request,'error.html')
-        else:
-            return redirect('Home')
-    return render(request,'Login.html')
 
+        return redirect("/dashboard")
+
+    return render(request,'Login.html')
 

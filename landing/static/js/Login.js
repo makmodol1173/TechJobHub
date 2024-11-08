@@ -2,10 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector(".form");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
-    const signInBtn = document.querySelector(".sign-in-btn");
   
     form.addEventListener("submit", (event) => {
-      event.preventDefault();
       clearErrors();
   
       const email = emailInput.value.trim();
@@ -26,9 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
         isValid = false;
       }
   
-      if (isValid) {
-        alert("Sign-In successful");
+      if (!isValid) {
+        alert("Something went wrong");
+        event.preventDefault();
+      } else {
+        console.log(email, password);
       }
+
     });
   
     function showError(input, message) {
