@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from login import views
+from . import views
 
 
 
