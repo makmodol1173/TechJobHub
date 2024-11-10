@@ -8,12 +8,6 @@ class Category(models.Model):
         return self.name
 
 class Job(models.Model):
-    CATEGORY_CHOICES = [
-        ('IT', 'Information Technology'),
-        ('HR', 'Human Resources'),
-        ('MKT', 'Marketing'),
-    ]
-
     WORK_MODALITY_CHOICES = [
         ('Full-time', 'Full-time'),
         ('Part-time', 'Part-time'),

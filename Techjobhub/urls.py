@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('landing.urls')),
     path("signup/", include('signup.urls')),
     path("login/", include('login.urls')),
+    path('myprofile/', include('myprofile.urls')),
 ]
 
 from django.contrib import admin

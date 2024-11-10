@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
+<<<<<<< HEAD
     'jobs'
+=======
+    'login',
+    'signup',
+    'myprofile',
+>>>>>>> ff6f5ac8e2ecc9710edfca88d62ec8b1e6ef7134
 ]
 
 MIDDLEWARE = [
