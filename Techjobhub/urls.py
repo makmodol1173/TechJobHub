@@ -24,3 +24,24 @@ urlpatterns = [
     path("signup/", include('signup.urls')),
     path("login/", include('login.urls')),
 ]
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('jobs.urls')),  # Include the job app’s URLs
+]
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('landing.urls')),  # Ensure 'landing.urls' is included here
+]
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('jobs/', include('jobs.urls')),  # Include the jobs app URLs
+]
