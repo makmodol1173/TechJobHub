@@ -93,21 +93,6 @@ nav {
     margin-bottom: 80px;
 }
 
-.enter-button {
-    font-size: 20px;
-    color: #123456;
-    text-decoration: none;
-    padding: 12px 24px;
-    border: 2px solid #123456;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.enter-button:hover {
-    background-color: #123456;
-    color: #ffffff;
-}
-
 .job-categories {
     display: flex;
     flex-wrap: wrap;

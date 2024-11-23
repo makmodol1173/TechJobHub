@@ -4,19 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const jobTitle = document.getElementById('job-title').value;
-        const location = document.getElementById('location').value;
-        const category = document.getElementById('category').value;
-        const deadline = document.getElementById('deadline').value;
-        const modality = document.getElementById('modality').value;
-        const jobType = document.getElementById('job-type').value;
-        const about = document.getElementById('about').value;
-        const overview = document.getElementById('overview').value;
-        const responsibilities = document.getElementById('responsibilities').value;
-        const qualifications = document.getElementById('qualifications').value;
-        const companyName = document.getElementById('company-name').value;
+        const jobTitle = document.getElementById('job-title').value.trim();
+        const about = document.getElementById('about').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const responsibilities = document.getElementById('responsibilities').value.trim();
+        const education = document.getElementById('education').value.trim();
+        const qualifications = document.getElementById('qualifications').value.trim();
+        const deadline = document.getElementById('deadline').value.trim();
+        const jobType = document.getElementById('job-type').value.trim();
 
-        if (!jobTitle || !location || !category || !deadline || !modality || !jobType || !about || !overview || !responsibilities || !qualifications || !companyName) {
+        if (!jobTitle || !about || !location || !responsibilities || !qualifications || !deadline || !jobType) {
             alert('Please fill out all required fields.');
             return;
         }
@@ -28,6 +25,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         alert('Job post submitted successfully!');
-        form.submit();
     });
 });

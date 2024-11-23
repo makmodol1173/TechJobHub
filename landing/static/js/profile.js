@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
     function toggleEdit(sectionId) {
         const section = document.getElementById(sectionId);
         if (section.style.display === 'none' || section.style.display === '') {
@@ -21,4 +21,4 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.readAsDataURL(file);
         }
     });
-});
+// });
