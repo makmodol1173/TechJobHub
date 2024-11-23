@@ -8,6 +8,6 @@ from . import views
 urlpatterns = [
     
    path("signaction/", views.signaction, name="signaction"),
-
+   path("loginaction/", views.loginaction, name="loginaction"),
     
 ]

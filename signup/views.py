@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .forms import UserRegistrationForm
 
@@ -23,3 +24,16 @@ def signaction(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'Signup.html', {'form': form})
+
+
+def loginaction(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/dashboard')  # Replace 'home' with your target route after login
+        else:
+            messages.error(request, "Invalid email or password")
+    return render(request, 'Login.html')
