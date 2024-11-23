@@ -1,39 +1,25 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-import mysql.connector as sql
-fn=''
-ln=''
-em=''
-pwd=''
-r=''
-
-# Create your views here.
+from django.contrib.auth.models import User
+from django.contrib import messages
+from .forms import UserRegistrationForm
 
 def signaction(request):
-    global fn,ln,em,pwd,r
-    if request.method == 'POST':
-        m= sql.connect(host="localhost",user="root",password="Moumi@17#",database="website")
-        cursor = m.cursor()
-        d=request.POST
-        for key, value in d.items():
-            if key=="fname":
-                fn=value
-            if key=="lname":
-                ln=value
-            if key=="email":
-                em=value
-            if key=="password":
-                pwd=value
-            if key=="role":
-                r=value
-        c= "insert into users Values('{}','{}','{}','{}','{}')".format(fn,ln,em,pwd,r)
-        cursor.execute(c)
-        m.commit()
-        if m and (r=="Recruiter" or r=="Startup"):
-            return redirect("/company-details")
-        elif m and r=="Job Seeker":
-            return redirect("/dashboard")
-        else:
-            return redirect('/login')
-    return render(request,"Signup.html")
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            # Process form data
+            first_name = form.cleaned_data['fname']
+            last_name = form.cleaned_data['lname']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            role = form.cleaned_data['role']
 
+            # Save user
+            user = User.objects.create_user(
+                username=email, email=email, first_name=first_name, last_name=last_name, password=password
+            )
+            user.save()
+            return redirect('Login')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'Signup.html', {'form': form})
