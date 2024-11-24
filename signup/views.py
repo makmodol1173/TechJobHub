@@ -17,10 +17,21 @@ def signaction(request):
 
             # Save user
             user = User.objects.create_user(
-                username=email, email=email, first_name=first_name, last_name=last_name, password=password
+                username=email, email=email, first_name=first_name, last_name=last_name, password=password,
             )
             user.save()
-            return redirect('Login')
+            user = authenticate(username=email, password=password)
+            if user is not None:
+                login(request, user)
+
+                # Redirect based on role
+                if role == "Recruiter" :
+                    return redirect("/company-details")  # Replace with your URL name or path
+                elif role == "Job Seeker":
+                    return redirect("/dashboard")  # Replace with your URL name or path
+                else:
+                    return redirect("/login")  # Fallback case if role doesn't match
+
     else:
         form = UserRegistrationForm()
     return render(request, 'Signup.html', {'form': form})
