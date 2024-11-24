@@ -54,11 +54,10 @@
                     <input type="file" id="profile-picture-upload" style="display:none;">
                     <label for="profile-picture-upload" class="edit-icon">&#9998;</label>
                 </div>
-            </div>
+            </div>            
             <div class="profile-details">
                 <h2>Makmudul Hasan Rabbi</h2>
                 <p>Studies in Software Engineering at Noakhali Science and Technology University</p>
-                <p><img src="{% static 'images/Nstu logo.png' %}" alt="University Logo" class="university-logo"> Noakhali Science and Technology University</p>
                 <p>Kishoreganj District, Dhaka, Bangladesh <a href="#">Contact info</a></p>
                 <div style="text-align: right;">
                     <span class="edit-icon" onclick="toggleEdit('profile-details-edit')">&#9998;</span>
@@ -88,38 +87,6 @@
             </div>
             <div id="skills-edit" class="profile-edit-section" style="display:none;">
                 <input type="text" placeholder="Add a skill">
-                <button class="save-button">Save</button>
-            </div>
-
-            <div class="profile-language">
-                <h3>Profile Language</h3>
-                <div class="language-list">
-                    <span>English</span>
-                </div>
-                <div style="text-align: right;">
-                    <span class="edit-icon" onclick="toggleEdit('language-edit')">&#9998;</span>
-                </div>
-            </div>
-            <div id="language-edit" class="profile-edit-section" style="display:none;">
-                <select>
-                    <option value="english" selected>English</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="french">French</option>
-                </select>
-                <button class="save-button">Save</button>
-            </div>
-
-            <div class="public-profile">
-                <h3>Public Profile & URL</h3>
-                <div class="profile-link">
-                    <a href="http://www.techjobhub.com/in/makmudul-hasan-rabbi-818a67177">www.techjobhub.com/in/makmudul-hasan-rabbi-818a67177</a>
-                </div>
-                <div style="text-align: right;">
-                    <span class="edit-icon"  onclick="toggleEdit('profile-link-edit')">&#9998;</span>
-                </div>
-            </div>
-            <div id="profile-link-edit" class="profile-edit-section" style="display:none;">
-                <input type="text" placeholder="Public Profile URL" value="http://www.techjobhub.com/in/makmudul-hasan-rabbi-818a67177">
                 <button class="save-button">Save</button>
             </div>
         </section>

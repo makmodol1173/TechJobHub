@@ -204,6 +204,7 @@ body {
     cursor: pointer;
     text-align: center;
     font-size: 15px;
+    text-decoration: none;
 }
 
 .applied-button:hover {
