@@ -1,1 +1,66 @@
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django-related files
+db.sqlite3
+*.log
+*.pot
 *.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Media and static files
+/static/
+/media/
+
+# Environments
+.env
+*.env
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# IDE or editor-specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vscode/
+*.swp
+*.swo
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies (if using frontend tools like npm)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+
+# Migrations (optional)
+*/migrations/*
+
+# Ignore compiled or packaged files
+*.egg-info/
+*.eggs/
+dist/
+build/
+*.egg
+
+# Ignore pip related files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignore pytest cache
+.pytest_cache/
