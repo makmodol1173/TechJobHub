@@ -11,41 +11,87 @@
 </head>
 <body>
     <div class="container">
-        <a class="back-button" href="{% url 'Dashboard' %}">&larr; Back</a>
+        <!-- Display messages -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Back button -->
+        <a class="back-button" href="{% url 'dashboard' %}">&larr; Back</a>
         <h1>Create a Job Post</h1>
-        <form class="job-post-form">
+
+        <!-- Form -->
+        <form class="job-post-form" method="POST" action="{% url 'create_post' %}">
+            {% csrf_token %}
             <div class="section job-details">
                 <h2>Job Details</h2>
-                <label for="job-title">Job Title*:</label>
-                <input type="text" id="job-title" name="job-title" required>
-                
-                <label for="about">Description*:</label>
-                <textarea id="about" name="about" required></textarea>
 
-                <label for="location">Company’s Location*:</label>
-                <input type="text" id="location" name="location" required>
-                
-                <label for="responsibilities">Key Responsibilities*:</label>
-                <textarea id="responsibilities" name="responsibilities" required></textarea>
+                <div class="form-group">
+                    <label for="job-title">Job Title*:</label>
+                    <input type="text" id="job-title" name="job_title" required>
+                    {% if form.errors.job_title %}
+                        <div class="field-error">{{ form.errors.job_title }}</div>
+                    {% endif %}
+                </div>
 
-                <label for="education">Educational Requirements:</label>
-                <input type="text" id="education" name="education">
-                
-                <label for="qualifications">Qualification & Experience*:</label>
-                <textarea id="qualifications" name="qualifications" required></textarea>
-                  
-                <label for="deadline">Deadline*:</label>
-                <input type="date" id="deadline" name="deadline" required>
-                
-                <label for="job-type">Job Type*:</label>
-                <select id="job-type" name="job-type" required>
-                    <option value="">Full Time</option>
-                    <option value="">Part Time</option>
-                </select>
+                <div class="form-group">
+                    <label for="about">Description*:</label>
+                    <textarea id="about" name="about" required></textarea>
+                    {% if form.errors.about %}
+                        <div class="field-error">{{ form.errors.about }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Company’s Location*:</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="responsibilities">Key Responsibilities*:</label>
+                    <textarea id="responsibilities" name="responsibilities" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="education">Educational Requirements:</label>
+                    <input type="text" id="education" name="education">
+                </div>
+
+                <div class="form-group">
+                    <label for="qualifications">Qualification & Experience*:</label>
+                    <textarea id="qualifications" name="qualifications" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="deadline">Deadline*:</label>
+                    <input type="date" id="deadline" name="deadline" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="job-type">Job Type*:</label>
+                    <select id="job-type" name="job-type" required>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                    </select>
+                </div>
             </div>
 
             <button type="submit" class="submit-button">Submit</button>
         </form>
     </div>
+
+    <!-- Add a loading state -->
+    <script>
+        document.querySelector('.job-post-form').addEventListener('submit', function() {
+            document.querySelector('.submit-button').textContent = 'Submitting...';
+            document.querySelector('.submit-button').disabled = true;
+        });
+    </script>
 </body>
 </html>
