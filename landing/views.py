@@ -42,6 +42,12 @@ def Apply_list(request):
 def Assessment(request):
     return render(request, 'Assessment.html')
 
+def Set_assessment(request):
+    return render(request, 'Set_assessment.html')
+
+def Assessment_mark(request):
+    return render(request, 'Assessment_mark.html')
+
 def Company_details(request):
     return render(request, 'Company_details.html')
 

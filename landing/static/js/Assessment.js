@@ -1,20 +1,31 @@
-const textarea = document.getElementById('solution');
-const charCount = document.getElementById('char-count');
+document.addEventListener('DOMContentLoaded', function () {
+    const textareas = document.querySelectorAll('textarea');
 
-textarea.addEventListener('input', function () {
-    const currentLength = textarea.value.length;
-    charCount.textContent = currentLength;
-});
+    textareas.forEach((textarea) => {
+        const maxLength = parseInt(textarea.getAttribute('maxlength'), 10);
+        const charCounter = document.createElement('div');
 
-const sidebar = document.querySelector('.sidebar');
-const menuIcon = document.querySelector('.menu-icon');
+        textarea.addEventListener('input', () => {
+            const currentLength = textarea.value.length;
+            charCounter.textContent = `${currentLength} / ${maxLength}`;
+        });
+    });
 
-menuIcon.addEventListener('click', function () {
-    sidebar.classList.toggle('active');
-});
+    const form = document.querySelector('#assessment-form');
+    form.addEventListener('submit', (e) => {
+        let isValid = true;
+        textareas.forEach((textarea) => {
+            if (textarea.value.trim() === '') {
+                isValid = false;
+                textarea.style.border = '2px solid red';
+            } else {
+                textarea.style.border = '1px solid #ccc';
+            }
+        });
 
-const submenu = document.querySelector('.nav-links li a[href="#"]');
-submenu.addEventListener('click', function (e) {
-    e.preventDefault(); 
-    this.nextElementSibling.classList.toggle('show');
+        if (!isValid) {
+            e.preventDefault();
+            alert('Please fill out all the questions before submitting.');
+        }
+    });
 });

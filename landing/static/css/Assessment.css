@@ -75,7 +75,7 @@ body {
 }
 
 .main-content {
-    margin-left: 250px;  /* Sidebar width */
+    margin-left: 250px;
     width: calc(100% - 250px);
     overflow: auto;
 }
@@ -116,10 +116,10 @@ body {
 
 .content-area {
     padding: 20px;
-    margin-top: 80px;  /* Space for fixed top nav */
-    padding-left: 260px; /* Sidebar padding */
+    margin-top: 80px;  
+    padding-left: 260px; 
     overflow-y: auto;
-    height: calc(100vh - 80px); /* Scrollable content */
+    height: calc(100vh - 80px); 
 }
 
 .question-item {
@@ -132,34 +132,20 @@ body {
     color: #0A2A47;
 }
 
-.answer-box label {
-    font-size: 20px;
-    color: #0A2A47;
+textarea {
+  width: 80%; 
+  height: 150px; 
+  padding: 10px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  resize: none;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-.answer-box {
-    margin-top: 10px;
-    position: relative;
-}
-
-.answer-box textarea {
-    width: 100%;
-    height: 200px;
-    padding: 15px;
-    margin-top: 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none;
-    box-sizing: border-box;
-}
-
-.char-count {
-    font-size: 14px;
-    color: #0A2A47;
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
+textarea:focus {
+    border-color: #0A2A47;
+    outline: none;
 }
 
 .next-button {
