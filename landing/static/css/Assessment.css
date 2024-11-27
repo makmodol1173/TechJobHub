@@ -3,61 +3,64 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
-}
-
-body {
+  }
+  
+  body {
     display: flex;
-}
-
-.container {
+    height: 100vh;
+  }
+  
+  .container {
     display: flex;
     width: 100%;
-    height: 100vh;
-}
-
-/* Sidebar */
-.sidebar {
+    height: 100%;
+  }
+  
+  .sidebar {
     width: 250px;
     background-color: #0A2A47;
     color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
     padding-top: 20px;
-}
-
-.nav-links li a:hover{
+  }
+  
+  .nav-links li a:hover {
     background-color: #294774;
-}
-
-.logo img {
+  }
+  
+  .logo img {
     width: 35px;
     height: 35px;
     border-radius: 150px;
     margin-right: 25px;
-}
-
-.logo{
+  }
+  
+  .logo {
     font-size: 13px;
     display: flex;
     margin-top: 18px;
     align-items: center;
     margin-bottom: 50px;
-}
-
-.nav-links {
+  }
+  
+  .nav-links {
     list-style-type: none;
-    width: 120%;
+    width: 100%;
     padding: 0;
     font-size: 18px;
-}
-
-.nav-links li {
-    width: 120%;
+  }
+  
+  .nav-links li {
+    width: 100%;
     margin-left: 25px;
-}
-
-.nav-links li a {
+  }
+  
+  .nav-links li a {
     display: flex;
     align-items: center;
     padding: 15px 20px;
@@ -65,106 +68,71 @@ body {
     color: #fff;
     width: 100%;
     transition: background-color 0.3s;
-}
-
-.nav-links .icon {
+  }
+  
+  .nav-links .icon {
     margin-right: 10px;
-}
-
-.main-content {
+  }
+  
+  .main-content {
     margin-left: 250px;
     width: calc(100% - 250px);
     overflow: auto;
-}
-
-.top-nav {
-    flex: 1;
+  }
+  
+  .top-nav {
     display: flex;
-    flex-direction: column;
-    background-color: #f5f0f0;
-}
-
-.nav-icons {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-}
-
-.nav-icons .icon {
+    padding: 20px;
+    background-color: #0A2A47;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    z-index: 100;
+  }
+  
+  .top-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 15px 20px;
+    font-weight: bold;
+  }
+  
+  .nav-icons {
+    display: flex;
+  }
+  
+  .nav-icons .icon {
     width: 24px;
     height: 24px;
     background-size: cover;
     margin-left: 16px;
     display: inline-block;
     margin: 0 10px;
-}
-
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  }
+  
+  .content-area {
     padding: 20px;
     margin-top: 80px;  
     padding-left: 260px; 
     overflow-y: auto;
     height: calc(100vh - 80px); 
-    background-color: #0A2A47;
-    color: #fff;
-}
-
-.top-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 15px 20px;
-    font-weight: bold;
-}
-
-.topbutton{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 820px;
-}
-
-.top-nav-icons {
-    display: flex;
-}
-
-.top-nav-icons a {
-    margin-left: 10px;
-}
-
-.icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    margin: 0 4px;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-}
-
-.highlighted {
-    background-color: #57abc5; 
-}
-
-.icon svg {
-    fill: white;
-}
-
-/* Content Area */
-.content-area {
-    padding: 30px;
-    flex: 1;
-}
-
-.question-box h2 {
+  }
+  
+  .question-item {
+    margin-bottom: 30px;
+  }
+  
+  .question-box h2 {
     font-size: 20px;
     margin-bottom: 15px;
     color: #0A2A47;
-}
-
-textarea {
+  }
+  
+  textarea {
   width: 80%; 
   height: 150px; 
   padding: 10px; 
@@ -173,15 +141,14 @@ textarea {
   border-radius: 4px;
   resize: none;
   font-family: 'Times New Roman', Times, serif;
-}
-
-textarea:focus {
+  }
+  
+  textarea:focus {
     border-color: #0A2A47;
     outline: none;
-}
-
-
-.next-button {
+  }
+  
+  .next-button {
     margin-top: 20px;
     padding: 10px 30px;
     font-size: 18px;
@@ -191,9 +158,9 @@ textarea:focus {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.next-button:hover {
+  }
+  
+  .next-button:hover {
     background-color: #294774;
-}
-
+  }
+  
