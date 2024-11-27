@@ -23,7 +23,7 @@ urlpatterns = [
     path('rec-job/', views.Rec_Job, name='rec_job'),
     path('set-interview/', views.Set_Interview, name='set_interview'),
     path('virtual-int/', views.Virtual_int, name='virtual_int'),
-    path('', views.job_list, name='job_list'),
+    # path('', views.job_list, name='job_list'),
 ]
 
 

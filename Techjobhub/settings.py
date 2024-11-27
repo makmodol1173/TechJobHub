@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'landing',
     'signup',
     'job_post',
+    'new',
 
 
 ]

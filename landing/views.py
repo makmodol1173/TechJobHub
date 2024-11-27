@@ -64,8 +64,8 @@ def Virtual_int(request):
     return render(request, 'Virtual_int.html')
 
 
-from .models import Job
+# from .models import Job
 
-def job_list(request):
-    jobs = Job.objects.filter(is_active=True)
-    return render(request, 'job_list.html', {'jobs': jobs})
+# def job_list(request):
+#     jobs = Job.objects.filter(is_active=True)
+#     return render(request, 'job_list.html', {'jobs': jobs})
