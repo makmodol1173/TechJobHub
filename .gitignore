@@ -47,7 +47,7 @@ coverage.xml
 .hypothesis/
 
 # Migrations (optional)
-*/migrations/*
+# */migrations/*
 
 # Ignore compiled or packaged files
 *.egg-info/
