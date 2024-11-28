@@ -25,6 +25,7 @@ urlpatterns = [
     #path("login/", include('login.urls')),
     #path('myprofile/', include('myprofile.urls')),
     #path('jobs/', include('jobs.urls')),
-     path('landings/', include('landing.urls')),
-     path('job-post/', include('job_post.urls')),
+    path('landings/', include('landing.urls')),
+    path('job-post/', include('job_post.urls')),
+    #path('new/', include('new.urls')),
 ]
