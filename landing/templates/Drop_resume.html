@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="{% url 'Bookmarks' %}"><span class="icon">&#128213;</span> Bookmarks</a></li>
-                <li><a href="{% url 'Drop_resume' %}" class="active"><span class="icon">&#128193;</span> Drop Resume</a></li>
+                <li><a href="{% url 'Drop_resume' %}"><span class="icon">&#128193;</span> Drop Resume</a></li>
                 <li><a href="{% url 'rec_job' %}"><span class="icon">&#9881;</span> Recommended Job</a></li>
                 <li><a href="{% url 'apply_list' %}"><span class="icon">&#9998;</span> Apply List</a></li>
                 <li><a href="#"><span class="icon">&#128196;</span> Assessify</a>
@@ -38,7 +37,6 @@
 
         <!-- Main Content -->
         <div class="main-content">
-            <!-- Top Navigation -->
             <div class="top-nav">
                 <div class="topbutton">
                     <a href="{% url 'Dashboard' %}">Home</a>
@@ -60,7 +58,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                         </svg>
-                    </a>                       
+                    </a>                      
                     <a href="{% url 'Menu_options' %}" title="Menu" class="icon menu-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
                             <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
@@ -68,12 +66,23 @@
                     </a>
                 </div>
             </div>
-            <button class="view">View</button>
+            <!-- Upload Section -->
             <div class="upload-section">
-                <div class="upload-icon">
-                    <img src="{% static 'images/resume.png' %}" alt="Upload Icon">
-                </div>
-                <button class="upload-btn">Upload your Resume</button>
+                <form method="post" enctype="multipart/form-data" action="{% url 'Drop_resume' %}">
+                    {% csrf_token %}
+                    <input type="file" name="resume" accept=".pdf, .docx, .png, .jpeg" required>
+                    <button type="submit" class="upload-btn">Upload Resume</button>
+                </form>
+            </div>
+
+            <div class="view-section">
+                {% if resume %}
+                    <a href="{{ resume.url }}" class="view-btn" target="_blank">View Resume</a>
+                {% else %}
+                    <p>No resume uploaded yet. Please upload one to view it here.</p>
+                {% endif %}
+            </div>
+            
             </div>
         </div>
     </div>
