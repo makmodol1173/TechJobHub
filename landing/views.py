@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from new.models import Profile, Recruiter, JobSeeker, Company
 
 def Home(request):
     return render(request, 'Home.html')
@@ -28,6 +30,28 @@ def Drop_resume(request):
     return render(request, 'Drop_resume.html')
 
 def Profile(request):
+        # default get method
+        # eikhane role check kora ta khub beshi important nah, but por e kaj e lagbe
+        # ei khane check korte hobe role er value ('Job Seeker') ki nah
+        # jodi na hoi taile login e redirect
+        # both are same
+    # if 'user_id' not in request.session:
+    #     messages.error(request, "User is not logged in.")
+    #     return redirect('Login')  # Redirect to login page
+    
+    # user_id = request.session.get('user_id')
+    # user_role = request.session.get('role')
+    # #print(user_email)
+    # #print(user_role)
+
+    # if(user_role=='Recruiter'):
+    #     recruiter = Recruiter.objects.filter(r_id=user_id).first()
+    #     print(recruiter)
+
+    # if Recruiter.objects.filter(email=email).exists():
+    #             messages.error(request, "Email already registered!")
+    #             return redirect('Signup')
+
     return render(request, 'Profile.html')
 
 def Post(request):
@@ -49,7 +73,13 @@ def Assessment_mark(request):
     return render(request, 'Assessment_mark.html')
 
 def Company_details(request):
-    return render(request, 'Company_details.html')
+    # if 'user_id' not in request.session and 'role' not in request.session:
+        # ei khane check korte hobe role er value ('Job Seeker') ki nah
+        # jodi na hoi taile login e redirect
+        # both are same
+    #     messages.error(request, "User is not logged in.")
+    #     return redirect('Login')  # Redirect to login page
+     return render(request, 'Company_details.html')
 
 def Rating(request):
     return render(request, 'Rating.html')

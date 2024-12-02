@@ -14,7 +14,8 @@
 #     def __str__(self):
 #         return self.title
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password, check_password
 class Recruiter(models.Model):
     r_id = models.AutoField(primary_key=True)  # Auto-incrementing ID
     fname = models.CharField(max_length=100)
@@ -22,6 +23,13 @@ class Recruiter(models.Model):
     email = models.EmailField(unique=True)  # Ensures unique emails
     password = models.CharField(max_length=128)  # Accommodates hashed passwords
     address = models.TextField()  # TextField for more flexible address storage
+
+    def set_password(self, raw_password):
+        self.password = make_password(raw_password)
+        self.save()
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.password)
 
     def __str__(self):
         return f"{self.fname} {self.lname} ({self.email})"
@@ -64,6 +72,13 @@ class JobSeeker(models.Model):
     address = models.TextField()
     education = models.TextField()
     resume = models.FileField(upload_to='resumes/')  # Supports file upload
+
+    def set_password(self, raw_password):
+        self.password = make_password(raw_password)
+        self.save()
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.password)
 
     def __str__(self):
         return f"{self.fname} {self.lname} ({self.email})"
@@ -122,3 +137,18 @@ class Assessment(models.Model):
 
     def __str__(self):
         return f"Assessment {self.asses_id}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    role = models.CharField(
+        max_length=20,
+        choices=[('recruiter', 'Recruiter'), ('job_seeker', 'Job Seeker')],
+        default='job_seeker'
+    )
+    location = models.CharField(max_length=255, null=True, blank=True)
+    profile_picture = models.ImageField(upload_to="profile_pictures/", default="default.png")
+    recruiter_info = models.OneToOneField(Recruiter, on_delete=models.CASCADE, null=True, blank=True)
+    job_seeker_info = models.OneToOneField(JobSeeker, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
