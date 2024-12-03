@@ -32,7 +32,7 @@
                     </ul>
                 </li>
                 <li><a href="#"><span class="icon">&#9881;</span> Settings</a></li>
-                <li><a href="#"><span class="icon">&#128682;</span> Logout</a></li>
+                <li><a href="{% url 'logout' %}"><span class="icon">&#128682;</span> Logout</a></li>
                 <li><a href="#"><span class="icon">&#10067;</span> Help</a></li>
             </ul>
         </div>
@@ -76,6 +76,7 @@
                     <input type="text" placeholder="Search bookmarks">
                 </div>
                 <div class="bookmark-list">
+                    <a href="{% url 'post' %}">
                     <div class="bookmark-item">
                         <img src="{% static 'images/brain station.png' %}" alt="Brain Station 23">
                         <div class="bookmark-details">
@@ -83,6 +84,7 @@
                             <p>brainstation-23.com</p>
                         </div>
                     </div>
+                </a>
                     <div class="bookmark-item">
                         <img src="{% static 'images/bracIT.png' %}" alt="BRAC IT">
                         <div class="bookmark-details">

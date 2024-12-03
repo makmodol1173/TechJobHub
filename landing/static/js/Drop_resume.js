@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const uploadBtn = document.querySelector('.upload-btn');
     uploadBtn.addEventListener('click', function () {
-        alert("CV upload functionality is under development!");
+        // alert("CV upload functionality is under development!");
     });
 
     const applicantListBtn = document.querySelector('.applicant-list');

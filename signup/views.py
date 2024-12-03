@@ -145,6 +145,7 @@ def profile_view(request):
     # Retrieve user details from cookies
     user_id = request.COOKIES.get('user_id')
     role = request.COOKIES.get('role')
+    print(user_id)
 
     if not user_id or not role:
         messages.error(request, "You need to log in to view your profile.")
@@ -165,4 +166,7 @@ def profile_view(request):
             return redirect('Login')
 
     # Pass user data to the template
+    print("Hello")
+    print(user)
+    print(role)
     return render(request, 'profile.html', {'user': user, 'role': role})

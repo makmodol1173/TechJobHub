@@ -98,6 +98,7 @@ class Application(models.Model):
     job_seeker = models.ForeignKey(JobSeeker, on_delete=models.CASCADE, related_name="applications")
     job_post = models.ForeignKey(JobPost, on_delete=models.CASCADE, related_name="applications")
     created_at = models.DateTimeField(auto_now_add=True)
+    questions_text = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"Application {self.app_id} for {self.job_post}"
@@ -114,11 +115,20 @@ class Bookmark(models.Model):
 
 class Question(models.Model):
     ques_id = models.AutoField(primary_key=True)
-    application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="questions")
-    question_text = models.TextField()  # Single field for flexibility
+    app = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="questions")
+    question1 = models.TextField(blank=True, null=True)
+    question2 = models.TextField(blank=True, null=True)
+    question3 = models.TextField(blank=True, null=True)
+    question4 = models.TextField(blank=True, null=True)
+    question5 = models.TextField(blank=True, null=True)
+    question6 = models.TextField(blank=True, null=True)
+    question7 = models.TextField(blank=True, null=True)
+    question8 = models.TextField(blank=True, null=True)
+    question9 = models.TextField(blank=True, null=True)
+    question10 = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"Question {self.ques_id}"
+        return f"Questions for Application {self.application.name}"
 
 
 class Answer(models.Model):
