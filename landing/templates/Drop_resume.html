@@ -73,6 +73,12 @@
                     <input type="file" name="resume" accept=".pdf, .docx, .png, .jpeg" required>
                     <button type="submit" class="upload-btn">Upload Resume</button>
                 </form>
+                {% if resume %}
+                    <p>Current Resume: <a href="{{ resume }}">Download</a></p>
+                {% endif %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
             </div>
 
             <div class="view-section">

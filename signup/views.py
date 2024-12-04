@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from new.models import Profile, Recruiter, JobSeeker, Company, JobPost
+from django.http import Http404
+from django.contrib.auth.decorators import login_required
 
 def signaction(request):
     if request.method == 'POST':
@@ -37,7 +39,7 @@ def signaction(request):
             job_seeker.set_password(password)
             job_seeker.save()
 
-            response = redirect('Login')  # Redirect to login page
+            response = redirect('Dashboard')  # Redirect to login page
             response.set_cookie('user_id', job_seeker.js_id)
             response.set_cookie('role', 'Job Seeker')
             # request.session['user_id'] = job_seeker.j_id
@@ -49,28 +51,23 @@ def signaction(request):
     return render(request, 'Signup.html')
 
 def loginaction(request):
-    if request.COOKIES.get('user_id') and request.COOKIES.get('role'):
-        # If cookies are already set, redirect to profile
-        return redirect('profile')
-     
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
 
         recruiter = Recruiter.objects.filter(email=email).first()
         if recruiter and recruiter.check_password(password):
-            # request.session['user_id'] = recruiter.r_id
-            # request.session['role'] = 'Recruiter'
-            response = redirect('company_details')  # Redirect to profile
+            if recruiter.company_details_filled:
+                response = redirect('Dashboard')  # Redirect to the dashboard
+            else:
+                response = redirect('company_details')
             response.set_cookie('user_id', recruiter.r_id)
             response.set_cookie('role', 'Recruiter')
             return response
 
         job_seeker = JobSeeker.objects.filter(email=email).first()
         if job_seeker and job_seeker.check_password(password):
-            # request.session['user_id'] = job_seeker.js_id
-            # request.session['role'] = 'Job Seeker'
-            response = redirect('Dashboard')  # Redirect to d
+            response = redirect('Dashboard')  # Redirect to dashboard
             response.set_cookie('user_id', job_seeker.js_id)
             response.set_cookie('role', 'Job Seeker')
             return response
@@ -214,3 +211,53 @@ def create_post(request):
         return redirect('Dashboard')  # Redirect to the dashboard or any appropriate page
 
     return render(request, 'Create_post.html')
+
+def is_valid_resume(file):
+    valid_mime_types = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ]
+    valid_extensions = ['.pdf', '.doc', '.docx']
+    max_file_size = 5 * 1024 * 1024  # 5MB
+
+    if file.content_type not in valid_mime_types:
+        return False, "Invalid file type. Only PDF and Word documents are allowed."
+    if not any(file.name.endswith(ext) for ext in valid_extensions):
+        return False, "Invalid file extension. Please upload a .pdf, .doc, or .docx file."
+    if file.size > max_file_size:
+        return False, "File size exceeds 5MB limit."
+    return True, None
+
+
+def drop_resume(request):
+    # Manually authenticate the user
+    user_id = request.COOKIES.get('user_id')
+    role = request.COOKIES.get('role')
+
+    if not user_id or role != 'Job Seeker':
+        messages.error(request, "You must be logged in as a Job Seeker to upload a resume.")
+        return redirect('Login')  # Redirect to login page if not authenticated
+
+    try:
+        job_seeker = JobSeeker.objects.get(js_id=user_id)
+    except JobSeeker.DoesNotExist:
+        raise Http404("JobSeeker profile not found.")
+
+    if request.method == 'POST':
+        if 'resume' in request.FILES:
+            resume_file = request.FILES['resume']
+            valid, error_message = is_valid_resume(resume_file)
+            if valid:
+                job_seeker.resume = resume_file
+                job_seeker.save()  # Save the JobSeeker instance to update the resume field
+                messages.success(request, "Resume uploaded successfully!")
+                return redirect('drop_resume')
+            else:
+                messages.error(request, error_message)
+        else:
+            messages.error(request, "Please select a file to upload.")
+
+    return render(request, 'Drop_resume.html', {
+        'resume': job_seeker.resume.url if job_seeker.resume else None,
+    })
