@@ -13,7 +13,7 @@
     <div class="container">
         <a class="back-button" href="{% url 'Dashboard' %}">&larr; Back</a>
         <h1>Create a Job Post</h1>
-        <form method="POST" action="{% url 'create_job_post' %}" class="job-post-form">
+        <form method="POST" action="{% url 'create_post' %}" class="job-post-form">
             {% csrf_token %}
             <div class="section job-details">
                 <h2>Job Details</h2>

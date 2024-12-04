@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from new.models import Profile, Recruiter, JobSeeker, Company
+from new.models import Profile, Recruiter, JobSeeker, Company, JobPost
 
 def signaction(request):
     if request.method == 'POST':
@@ -156,3 +156,48 @@ def profile_view(request):
     print(user)
     print(role)
     return render(request, 'profile.html', {'user': user, 'role': role})
+
+def create_post(request):
+    if request.method == 'POST':
+        # Retrieve recruiter details from cookies
+        recruiter_id = request.COOKIES.get('user_id')
+        role = request.COOKIES.get('role')
+
+        if not recruiter_id or role != 'Recruiter':
+            messages.error(request, "Only recruiters can create job posts.")
+            return redirect('Login')
+
+        # Collect form data
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        location = request.POST.get('location')
+        key_responsibilities = request.POST.get('key_responsibilities')
+        education_requirement = request.POST.get('education_requirement', '')
+        years_experience = request.POST.get('years_experience', '0')
+        deadline = request.POST.get('deadline')
+        job_type = request.POST.get('job_type')
+
+        try:
+            recruiter = Recruiter.objects.get(r_id=recruiter_id)
+        except Recruiter.DoesNotExist:
+            messages.error(request, "Recruiter not found.")
+            return redirect('Login')
+
+        # Create the job post
+        job_post = JobPost(
+            recruiter=recruiter,
+            title=title,
+            description=description,
+            location=location,
+            key_responsibilities=key_responsibilities,
+            education_requirement=education_requirement,
+            years_experience=years_experience,
+            deadline=deadline,
+            job_type=job_type,
+        )
+        job_post.save()
+
+        messages.success(request, "Job post created successfully!")
+        return redirect('Dashboard')  # Redirect to the dashboard or any appropriate page
+
+    return render(request, 'Create_post.html')

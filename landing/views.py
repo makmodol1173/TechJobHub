@@ -18,6 +18,12 @@ def Dashboard(request):
     return render(request, 'Dashboard.html')
 
 def Create_post(request):
+    recruiter_id = request.COOKIES.get('user_id')
+    role = request.COOKIES.get('role')
+
+    if not recruiter_id or role != 'Recruiter':
+        messages.error(request, "Only recruiters can create job posts.")
+        return redirect('Login')
     return render(request, 'Create_post.html')
 
 def Menu_options(request):
