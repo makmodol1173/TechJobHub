@@ -157,6 +157,12 @@ def profile_view(request):
     print(role)
     return render(request, 'profile.html', {'user': user, 'role': role})
 
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from datetime import datetime
+from new.models import JobPost, Recruiter
+
 def create_post(request):
     if request.method == 'POST':
         # Retrieve recruiter details from cookies
@@ -182,6 +188,13 @@ def create_post(request):
         except Recruiter.DoesNotExist:
             messages.error(request, "Recruiter not found.")
             return redirect('Login')
+
+        # Convert the deadline string to a date object
+        try:
+            deadline_date = datetime.strptime(deadline, '%Y-%m-%d').date()
+        except ValueError:
+            messages.error(request, "Invalid deadline format.")
+            return redirect('create-post')
 
         # Create the job post
         job_post = JobPost(

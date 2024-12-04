@@ -47,13 +47,18 @@
     <main>
         <section class="profile-section">
             <div class="profile-header">
+                <!-- Cover photo (static image) -->
                 <img src="{% static 'images/backgrnd.jpeg' %}" alt="Cover Photo" class="cover-photo">
+            
                 <div class="profile-picture-container">
-                    <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                    <img src="{{ user.profile_picture|default:'/static/images/image.png' }}" 
+                        alt="Profile Picture" class="profile-picture">
                     <input type="file" id="profile-picture-upload" style="display:none;">
                     <label for="profile-picture-upload" class="edit-icon">&#9998;</label>
                 </div>
+                
             </div>
+            
 
             <div class="profile-details">
                 <h2>{{ user_profile.fname }} {{ user_profile.lname}}</h2>

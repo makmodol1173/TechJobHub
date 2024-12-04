@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
 from new.models import Profile, Recruiter, JobSeeker, Company
+from django.conf import settings
+import os
 
 def Home(request):
     return render(request, 'Home.html')
@@ -35,30 +38,54 @@ def Bookmarks(request):
 def Drop_resume(request):
     return render(request, 'Drop_resume.html')
 
+
 def Profile(request):
-        # default get method
-        # eikhane role check kora ta khub beshi important nah, but por e kaj e lagbe
-        # ei khane check korte hobe role er value ('Job Seeker') ki nah
-        # jodi na hoi taile login e redirect
-        # both are same
-    # if 'user_id' not in request.session:
-    #     messages.error(request, "User is not logged in.")
-    #     return redirect('Login')  # Redirect to login page
+    # Check if the user is logged in via cookies
+    user_id = request.COOKIES.get('user_id')
+    user_role = request.COOKIES.get('role')
     
-    # user_id = request.session.get('user_id')
-    # user_role = request.session.get('role')
-    # #print(user_email)
-    # #print(user_role)
+    if not user_id or not user_role:
+        messages.error(request, "User is not logged in.")
+        return redirect('Login')  # Redirect to login page if cookies are missing
+    
+    # Determine the user type and fetch the respective model
+    user = None
+    if user_role == 'Recruiter':
+        user = Recruiter.objects.filter(r_id=user_id).first()
+    elif user_role == 'Job Seeker':
+        user = JobSeeker.objects.filter(js_id=user_id).first()
 
-    # if(user_role=='Recruiter'):
-    #     recruiter = Recruiter.objects.filter(r_id=user_id).first()
-    #     print(recruiter)
+    if not user:
+        messages.error(request, "User not found.")
+        return redirect('Login')
 
-    # if Recruiter.objects.filter(email=email).exists():
-    #             messages.error(request, "Email already registered!")
-    #             return redirect('Signup')
+    # Handle file upload if there is a POST request with a file
+    if request.method == 'POST' and request.FILES.get('profile_picture'):
+        uploaded_file = request.FILES['profile_picture']
+        
+        # Validate file type and size
+        if uploaded_file.content_type not in ['image/jpeg', 'image/png']:
+            messages.error(request, "Invalid file type. Only JPEG and PNG are allowed.")
+            return redirect('Profile')
 
-    return render(request, 'Profile.html')
+        if uploaded_file.size > 5 * 1024 * 1024:  # Limit to 5 MB
+            messages.error(request, "File size exceeds the limit of 5 MB.")
+            return redirect('Profile')
+
+        # Save the file
+        fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'profile_picture'))
+        filename = fs.save(uploaded_file.name, uploaded_file)
+        file_url = fs.url(filename)
+
+        # Update the user's profile picture
+        user.profile.profile_picture = file_url
+        user.profile.save()
+
+        messages.success(request, "Profile picture updated successfully!")
+        return redirect('Profile')  # Redirect back to the profile page
+
+    # If it's a GET request, render the profile page
+    return render(request, 'Profile.html', {'user': user})
 
 def Post(request):
     return render(request, 'Post.html')

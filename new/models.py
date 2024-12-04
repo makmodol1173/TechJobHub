@@ -156,7 +156,7 @@ class Profile(models.Model):
         default='job_seeker'
     )
     location = models.CharField(max_length=255, null=True, blank=True)
-    profile_picture = models.ImageField(upload_to="profile_pictures/", default="default.png")
+    profile_picture = models.ImageField(upload_to="profile_picture/", default="default.png")
     recruiter_info = models.OneToOneField(Recruiter, on_delete=models.CASCADE, null=True, blank=True)
     job_seeker_info = models.OneToOneField(JobSeeker, on_delete=models.CASCADE, null=True, blank=True)
 

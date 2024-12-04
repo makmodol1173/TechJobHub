@@ -24,6 +24,9 @@
 //             return;
 //         }
 
+        // alert('Job post submitted successfully!');
+    // });
+// });
 //         alert('Job post submitted successfully!');
 //     });
 // });

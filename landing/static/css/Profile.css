@@ -116,7 +116,7 @@ main {
     overflow: hidden;
     width: 200px;
     height: 200px;
-    border: 5px solid #ffffff;
+    border: 2px solid #080808;
 }
 
 .profile-picture {
@@ -259,3 +259,48 @@ main {
 .profile-section{
     display: flex;
 }
+
+
+
+.image-preview img {
+    margin: 15px auto;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    display: block;
+  }
+  .select-button, .upload-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .select-button:hover, .upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-picture-container {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border: 2px solid #0c0b0b;
+    margin-left: 25%;
+  }
+  
+  .profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
