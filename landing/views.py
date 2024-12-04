@@ -103,9 +103,10 @@ def Virtual_int(request):
 def logout(request):
     response = redirect('Login')  # Redirect to login page
     # Clear session data
-    request.session.flush()
+    #request.session.flush()
     # Clear cookies
     response.delete_cookie('user_id')
     response.delete_cookie('role')
+    
     messages.success(request, "You have been logged out.")
     return response

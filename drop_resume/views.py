@@ -48,54 +48,54 @@ def drop_resume(request):
     })
 
 
-def save_question(request):
-    if request.method == "POST":
+# def save_question(request):
+#     if request.method == "POST":
         
-        app_id = request.POST.get('app_id')  # Assuming app_id is passed via the form
+#         app_id = request.POST.get('app_id')  # Assuming app_id is passed via the form
 
-        try:
-            application = Application.objects.get(app_id=app_id)
-        except Application.DoesNotExist:
-            raise Http404("Application not found")
+#         try:
+#             application = Application.objects.get(app_id=app_id)
+#         except Application.DoesNotExist:
+#             raise Http404("Application not found")
         
-        # Retrieve questions from the POST request
-        question1 = request.POST.get('question1', '')
-        question2 = request.POST.get('question2', '')
-        question3 = request.POST.get('question3', '')
-        question4 = request.POST.get('question4', '')
-        question5 = request.POST.get('question5', '')
-        question6 = request.POST.get('question6', '')
-        question7 = request.POST.get('question7', '')
-        question8 = request.POST.get('question8', '')
-        question9 = request.POST.get('question9', '')
-        question10 = request.POST.get('question10', '')
+#         # Retrieve questions from the POST request
+#         question1 = request.POST.get('question1', '')
+#         question2 = request.POST.get('question2', '')
+#         question3 = request.POST.get('question3', '')
+#         question4 = request.POST.get('question4', '')
+#         question5 = request.POST.get('question5', '')
+#         question6 = request.POST.get('question6', '')
+#         question7 = request.POST.get('question7', '')
+#         question8 = request.POST.get('question8', '')
+#         question9 = request.POST.get('question9', '')
+#         question10 = request.POST.get('question10', '')
 
-        # Save all questions as a single database entry
-        Question.objects.create(
-            application=application,
-            question1=question1,
-            question2=question2,
-            question3=question3,
-            question4=question4,
-            question5=question5,
-            question6=question6,
-            question7=question7,
-            question8=question8,
-            question9=question9,
-            question10=question10
-        )
+#         # Save all questions as a single database entry
+#         Question.objects.create(
+#             application=application,
+#             question1=question1,
+#             question2=question2,
+#             question3=question3,
+#             question4=question4,
+#             question5=question5,
+#             question6=question6,
+#             question7=question7,
+#             question8=question8,
+#             question9=question9,
+#             question10=question10
+#         )
 
-        # Redirect to a success page or back to the form
-        return redirect('Dashboard')  # Replace 'assessment' with the correct URL name for your success page
+#         # Redirect to a success page or back to the form
+#         return redirect('Dashboard')  # Replace 'assessment' with the correct URL name for your success page
 
-    return render(request, 'Set_assessment.html')  # Render the form
+#     return render(request, 'Set_assessment.html')  # Render the form
 
 
-def set_assessment(request):
-    # Assuming you are passing the application id when rendering the form
-    app_id = request.GET.get('app_id')  # Example if you are passing it as a URL parameter
-    return render(request, 'Set_assessment.html', {'app_id': app_id})
+# def set_assessment(request):
+#     # Assuming you are passing the application id when rendering the form
+#     app_id = request.GET.get('app_id')  # Example if you are passing it as a URL parameter
+#     return render(request, 'Set_assessment.html', {'app_id': app_id})
 
-def dashboard(request):
-    # Your dashboard logic here
-    return render(request, 'Dashboard.html')
+# def dashboard(request):
+#     # Your dashboard logic here
+#     return render(request, 'Dashboard.html')
