@@ -101,7 +101,6 @@
     </main>
 
     <script>
-        // Profile Picture Preview
         document.getElementById('profile-picture-upload').addEventListener('change', function(event) {
             const reader = new FileReader();
             reader.onload = function() {
@@ -111,7 +110,6 @@
             reader.readAsDataURL(event.target.files[0]);
         });
 
-        // Toggle Edit Sections
         function toggleEdit(sectionId) {
             const section = document.getElementById(sectionId);
             section.style.display = section.style.display === 'none' ? 'block' : 'none';
