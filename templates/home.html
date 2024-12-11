@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <!-- <script src="{% static 'js/Home.js' %}" defer></script> -->
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <div class="header">
+                <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo" class="logo">
+                <h1 class="title">TechJobHub</h1>
+            </div>
+            <div class="content">
+                <h2 class="main-heading">FIND YOUR JOB HERE!</h2>
+                <p class="description">Find a job that matches your skills and expertise here, and we will help you find a job for you.</p>
+                <button class="get-started-btn">Get Started</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

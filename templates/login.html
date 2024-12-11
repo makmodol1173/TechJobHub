@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <!-- <script src="{% static 'js/Login.js' %}" defer></script> -->
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="header">
+        <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo" class="logo" />
+        <h1 class="title">TechJobHub</h1>
+      </div>
+      <div class="container">
+        <div class="content">
+          <h2 class="main-heading">TECHJOBHUB</h2>
+          <p class="description">
+            TechJobHub is an online platform that matches job seekers with the
+            <br />
+            right positions and enables recruiters to post jobs, conduct tests,
+            <br />
+            and hold interviews online. It simplifies hiring and supports career
+            <br />
+            growth for both new and experienced professionals.
+          </p>
+        </div>
+        <div class="sign-in-form">
+          <div class="form-header">
+            <h3>Sign In &nbsp</h3>
+            <p>Don't have an account? <a href="{% url 'registration' %}">Sign Up</a></p>
+          </div>
+          <form class="form" method="POST">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required/>
+            <button type="submit" class="sign-in-btn">Sign In</button>
+          </form>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
