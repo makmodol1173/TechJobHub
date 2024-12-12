@@ -23,6 +23,8 @@ nav {
     display: flex;
     align-items: center;
     margin-right: 500px;
+    text-decoration: none;
+    color: white;
 }
 
 .logo img {
