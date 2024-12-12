@@ -18,6 +18,9 @@
           <a href="#">Home</a>
           <a href="#">About Us</a>
           <a href="#">Contact</a>
+          {% if role == 'recruiter' %}
+          <a href="/company-details">Company</a>
+          {% endif %}
         </div>
         <div class="nav-icons">
           <a href="#" title="Search" class="icon search-icon">
