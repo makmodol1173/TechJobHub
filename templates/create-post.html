@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Job Post</title>
+    <link rel="stylesheet" href="{% static 'css/create-post.css' %}">
+    {% comment %} <script src="{% static 'js/Create_post.js' %}"></script> {% endcomment %}
+</head>
+<body>
+    <div class="container">
+        <a class="back-button" href="/dashboard">&larr; Back</a>
+        <h1>Create a Job Post</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+          
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required></textarea>
+          
+            <label for="key_responsibilities">Key Responsibilities</label>
+            <textarea id="key_responsibilities" name="key_responsibilities"></textarea>
+          
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location">
+          
+            <label for="educational_requirement">Educational Requirement</label>
+            <textarea id="educational_requirement" name="educational_requirement"></textarea>
+          
+            <label for="year_of_experience">Years of Experience</label>
+            <input type="number" id="year_of_experience" name="year_of_experience">
+          
+            <label for="deadline">Deadline</label>
+            <input type="date" id="deadline" name="deadline" required>
+          
+            <select id="job-type" name="type" required>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+            </select>
+                     
+            <button type="submit" class = "submit-button">Submit</button>
+          </form>
+          
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message-{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
