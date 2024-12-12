@@ -2,51 +2,52 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a class="logo" href="/">
-          <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo" />
-          <h1>TechJobHub</h1>
-        </a>        
-        <div class="nav-links">
-          <a href="#">Create Post</a>
-          <a href="/dashboard">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Contact</a>
-        </div>
-        <div class="nav-icons">
-          <a href="#" title="Search" class="icon search-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="White">
-                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-              </svg>                
-          </a>
-          <a href="#" title="Notifications" class="icon notification-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                  <path d="M12 2a7 7 0 0 1 7 7v4.5l2 2v1H3v-1l2-2V9a7 7 0 0 1 7-7zM9 21h6v1H9z"/>
-              </svg>
-          </a>
-          <a href="#" title="Profile" class="icon profile-icon" aria-label="Profile">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
-          </a>                       
-          <a href="#" title="Menu" class="icon menu-icon">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - TechJobHub</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="/">
+        <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo" />
+        <h1>TechJobHub</h1>
+      </a>        
+      <div class="nav-links">
+        <a href="/create-post">Create Post</a>
+        <a href="/dashboard">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav-icons">
+        <a href="#" title="Search" class="icon search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="White">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>                
+        </a>
+        <a href="#" title="Notifications" class="icon notification-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                <path d="M12 2a7 7 0 0 1 7 7v4.5l2 2v1H3v-1l2-2V9a7 7 0 0 1 7-7zM9 21h6v1H9z"/>
             </svg>
         </a>
-      </div>
-      </nav>
-    </header>
+        <a href="#" title="Profile" class="icon profile-icon" aria-label="Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+        </a>                       
+        <a href="#" title="Menu" class="icon menu-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+          </svg>
+      </a>
+    </div>
+    </nav>
+  </header>
 
-    <main>
+  <main>
+    {% if not has_posts %}
       <section class="hero">
         <h2>Search, Apply &amp; Get Your Dream Job</h2>
         <p>
@@ -66,7 +67,34 @@
         <div class="category">Network Engineer</div>
         <div class="category">Cloud Engineer</div>
       </section>
-    </main>
-    {% comment %} <script src="{% static 'js/dashboard.js' %}"></script> {% endcomment %}
-  </body>
+    {% else %}
+    <div class="dashboard-container">
+      {% if role == 'recruiter' %}
+      <h2>Your Job Posts</h2>
+      {% else %}
+      <h2>Available Job Posts</h2>
+      {% endif %}
+  
+      <div class="posts-container">
+          {% if job_posts %}
+          {% for post in job_posts %}
+          <div class="post">
+              <h3>{{ post.0 }}</h3> 
+              <p><strong>Description:</strong> {{ post.1 }}</p> 
+              <p><strong>Location:</strong> {{ post.2 }}</p> 
+              <p><strong>Key Responsibilities:</strong> {{ post.3 }}</p>
+              <p><strong>Educational Requirement:</strong> {{ post.4 }}</p> 
+              <p><strong>Year of Experience:</strong> {{ post.5 }}</p> 
+              <p><strong>Deadline:</strong> {{ post.6 }}</p> 
+              <p><strong>Type:</strong> {{ post.7 }}</p> 
+          </div>
+          {% endfor %}
+          {% else %}
+          <p>No job posts available.</p>
+          {% endif %}
+      </div>
+    </div>  
+    {% endif %}
+  </main>
+</body>
 </html>
