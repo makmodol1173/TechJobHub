@@ -58,23 +58,22 @@
         </div>
 
         <div class="profile-details">
-          <h2>Shah Moaz</h2> 
-          <p>Location not set</p> 
-          <div style="text-align: right;">
+          <h2>{{ fname }} {{ lname }} - {{role}}</h2> 
+          {% comment %} <div style="text-align: right;">
             <span class="edit-icon" onclick="toggleEdit('profile-details-edit')">&#9998;</span>
-          </div>
+          </div> 
         </div>
 
-        <div id="profile-details-edit" class="profile-edit-section" style="display:none;">
+        {% comment %} <div id="profile-details-edit" class="profile-edit-section" style="display:none;">
           <form method="POST" enctype="multipart/form-data">
-            <input type="text" name="fname" value="John" placeholder="First Name" />
-            <input type="text" name="lname" value="Doe" placeholder="Last Name" />
-            <input type="text" name="location" value="" placeholder="Location" />
+            <input type="text" name="fname" value="Shah" placeholder="First Name" />
+            <input type="text" name="lname" value="Moaz" placeholder="Last Name" />
             <button class="save-button" type="submit">Save</button>
           </form>
-        </div>
+        </div> {% endcomment %}
 
-        <div class="skills">
+        {% comment %}
+         <div class="skills">
           <h3>Skills</h3>
           <div class="skills-list">
             <span>JavaScript</span> <!-- Static skill -->
@@ -90,7 +89,7 @@
             <textarea name="skills" placeholder="Add skills">JavaScript, Python</textarea>
             <button class="save-button" type="submit">Save</button>
           </form>
-        </div>
+        </div> {% endcomment %}
       </section>
     </main>
 
