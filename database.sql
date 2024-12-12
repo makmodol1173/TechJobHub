@@ -100,7 +100,7 @@ CREATE TABLE answers (
     answer_8 TEXT,
     answer_9 TEXT,
     answer_10 TEXT,
-    FOREIGN KEY (question_id) REFERENCES application_questions(question_id)
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
 );
 
 CREATE TABLE assessment (
@@ -116,5 +116,5 @@ CREATE TABLE assessment (
     mark_8 INT,
     mark_9 INT,
     mark_10 INT,
-    FOREIGN KEY (answer_id) REFERENCES application_answers(answer_id)
+    FOREIGN KEY (answer_id) REFERENCES answers(answer_id)
 );
