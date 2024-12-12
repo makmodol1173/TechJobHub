@@ -1,6 +1,8 @@
 asgiref==3.8.1
+bcrypt==4.2.1
 Django==5.1.4
 mysqlclient==2.2.6
+PyMySQL==1.1.1
 python-decouple==3.8
 sqlparse==0.5.3
 tzdata==2024.2
