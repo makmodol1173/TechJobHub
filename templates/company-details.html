@@ -17,7 +17,7 @@
       </div>
       <nav>
         <a href="#">About</a>
-        <a href="#">Sign In</a>
+        <a href="/login">Sign In</a>
       </nav>
     </header>
     <main>
@@ -41,6 +41,13 @@
 
           <button type="submit">Submit</button>
         </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message-{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
       </div>
     </main>
   </body>
