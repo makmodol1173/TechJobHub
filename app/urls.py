@@ -8,4 +8,5 @@ urlpatterns = [
     path('profile/', include('app.profile.urls')),
     path('dashboard/', include('app.dashboard.urls')),
     path('company-details/', include('app.company-details.urls')),
+    path('create-post/', include('app.create-post.urls')),
 ]
