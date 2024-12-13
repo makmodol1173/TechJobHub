@@ -16,7 +16,9 @@
         <h1>TechJobHub</h1>
       </a>        
       <div class="nav-links">
-        <a href="/create-post">Create Post</a>
+        {% if role == 'recruiter' %}
+          <a href="/create-post">Create Post</a>
+        {% endif %}
         <a href="/dashboard">Home</a>
         <a href="#">About Us</a>
         <a href="#">Contact</a>
@@ -32,7 +34,7 @@
                 <path d="M12 2a7 7 0 0 1 7 7v4.5l2 2v1H3v-1l2-2V9a7 7 0 0 1 7-7zM9 21h6v1H9z"/>
             </svg>
         </a>
-        <a href="#" title="Profile" class="icon profile-icon" aria-label="Profile">
+        <a href="/profile" title="Profile" class="icon profile-icon" aria-label="Profile">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
             </svg>
@@ -68,17 +70,29 @@
         <div class="category">Cloud Engineer</div>
       </section>
     {% else %}
-    <div class="dashboard-container">
+    {% comment %} <div class="dashboard-container">
       {% if role == 'recruiter' %}
       <h2>Your Job Posts</h2>
       {% else %}
       <h2>Available Job Posts</h2>
       {% endif %}
-  
+   {% endcomment %}
       <div class="posts-container">
           {% if job_posts %}
           {% for post in job_posts %}
-          <div class="post">
+          <div class="job-card">
+            <div class="job-card-header">
+                <span class="date">{{ post.6 }}</span>
+                <span class="bookmark-icon">&#9733;</span> 
+            </div>
+            <div class="job-card-body">
+                <span class="company-name">Brain Station 23 PLC</span><br><br>
+                <span class="job-title">{{ post.0 }}</span>
+            </div>
+            <a href="/job-posts/{{ post.8 }}" class="details-button" >Details</a>
+        </div>
+
+          {% comment %} <div class="post">
               <h3>{{ post.0 }}</h3> 
               <p><strong>Description:</strong> {{ post.1 }}</p> 
               <p><strong>Location:</strong> {{ post.2 }}</p> 
@@ -87,7 +101,7 @@
               <p><strong>Year of Experience:</strong> {{ post.5 }}</p> 
               <p><strong>Deadline:</strong> {{ post.6 }}</p> 
               <p><strong>Type:</strong> {{ post.7 }}</p> 
-          </div>
+          </div> {% endcomment %}
           {% endfor %}
           {% else %}
           <p>No job posts available.</p>

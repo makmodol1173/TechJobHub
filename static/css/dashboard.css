@@ -118,3 +118,38 @@ nav {
     background-color: #f0f0f0;
     border-color: #123456;
 }
+
+.job-card {
+    /* background-color: #e0f0fa;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 30px */
+}
+
+.job-card-header {
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; */
+}
+
+.date {
+    font-size: 14px;
+    color: #454444;
+}
+
+.bookmark-icon {
+    font-size: 20px;
+    color: #0A2A47;
+    cursor: pointer;
+}
+
+.job-card-body {
+    /* margin-bottom: 20px; */
+}
