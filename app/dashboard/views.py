@@ -23,10 +23,32 @@ def dashboard(request):
     has_posts = False
     if recruiter_id:
         with connection.cursor() as cursor:
-            query_jobs = "SELECT title, description, location, key_responsibilities, educational_requirement, year_of_experience, deadline, type, job_post_id FROM job_post WHERE recruiter_id = %s"
+            # query_jobs = "SELECT title, description, location, key_responsibilities, educational_requirement, year_of_experience, deadline, type, job_post_id FROM job_post WHERE recruiter_id = %s"
+            query_jobs = """SELECT 
+                jp.job_post_id,
+                jp.title,
+                jp.description,
+                jp.key_responsibilities,
+                jp.location,
+                jp.educational_requirement,
+                jp.deadline,
+                jp.year_of_experience,
+                jp.type AS job_type,
+                jp.keywords,
+                c.company_id,
+                c.name AS company_name,
+                c.address AS company_address,
+                c.description AS company_description,
+                c.trade_license_number,
+                c.website_url
+            FROM 
+                job_post jp
+            LEFT JOIN 
+                company c ON jp.recruiter_id = c.recruiter_id
+            WHERE 
+                jp.recruiter_id = %s"""
             cursor.execute(query_jobs, (recruiter_id,))
             job_posts = cursor.fetchall()
-            has_posts = bool(job_posts)
 
-    context = {'job_posts': job_posts, 'has_posts': has_posts, 'role':role}
+    context = {'job_posts': job_posts,  'role':role}
     return render(request, 'dashboard.html', context)
