@@ -4,6 +4,23 @@ from django.db import connection
 from decouple import config
 
 def job_posts(request, job_post_id):
+  auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
+  role = request.COOKIES.get(config('COOKIE_KEY_2'))
+  
+  # if not auth_token or not role == 'job_seeker':
+  #   messages.error(request,"Invalid user")
+  job_seeker_id=None
+  with connection.cursor() as cursor:
+    query_job_seeker = "SELECT job_seeker_id FROM job_seeker WHERE email = %s"
+    cursor.execute(query_job_seeker, (auth_token,))
+    job_seeker = cursor.fetchone()
+    if job_seeker:
+            job_seeker_id = job_seeker[0]
+            
+  #   if not role == "job_seeker":
+  #     messages.error(request,"Invalid role")
+      
+
   with connection.cursor() as cursor:
     query_job_post = """SELECT 
       jp.job_post_id,
@@ -31,7 +48,6 @@ def job_posts(request, job_post_id):
     """
     cursor.execute(query_job_post, (job_post_id,))
     data = cursor.fetchone()
-    print(data)
     user = {
                 'title': data[1],
                 'description': data[2],
@@ -41,8 +57,9 @@ def job_posts(request, job_post_id):
                 'deadline': data[6],
                 'year_of_experience': data[7],
                 'type': data[8],
-                'company_name': data[11]
+                'company_name': data[11],
+                'job_post_id': data[0],
+                'job_seeker_id': job_seeker_id
             }
-    # print(user)
   
   return render(request, 'job-posts.html',user)
