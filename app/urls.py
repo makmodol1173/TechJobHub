@@ -10,4 +10,5 @@ urlpatterns = [
     path('company-details/', include('app.company-details.urls')),
     path('create-post/', include('app.create-post.urls')),
     path('job-posts/', include('app.job-posts.urls')),
+    path('application/', include('app.application.urls')),
 ]
