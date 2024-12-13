@@ -6,7 +6,7 @@ from decouple import config
 def job_posts(request, job_post_id):
   auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
   role = request.COOKIES.get(config('COOKIE_KEY_2'))
-  
+  message = request.GET.get('message')
   # if not auth_token or not role == 'job_seeker':
   #   messages.error(request,"Invalid user")
   job_seeker_id=None
@@ -59,7 +59,8 @@ def job_posts(request, job_post_id):
                 'type': data[8],
                 'company_name': data[11],
                 'job_post_id': data[0],
-                'job_seeker_id': job_seeker_id
+                'job_seeker_id': job_seeker_id,
+                'message': message
             }
   
   return render(request, 'job-posts.html',user)
