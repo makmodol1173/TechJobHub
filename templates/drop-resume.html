@@ -68,7 +68,8 @@
             </div>
             <!-- Upload Section -->
             <div class="upload-section">
-                <form method="post">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <input type="file" name="resume" accept=".pdf, .docx, .png, .jpeg" required>
                     <button type="submit" class="upload-btn">Upload Resume</button>
                 </form>
@@ -82,6 +83,14 @@
                 {% endif %}
             </div>
              {% endcomment %}
+
+             {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message-{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             </div>
         </div>
     </div>
