@@ -11,4 +11,6 @@ urlpatterns = [
     path('create-post/', include('app.create-post.urls')),
     path('job-posts/', include('app.job-posts.urls')),
     path('application/', include('app.application.urls')),
+    path('drop-resume/', include('app.drop-resume.urls')),
+    path('recommend-job/', include('app.recommend-job.urls')),
 ]
