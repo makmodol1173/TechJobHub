@@ -68,41 +68,21 @@
             </div>
 
             <div class="job-cards-section">
+                {% if jobs %} {% for job in jobs %}
                 <div class="job-card">
                     <div class="job-card-header">
-                        <span class="date">05 June, 2024</span>
+                        <span class="date">{{job.4}}</span>
                         <span class="bookmark-icon">&#9733;</span> 
                     </div>
                     <div class="job-card-body">
-                        <span class="company-name">Brain Station 23 PLC</span><br><br>
-                        <span class="job-title">Android Developer</span>
+                        <span class="company-name">Brain Station</span><br><br>
+                        <span class="job-title">{{job.1}}</span>
                     </div>
-                    <a href="/job-posts" class="details-button" >Details</a>
+                    <a href="/job-posts/{{ job.0 }}" class="details-button" >Details</a>
                 </div>
-
-                <div class="job-card">
-                    <div class="job-card-header">
-                        <span class="date">10 June, 2024</span>
-                        <span class="bookmark-icon">&#9733;</span>
-                    </div>
-                    <div class="job-card-body">
-                        <span class="company-name">BRAC IT</span><br><br>
-                        <span class="job-title">Assistant Company Secretary</span>
-                    </div>
-                    <a href="#" class="details-button" >Details</a>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-card-header">
-                        <span class="date">15 July, 2024</span>
-                        <span class="bookmark-icon">&#9734;</span>
-                    </div>
-                    <div class="job-card-body">
-                        <span class="company-name">KonaSL</span><br><br>
-                        <span class="job-title">UI/UX Designer</span>
-                    </div>
-                    <a href="#" class="details-button" >Details</a>
-                </div>
+                {% endfor %} {% else %}
+                    <p>No job posts available.</p>
+                {% endif %}
             </div>
 
         </div>

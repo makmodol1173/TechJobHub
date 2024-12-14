@@ -10,10 +10,9 @@ def recommend_job(request):
     job_seeker = cursor.fetchone()
     if job_seeker:
       job_seeker_id = job_seeker[0]
-      print(job_seeker_id)
-      print("3")
+
       query = """
-        SELECT DISTINCT s.skill_name, jp.title, jp.description, jp.key_responsibilities , jp.deadline
+        SELECT DISTINCT jp.job_post_id, jp.title, jp.description, jp.key_responsibilities, jp.deadline
         FROM skill s
         JOIN job_seeker js ON s.job_seeker_id = js.job_seeker_id
         JOIN job_post jp ON 
@@ -23,5 +22,5 @@ def recommend_job(request):
         """
       cursor.execute(query, (job_seeker_id,))
       data = cursor.fetchall()
-
-  return render(request, 'recommend-job.html')
+      print(data)
+  return render(request, 'recommend-job.html', {'jobs':data})
