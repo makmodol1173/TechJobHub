@@ -76,7 +76,7 @@
     </header>
 
     <main>
-      {% if not job_posts %}
+      {% if not job_posts or role == 'job_seeker' %}
       <section class="hero">
         <h2>Search, Apply &amp; Get Your Dream Job</h2>
         <p>

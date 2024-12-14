@@ -6,7 +6,8 @@ def dashboard(request):
     auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
     role = request.COOKIES.get(config('COOKIE_KEY_2'))
 
-    if not auth_token or role != 'recruiter':
+    # if not auth_token or role != 'recruiter':
+    if not auth_token:
         return redirect('/login')
 
     recruiter_id = None

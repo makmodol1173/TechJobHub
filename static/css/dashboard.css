@@ -119,17 +119,20 @@ nav {
     border-color: #123456;
 }
 
-.job-card {
-    /* background-color: #e0f0fa;
+.posts-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    background-color: #e0f0fa;
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 30%;
+    /* width: 30%; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 30px */
+    justify-content: space-between; */
+    margin-bottom: 30px
 }
 
 .job-card-header {
@@ -150,6 +153,6 @@ nav {
     cursor: pointer;
 }
 
-.job-card-body {
-    /* margin-bottom: 20px; */
+.job-card {
+    width: 300px;
 }
