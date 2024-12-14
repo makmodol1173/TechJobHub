@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
+from pdfminer.high_level import extract_text
 from django.conf import settings
 from django.db import connection
 from django.contrib import messages
 import os
+import re
 from decouple import config
 
 def drop_resume(request):
@@ -26,6 +28,14 @@ def drop_resume(request):
     uploaded_file = request.FILES['resume']
     fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'resume'))
     filename = fs.save(uploaded_file.name, uploaded_file)
+    file_path = os.path.join(settings.MEDIA_ROOT, 'resume', filename)
+    text = extract_text(file_path)
+    skills_pattern = r"(UI Design|Data Analyst|Master's Degree in Computer Science|Bachelor's Degree in Computer Science|WordPress|Elementor|WPBakery|Web Development|HTML|CSS|PHP|SQL|React|Javascript|Typescript|Docker|Kubernets|Git|MongoDB)"
+
+    skills = []
+    skills.extend(re.findall(skills_pattern, text))
+    skills = list(set(skills))
+    
     with connection.cursor() as cursor:
       update_query = "UPDATE job_seeker SET resume = %s WHERE job_seeker_id = %s"
       cursor.execute(update_query, (filename, job_seeker_id))
