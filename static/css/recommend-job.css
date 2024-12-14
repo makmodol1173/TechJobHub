@@ -148,7 +148,6 @@ body {
 /* Job Cards Section */
 .job-cards-section {
     display: flex;
-    justify-content: space-around;
     padding: 20px;
     background-color: #f5f0f0;
 }
