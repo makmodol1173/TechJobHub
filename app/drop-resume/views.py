@@ -38,7 +38,14 @@ def drop_resume(request):
     
     with connection.cursor() as cursor:
       update_query = "UPDATE job_seeker SET resume = %s WHERE job_seeker_id = %s"
-      cursor.execute(update_query, (filename, job_seeker_id))
+      cursor.execute(update_query, (filename, job_seeker_id,))
+      
+      delete_skills_query = "DELETE FROM skill WHERE job_seeker_id = %s"
+      cursor.execute(delete_skills_query, (job_seeker_id,))
+      
+      insert_skill_query = "INSERT INTO skill (job_seeker_id, skill_name) VALUES (%s, %s)"
+      for skill in skills:
+          cursor.execute(insert_skill_query, (job_seeker_id, skill))
       connection.commit()
       messages.success(request,"Resume uploaded successfully.")
   return render(request, 'drop-resume.html')
