@@ -86,7 +86,21 @@
                 </a>
                 </div>
             </div>
+            <div class="messages">
+                {% if messages %}
+                  {% for message in messages %}
+                    <p style="color: rgb(33, 32, 32); font-weight: bold;">{{ message }}</p>
+                  {% endfor %}
+                {% endif %}
+            </div>
         </div>
+
+
+        {% if message %}
+            {{ message }}
+        {% endif %}
+        
     </div>
+
 </body>
 </html>
