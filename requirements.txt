@@ -1,7 +1,12 @@
 asgiref==3.8.1
 bcrypt==4.2.1
+cffi==1.17.1
+charset-normalizer==3.4.0
+cryptography==44.0.0
 Django==5.1.4
 mysqlclient==2.2.6
+pdfminer.six==20240706
+pycparser==2.22
 PyMySQL==1.1.1
 python-decouple==3.8
 sqlparse==0.5.3
