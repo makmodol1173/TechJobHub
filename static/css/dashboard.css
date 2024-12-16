@@ -135,12 +135,12 @@ nav {
     margin-bottom: 30px
 }
 
-.job-card-header {
-    /* display: flex;
+/* .job-card-header {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px; */
-}
+    margin-bottom: 10px;
+} */
 
 .date {
     font-size: 14px;
