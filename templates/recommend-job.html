@@ -72,7 +72,7 @@
                 <div class="job-card">
                     <div class="job-card-header">
                         <span class="date">{{job.4}}</span>
-                        <span class="bookmark-icon">&#9733;</span> 
+                        <a href="/bookmarks?job_post_id={{ job_post_id }}&&job_seeker_id={{ job_seeker_id }}">☆</a> 
                     </div>
                     <div class="job-card-body">
                         <span class="company-name">Brain Station</span><br><br>
@@ -88,5 +88,17 @@
         </div>
         
     </div>
+    {% comment %} <script>
+        const bookmarkIcons = document.querySelectorAll('.bookmark-icon');
+        bookmarkIcons.forEach(function(icon) {
+            icon.addEventListener('click', function() {
+                if (icon.textContent === '★') {
+                    icon.textContent = '☆';
+                } else {
+                    icon.textContent = '★';
+                }
+            });
+        });
+</script> {% endcomment %}
 </body>
 </html>
