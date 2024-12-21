@@ -58,9 +58,6 @@ def bookmarks(request):
       messages.error(request, "Already Bookmarked")
       return render(request, 'bookmarks.html',user)
     
-    print(job_seeker_id)
-    print(job_post_id) 
-    
     if job_post_id and job_seeker_id:
       bookmark_insert_query = """INSERT INTO bookmark (job_seeker_id, job_post_id) VALUES (%s, %s)"""
       cursor.execute(bookmark_insert_query, (job_seeker_id, job_post_id))
