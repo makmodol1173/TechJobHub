@@ -69,56 +69,14 @@
 
             <div class="content-area">
                 <div class="assessment-container">
-                  <form id="assessment-form">
-                    <div class="question-item">
-                      <h2>1. What is the Bellman-Ford algorithm for finding single-source shortest paths?</h2>
-                      <textarea id="question-1" name="question-1" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>2. Explain the advantages of using recursion in problem-solving.</h2>
-                      <textarea id="question-2" name="question-2" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>3. Describe the importance of data normalization in database design.</h2>
-                      <textarea id="question-3" name="question-3" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>4. What are the differences between GET and POST HTTP methods?</h2>
-                      <textarea id="question-4" name="question-4" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>5. Explain the concept of polymorphism in object-oriented programming.</h2>
-                      <textarea id="question-5" name="question-5" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>6. What is a RESTful API, and why is it widely used?</h2>
-                      <textarea id="question-6" name="question-6" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>7. Define the differences between relational and non-relational databases.</h2>
-                      <textarea id="question-7" name="question-7" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>8. How does a binary search algorithm work?</h2>
-                      <textarea id="question-8" name="question-8" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>9. What is the purpose of a foreign key in database design?</h2>
-                      <textarea id="question-9" name="question-9" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
-              
-                    <div class="question-item">
-                      <h2>10. Explain the difference between synchronous and asynchronous programming.</h2>
-                      <textarea id="question-10" name="question-10" maxlength="150" placeholder="Type your answer here..."></textarea>
-                    </div>
+                  <form id="assessment-form" method="POST">
+                    {% csrf_token %}
+                    {% for question in questions %}
+                      <div class="question-item">
+                        <h2>{{ forloop.counter }}. {{ question }}</h2>
+                        <textarea id="question-{{ forloop.counter }}" name="question-{{ forloop.counter }}" maxlength="150" placeholder="Type your answer here..."></textarea>
+                      </div>
+                    {% endfor %}
                     <button type="submit" class="next-button">Submit</button>
                   </form>
                 </div>
