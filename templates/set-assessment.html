@@ -68,111 +68,31 @@
             </div>
             <div class="content-area">
               <h1 class="page-title">Set Assessment Questions</h1>
-              <form action="#" method="POST">
+              {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                  <li class="{{ message.tags }}">{{ message }}</li>
+                  {% endfor %}
+              </ul>
+              {% endif %}
+              <form action="/set-assessment/" method="POST">
                 
                 {% csrf_token %}
-                  <div class="questions-container">
-                      <div class="question-item">
-                          <label for="question1" class="question-label">Question 1:</label>
-                          <textarea 
-                              id="question1" 
-                              name="question1" 
-                              placeholder="Enter your question here..." 
-                              maxlength="300" 
-                              class="question-input"></textarea>
-                      </div>
-          
-                      <div class="question-item">
-                          <label for="question2" class="question-label">Question 2:</label>
-                          <textarea 
-                              id="question2" 
-                              name="question2" 
-                              placeholder="Enter your question here..." 
-                              maxlength="300" 
-                              class="question-input"></textarea>
-                      </div>
-          
-                      <div class="question-item">
-                          <label for="question3" class="question-label">Question 3:</label>
-                          <textarea 
-                              id="question3" 
-                              name="question3" 
-                              placeholder="Enter your question here..." 
-                              maxlength="300" 
-                              class="question-input"></textarea>
-                      </div>
-
-                      <div class="question-item">
-                        <label for="question4" class="question-label">Question 4:</label>
+                <input type="hidden" name="application_id" value="{{ application_id }}">
+                <div class="questions-container">
+                    {% for i in question_range %}
+                    <div class="question-item">
+                        <label for="question{{ i }}" class="question-label">Question {{ i }}:</label>
                         <textarea 
-                            id="question4" 
-                            name="question4" 
+                            id="question{{ i }}" 
+                            name="question{{ i }}" 
                             placeholder="Enter your question here..." 
                             maxlength="300" 
-                            class="question-input"></textarea>
+                            class="question-input"
+                            required></textarea>
                     </div>
-
-                    <div class="question-item">
-                      <label for="question5" class="question-label">Question 5:</label>
-                      <textarea 
-                          id="question5" 
-                          name="question5" 
-                          placeholder="Enter your question here..." 
-                          maxlength="300" 
-                          class="question-input"></textarea>
-                  </div>
-
-                  <div class="question-item">
-                    <label for="question6" class="question-label">Question 6:</label>
-                    <textarea 
-                        id="question6" 
-                        name="question6" 
-                        placeholder="Enter your question here..." 
-                        maxlength="300" 
-                        class="question-input"></textarea>
+                    {% endfor %}
                 </div>
-
-                <div class="question-item">
-                  <label for="question7" class="question-label">Question 7:</label>
-                  <textarea 
-                      id="question7" 
-                      name="question7" 
-                      placeholder="Enter your question here..." 
-                      maxlength="300" 
-                      class="question-input"></textarea>
-              </div>
-
-              <div class="question-item">
-                <label for="question8" class="question-label">Question 8:</label>
-                <textarea 
-                    id="question8" 
-                    name="question8" 
-                    placeholder="Enter your question here..." 
-                    maxlength="300" 
-                    class="question-input"></textarea>
-              </div>
-
-              <div class="question-item">
-                <label for="question9" class="question-label">Question 9:</label>
-                <textarea 
-                    id="question9" 
-                    name="question9" 
-                    placeholder="Enter your question here..." 
-                    maxlength="300" 
-                    class="question-input"></textarea>
-              </div>
-
-              <div class="question-item">
-                <label for="question10" class="question-label">Question 10:</label>
-                <textarea 
-                    id="question10" 
-                    name="question10" 
-                    placeholder="Enter your question here..." 
-                    maxlength="300" 
-                    class="question-input"></textarea>
-              </div>
-
-              </div>
                   <button type="submit" class="next-button">Save Questions</button>
               </form>
           </div>
