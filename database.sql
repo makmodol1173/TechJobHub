@@ -73,7 +73,7 @@ CREATE TABLE job_post (
 
 CREATE TABLE questions (
     question_id INT AUTO_INCREMENT PRIMARY KEY,
-    application_id INT NOT NULL,
+    job_post_id INT NOT NULL,
     question_1 TEXT,
     question_2 TEXT,
     question_3 TEXT,
@@ -84,12 +84,12 @@ CREATE TABLE questions (
     question_8 TEXT,
     question_9 TEXT,
     question_10 TEXT,
-    FOREIGN KEY (application_id) REFERENCES application(application_id)
+    FOREIGN KEY (job_post_id) REFERENCES job_post(job_post_id)
 );
 
 CREATE TABLE answers (
     answer_id INT AUTO_INCREMENT PRIMARY KEY,
-    question_id INT NOT NULL,
+    application_id INT NOT NULL,
     answer_1 TEXT,
     answer_2 TEXT,
     answer_3 TEXT,
@@ -100,7 +100,7 @@ CREATE TABLE answers (
     answer_8 TEXT,
     answer_9 TEXT,
     answer_10 TEXT,
-    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+    FOREIGN KEY (application_id) REFERENCES application(application_id)
 );
 
 CREATE TABLE assessment (
