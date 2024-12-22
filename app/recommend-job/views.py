@@ -22,5 +22,4 @@ def recommend_job(request):
         """
       cursor.execute(query, (job_seeker_id,))
       data = cursor.fetchall()
-      print(data)
   return render(request, 'recommend-job.html', {'jobs':data})
