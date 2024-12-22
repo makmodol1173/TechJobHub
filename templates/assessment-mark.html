@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/assessment-mark.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'image/logo.png' %}" alt="TechJobHub">
+                <h1>TechJobHub</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/bookmarks"><span class="icon">&#128213;</span> Bookmarks</a></li>
+                <li><a href="/drop-resume"><span class="icon">&#128193;</span> Drop Resume</a></li>
+                <li><a href="/recommend-job"><span class="icon">&#9881;</span> Recommended Job</a></li>
+                <li><a href="#"><span class="icon">&#9998;</span> Apply List</a></li>
+                <li>
+                    <a href="#"><span class="icon">&#128196;</span> Assessify</a>
+                    <ul>
+                        <li><a href="/set-assessment">Set Assessment</a></li>
+                        <li><a href="/assessment">Assessment Q&A</a></li>
+                        <li><a href="/assessment-mark">Assessment Mark</a></li>
+                        <li><a href="#">Ratings</a></li>
+                        <li><a href="#">Virtual Interview</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="icon">&#9881;</span> Settings</a></li>
+                <li><a href="#"><span class="icon">&#128682;</span> Logout</a></li>
+                <li><a href="#"><span class="icon">&#10067;</span> Help</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="top-nav">
+                <div class="topbutton">
+                    <a href="/dashboard">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="nav-icons">
+                  <a href="#" title="Search" class="icon search-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="White">
+                          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                      </svg>                
+                  </a>
+                  <a href="#" title="Notifications" class="icon notification-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                          <path d="M12 2a7 7 0 0 1 7 7v4.5l2 2v1H3v-1l2-2V9a7 7 0 0 1 7-7zM9 21h6v1H9z"/>
+                      </svg>
+                  </a>
+                  <a href="/profile" title="Profile" class="icon profile-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                  </a>                       
+                  <a href="#" title="Menu" class="icon menu-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                          <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                      </svg>
+                  </a>
+              </div>
+            </div>
+
+            <div class="content-area">
+                <div class="assessment-container">
+                    <form id="assessment-form">
+                        <!-- Question 1 -->
+                <div class="question-item">
+                  <h2>1. What is the Bellman-Ford algorithm for finding single-source shortest paths?</h2>
+                  <textarea readonly>It is an algorithm that computes shortest paths from a single source vertex to all other vertices in a weighted digraph, allowing for negative weights.</textarea>
+              </div>
+
+              <!-- Question 2 -->
+              <div class="question-item">
+                  <h2>2. Explain the advantages of using recursion in problem-solving.</h2>
+                  <textarea readonly>Recursion simplifies solving complex problems by breaking them into smaller, manageable sub-problems with similar structures.</textarea>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="question-item">
+                  <h2>3. Describe the importance of data normalization in database design.</h2>
+                  <textarea readonly>Normalization reduces redundancy and ensures data consistency by organizing tables and relationships efficiently.</textarea>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="question-item">
+                  <h2>4. What are the differences between GET and POST HTTP methods?</h2>
+                  <textarea readonly>GET requests retrieve data and are visible in the URL, while POST requests send data securely in the request body.</textarea>
+              </div>
+
+              <!-- Question 5 -->
+              <div class="question-item">
+                  <h2>5. Explain the concept of polymorphism in object-oriented programming.</h2>
+                  <textarea readonly>Polymorphism allows objects to be treated as instances of their parent class, enabling method overriding and dynamic behavior.</textarea>
+              </div>
+
+              <!-- Question 6 -->
+              <div class="question-item">
+                  <h2>6. What is a RESTful API, and why is it widely used?</h2>
+                  <textarea readonly>A RESTful API is an architectural style that uses standard HTTP methods, making it simple, scalable, and compatible with various clients.</textarea>
+              </div>
+
+              <!-- Question 7 -->
+              <div class="question-item">
+                  <h2>7. Define the differences between relational and non-relational databases.</h2>
+                  <textarea readonly>Relational databases use structured tables and relationships, while non-relational databases store data flexibly, often in key-value or document formats.</textarea>
+              </div>
+
+              <!-- Question 8 -->
+              <div class="question-item">
+                  <h2>8. How does a binary search algorithm work?</h2>
+                  <textarea readonly>Binary search divides the search range in half iteratively, checking the middle element until the target is found or the range is empty.</textarea>
+              </div>
+
+              <!-- Question 9 -->
+              <div class="question-item">
+                  <h2>9. What is the purpose of a foreign key in database design?</h2>
+                  <textarea readonly>A foreign key establishes relationships between tables, enforcing referential integrity and connecting data logically.</textarea>
+              </div>
+
+              <!-- Question 10 -->
+              <div class="question-item">
+                  <h2>10. Explain the difference between synchronous and asynchronous programming.</h2>
+                  <textarea readonly>Synchronous programming waits for each task to complete before moving on, while asynchronous programming allows tasks to run concurrently.</textarea>
+              </div>
+
+              <!-- Marking Section -->
+              <h2>Give Marks for Each Question</h2>
+              <div class="mark-item">
+                  <label for="mark-1">Question 1:</label>
+                  <input type="number" id="mark-1" name="mark-1" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-2">Question 2:</label>
+                  <input type="number" id="mark-2" name="mark-2" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-3">Question 3:</label>
+                  <input type="number" id="mark-3" name="mark-3" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-4">Question 4:</label>
+                  <input type="number" id="mark-4" name="mark-4" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-5">Question 5:</label>
+                  <input type="number" id="mark-5" name="mark-5" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-6">Question 6:</label>
+                  <input type="number" id="mark-6" name="mark-6" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-7">Question 7:</label>
+                  <input type="number" id="mark-7" name="mark-7" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-8">Question 8:</label>
+                  <input type="number" id="mark-8" name="mark-8" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-9">Question 9:</label>
+                  <input type="number" id="mark-9" name="mark-9" min="0" max="10">
+              </div>
+              <div class="mark-item">
+                  <label for="mark-10">Question 10:</label>
+                  <input type="number" id="mark-10" name="mark-10" min="0" max="10">
+              </div>
+              <button type="submit" class="next-button">Submit Marks</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} <script src="{% static 'js/Assessment_mark.js' %}"></script> {% endcomment %}
+</body>
+</html>
