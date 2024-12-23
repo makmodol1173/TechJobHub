@@ -17,4 +17,5 @@ urlpatterns = [
     path('set-assessment/', include('app.set-assessment.urls')),
     path('assessment/', include('app.assessment.urls')),
     path('assessment-mark/', include('app.assessment-mark.urls')),
+    path('rating/', include('app.rating.urls')),
 ]
