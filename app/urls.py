@@ -1,4 +1,6 @@
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -18,4 +20,4 @@ urlpatterns = [
     path('assessment/', include('app.assessment.urls')),
     path('assessment-mark/', include('app.assessment-mark.urls')),
     path('rating/', include('app.rating.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
