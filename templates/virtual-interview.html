@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/Virtual_int.css' %}">
+    <script src="{% static 'js/Virtual_int.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="TechJobHub">
+                <h1>TechJobHub</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'Bookmarks' %}"><span class="icon">&#128213;</span> Bookmarks</a></li>
+                <li><a href="{% url 'Drop_resume' %}"><span class="icon">&#128193;</span> Drop Resume</a></li>
+                <li><a href="{% url 'rec_job' %}"><span class="icon">&#9881;</span> Recommended Job</a></li>
+                <li><a href="{% url 'apply_list' %}"><span class="icon">&#9998;</span> Apply List</a></li>
+                <li><a href="#"><span class="icon">&#128196;</span> Assessify</a>
+                    <ul>
+                        <li><a href="{% url 'set_assessment' %}">Set Assessment</a></li>
+                        <li><a href="{% url 'assessment' %}">Assessment Q&A</a></li>
+                        <li><a href="{% url 'assessment_mark' %}">Assessment Mark</a></li>
+                        <li><a href="{% url 'rating' %}">Ratings</a></li>
+                        <li><a href="{% url 'virtual_int' %}">Virtual Interview</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="icon">&#9881;</span> Settings</a></li>
+                <li><a href="{% url 'logout' %}"><span class="icon">&#128682;</span> Logout</a></li>
+                <li><a href="#"><span class="icon">&#10067;</span> Help</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <div class="topbutton">
+                    <a href="{% url 'Dashboard' %}">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="nav-icons">
+                    <a href="#" title="Search" class="icon search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="White">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>                
+                    </a>
+                    <a href="#" title="Notifications" class="icon notification-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2a7 7 0 0 1 7 7v4.5l2 2v1H3v-1l2-2V9a7 7 0 0 1 7-7zM9 21h6v1H9z"/>
+                        </svg>
+                    </a>
+                    <a href="{% url 'profile' %}" title="Profile" class="icon profile-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </a>                       
+                    <a href="{% url 'Menu_options' %}" title="Menu" class="icon menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Applicant List -->
+            <div class="applicant-container">
+                <h2>Applicant List</h2>
+                <ul class="applicant-list">
+                    <li>
+                        <img src="{% static 'images/Formal 1.jpg' %}" alt="Makmudul Hasan Rabbi">
+                        <span>Makmudul Hasan Rabbi</span>
+                        <a href="{% url 'set_interview' %}" target="_blank" class="interview-button">Set Interview</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
