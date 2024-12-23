@@ -129,18 +129,18 @@ nav {
     /* width: 30%; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; */
+    justify-content: space-between;
     margin-bottom: 30px
 }
 
-/* .job-card-header {
+.job-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-} */
+}
 
 .date {
     font-size: 14px;
