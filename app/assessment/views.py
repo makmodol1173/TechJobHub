@@ -70,6 +70,6 @@ def assessment(request):
             cursor.execute(insert_answers_query, (job_seeker_id, job_post_id, *answers))
 
         messages.success(request, "Your answers have been submitted successfully.")
-        return redirect('/dashboard')
+        return redirect('/assessment-mark')
 
     return render(request, 'assessment.html', {'questions': questions})
