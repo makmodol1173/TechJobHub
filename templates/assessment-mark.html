@@ -69,111 +69,46 @@
 
             <div class="content-area">
                 <div class="assessment-container">
-                    <form id="assessment-form">
-                        <!-- Question 1 -->
-                <div class="question-item">
-                  <h2>1. What is the Bellman-Ford algorithm for finding single-source shortest paths?</h2>
-                  <textarea readonly>It is an algorithm that computes shortest paths from a single source vertex to all other vertices in a weighted digraph, allowing for negative weights.</textarea>
-              </div>
+                    <h2>Job Seeker's Assessment Answers</h2>
+                    
+                    <form method="POST" id="assessment-form">
+                        {% csrf_token %}
 
-              <!-- Question 2 -->
-              <div class="question-item">
-                  <h2>2. Explain the advantages of using recursion in problem-solving.</h2>
-                  <textarea readonly>Recursion simplifies solving complex problems by breaking them into smaller, manageable sub-problems with similar structures.</textarea>
-              </div>
-
-              <!-- Question 3 -->
-              <div class="question-item">
-                  <h2>3. Describe the importance of data normalization in database design.</h2>
-                  <textarea readonly>Normalization reduces redundancy and ensures data consistency by organizing tables and relationships efficiently.</textarea>
-              </div>
-
-              <!-- Question 4 -->
-              <div class="question-item">
-                  <h2>4. What are the differences between GET and POST HTTP methods?</h2>
-                  <textarea readonly>GET requests retrieve data and are visible in the URL, while POST requests send data securely in the request body.</textarea>
-              </div>
-
-              <!-- Question 5 -->
-              <div class="question-item">
-                  <h2>5. Explain the concept of polymorphism in object-oriented programming.</h2>
-                  <textarea readonly>Polymorphism allows objects to be treated as instances of their parent class, enabling method overriding and dynamic behavior.</textarea>
-              </div>
-
-              <!-- Question 6 -->
-              <div class="question-item">
-                  <h2>6. What is a RESTful API, and why is it widely used?</h2>
-                  <textarea readonly>A RESTful API is an architectural style that uses standard HTTP methods, making it simple, scalable, and compatible with various clients.</textarea>
-              </div>
-
-              <!-- Question 7 -->
-              <div class="question-item">
-                  <h2>7. Define the differences between relational and non-relational databases.</h2>
-                  <textarea readonly>Relational databases use structured tables and relationships, while non-relational databases store data flexibly, often in key-value or document formats.</textarea>
-              </div>
-
-              <!-- Question 8 -->
-              <div class="question-item">
-                  <h2>8. How does a binary search algorithm work?</h2>
-                  <textarea readonly>Binary search divides the search range in half iteratively, checking the middle element until the target is found or the range is empty.</textarea>
-              </div>
-
-              <!-- Question 9 -->
-              <div class="question-item">
-                  <h2>9. What is the purpose of a foreign key in database design?</h2>
-                  <textarea readonly>A foreign key establishes relationships between tables, enforcing referential integrity and connecting data logically.</textarea>
-              </div>
-
-              <!-- Question 10 -->
-              <div class="question-item">
-                  <h2>10. Explain the difference between synchronous and asynchronous programming.</h2>
-                  <textarea readonly>Synchronous programming waits for each task to complete before moving on, while asynchronous programming allows tasks to run concurrently.</textarea>
-              </div>
-
-              <!-- Marking Section -->
-              <h2>Give Marks for Each Question</h2>
-              <div class="mark-item">
-                  <label for="mark-1">Question 1:</label>
-                  <input type="number" id="mark-1" name="mark-1" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-2">Question 2:</label>
-                  <input type="number" id="mark-2" name="mark-2" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-3">Question 3:</label>
-                  <input type="number" id="mark-3" name="mark-3" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-4">Question 4:</label>
-                  <input type="number" id="mark-4" name="mark-4" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-5">Question 5:</label>
-                  <input type="number" id="mark-5" name="mark-5" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-6">Question 6:</label>
-                  <input type="number" id="mark-6" name="mark-6" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-7">Question 7:</label>
-                  <input type="number" id="mark-7" name="mark-7" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-8">Question 8:</label>
-                  <input type="number" id="mark-8" name="mark-8" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-9">Question 9:</label>
-                  <input type="number" id="mark-9" name="mark-9" min="0" max="10">
-              </div>
-              <div class="mark-item">
-                  <label for="mark-10">Question 10:</label>
-                  <input type="number" id="mark-10" name="mark-10" min="0" max="10">
-              </div>
-              <button type="submit" class="next-button">Submit Marks</button>
+                        {% for answer in answers %}
+                            <div class="question-item">
+                                <h3>Answer of Job Seeker: {{ answer.0 }}</h3>
+                                    <h3>Answer for Question 1:</h3>
+                                    <textarea readonly>{{ answer.1 }}</textarea>  
+                                    <h3>Answer for Question 2:</h3>
+                                    <textarea readonly>{{ answer.2 }}</textarea>  
+                                    <h3>Answer for Question 3:</h3>
+                                    <textarea readonly>{{ answer.3 }}</textarea>  
+                                    <h3>Answer for Question 4:</h3>
+                                    <textarea readonly>{{ answer.4 }}</textarea>  
+                                    <h3>Answer for Question 5:</h3>
+                                    <textarea readonly>{{ answer.5 }}</textarea>  
+                                    <h3>Answer for Question 6:</h3>
+                                    <textarea readonly>{{ answer.6 }}</textarea>  
+                                    <h3>Answer for Question 7:</h3>
+                                    <textarea readonly>{{ answer.7 }}</textarea> 
+                                    <h3>Answer for Question 8:</h3>
+                                    <textarea readonly>{{ answer.8 }}</textarea>  
+                                    <h3>Answer for Question 9:</h3>
+                                    <textarea readonly>{{ answer.9 }}</textarea>  
+                                    <h3>Answer for Question 10:</h3>
+                                    <textarea readonly>{{ answer.10 }}</textarea>  
+                            </div>                       
+                    
+                        <div class="mark-item">
+                            <label for="marks">Total Marks:</label>
+                                <input type="number" name="marks" min="0" max="10" required>
+                                <input type="hidden" name="answer_id" value="{{ answer.0 }}">
+                        </div>
+                        {% endfor %}
+                    
+                        <button type="submit" class="next-button">Submit Marks</button>
                     </form>
+                    
                 </div>
             </div>
         </div>
