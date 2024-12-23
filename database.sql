@@ -106,15 +106,6 @@ CREATE TABLE answers (
 CREATE TABLE assessment (
     assessment_id INT AUTO_INCREMENT PRIMARY KEY,
     answer_id INT NOT NULL,
-    mark_1 INT,
-    mark_2 INT,
-    mark_3 INT,
-    mark_4 INT,
-    mark_5 INT,
-    mark_6 INT,
-    mark_7 INT,
-    mark_8 INT,
-    mark_9 INT,
-    mark_10 INT,
+    mark INT,
     FOREIGN KEY (answer_id) REFERENCES answers(answer_id)
 );
