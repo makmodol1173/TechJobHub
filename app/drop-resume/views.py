@@ -30,7 +30,7 @@ def drop_resume(request):
     filename = fs.save(uploaded_file.name, uploaded_file)
     file_path = os.path.join(settings.MEDIA_ROOT, 'resume', filename)
     text = extract_text(file_path)
-    skills_pattern = r"(UI Design|Data Analyst|Master's Degree in Computer Science|Bachelor's Degree in Computer Science|WordPress|Elementor|WPBakery|Web Development|HTML|CSS|PHP|SQL|React|Javascript|Typescript|Docker|Kubernets|Git|MongoDB)"
+    skills_pattern = r"(UI Design|Data Analyst|Master's Degree in Computer Science|Bachelor's Degree in Computer Science|WordPress|Elementor|WPBakery|Web Development|HTML|CSS|PHP|SQL|React|Javascript|Typescript|Docker|Kubernets|Git|MongoDB|Python|Java|C\+\+|C#|Node\.js|Django|Flask|Angular|Vue\.js|REST API|GraphQL|NoSQL|PostgreSQL|SQLite|AWS|Azure|GCP|CI/CD|Jenkins|Terraform|Linux|Shell Scripting|Cybersecurity|Penetration Testing|Machine Learning|Deep Learning|Artificial Intelligence|TensorFlow|PyTorch|Pandas|NumPy|Scikit-learn|Big Data|Hadoop|Spark|Tableau|Power BI|Figma|Adobe XD|Agile|Scrum|Project Management|JIRA|Confluence|SEO|Google Analytics)"
 
     skills = []
     skills.extend(re.findall(skills_pattern, text))
