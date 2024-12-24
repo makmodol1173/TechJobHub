@@ -25,7 +25,7 @@ def profile(request):
                     'fname': user_data[1],
                     'lname': user_data[2],
                     'role': role,
-                    'profile_picture': user_data[5]  # Profile picture filename in DB
+                    'profile_picture': user_data[5]
                 }
         elif role == 'job_seeker':
             query = "SELECT * FROM job_seeker WHERE email = %s"
@@ -36,20 +36,18 @@ def profile(request):
                     'fname': user_data[1],
                     'lname': user_data[2],
                     'role': role,
-                    'profile_picture': user_data[6]  # Profile picture filename in DB
+                    'profile_picture': user_data[6]
                 }
 
                 skills_query = "SELECT skill_name FROM skill WHERE job_seeker_id = %s"
                 cursor.execute(skills_query, (user_data[0],))
                 skills = [row[0] for row in cursor.fetchall()]
 
-        # Handle profile picture upload (POST request)
         if request.method == 'POST' and 'profile_picture' in request.FILES:
             uploaded_file = request.FILES['profile_picture']
             fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'profile_pictures'))
             filename = fs.save(uploaded_file.name, uploaded_file)
             
-            # Update profile picture in the database
             with connection.cursor() as cursor:
                 if role == 'job_seeker':
                     update_query = "UPDATE job_seeker SET profile_picture = %s WHERE email = %s"
@@ -58,10 +56,10 @@ def profile(request):
                 cursor.execute(update_query, (filename, auth_token))
                 connection.commit()
 
-            user['profile_picture'] = filename  # Update the profile picture filename in the user dict
+            user['profile_picture'] = filename  
 
-        # Get the current profile picture URL after update
-        profile_picture_url = settings.MEDIA_URL + 'profile_pictures/' + user.get('profile_picture', 'default.png')
+        profile_picture_url = settings.MEDIA_URL + 'profile_pictures/' + (user['profile_picture'] or 'image.png')
+        print(profile_picture_url)
 
     context = {
         'fname': user.get('fname'),
