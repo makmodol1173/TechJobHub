@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseBadRequest
 from django.db import connection
 
 def application(request):
