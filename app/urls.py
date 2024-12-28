@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('menu-options/', views.menu_options, name='menu-options'),
     path('login/', include('app.login.urls')),
     path('registration/', include('app.registration.urls')),
     path('profile/', include('app.profile.urls')),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('create-post/', include('app.create-post.urls')),
     path('job-posts/', include('app.job-posts.urls')),
     path('application/', include('app.application.urls')),
+    path('application-list/', include('app.application-list.urls')),
     path('drop-resume/', include('app.drop-resume.urls')),
     path('recommend-job/', include('app.recommend-job.urls')),
     path('bookmarks/', include('app.bookmarks.urls')),
