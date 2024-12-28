@@ -12,7 +12,7 @@ The project is being developed as part of a software engineering course, with a 
 
 🔍 Job Search: Browse and filter job postings by category, location, and company.
 
-📝 Profile Management: Create and manage professional profiles for job seekers and employers.
+🌟 Advanced Job Recommendations: Suggest tailored job opportunities based on user profiles, preferences, and activity history.
 
 📝 User Profiles: Create and manage profiles for job seekers and recruiters.
 
