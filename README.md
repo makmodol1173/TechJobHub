@@ -1,14 +1,22 @@
-TechJobHub
+#TechJobHub
 
-Welcome to TechJobHub! This is a web application designed to bridge the gap between tech professionals and recruiters, offering a seamless platform for job postings, applications, and networking in the tech industry.
+Welcome to TechJobHub! TechJobHub is a dynamic platform that bridges the gap between tech professionals and job opportunities. With features tailored for both job seekers and recruiters, it simplifies job searching, application tracking, and hiring processes.
 
-🚀 Project Overview
+#🌐 Prjoct Preview
 
-TechJobHub is a dynamic web application crafted to simplify the job search and hiring process in the technology sector. Users can create profiles, explore job listings, and interact with potential employers or candidates.
+<img src="/dashboard.png">
+<a href="https://github.com/makmodol1173/Software-project-lab-2" target="_blank">Project Preview</a>
 
 The project is being developed as part of a software engineering course, with a focus on full-stack development using HTML, CSS, JavaScript, and Django.
 
-🌟 Features
+#🛠 Requirements
+Before running the project, ensure the following are installed on your system:
+
+Python (v3.9+)
+
+Django (v4.0+)
+
+#🌟 Features
 
 🔍 Job Search: Browse and filter job postings by category, location, and company.
 
@@ -20,32 +28,25 @@ The project is being developed as part of a software engineering course, with a 
 
 🎯 Responsive Design: Optimized for console based.
 
-💻 Technologies Used
+#💻 Technologies Used
 
 Frontend:
 
-HTML, CSS, JavaScript
+    HTML, CSS, JavaScript
 
 Backend:
 
-Django (Python Framework)
+    Django (Python Framework)
 
 Database:
 
-Mysql (Planned)
+    Mysql (Planned)
 
-🚧 Current Progress
-
-Frontend: Completed
-
-Backend: In development (maximum functionality implemented)
-
-Database: mysql setup implemented
-
-📜 How to Run the Project
+#📜 How to Run the Project
 
 Follow these steps to set up and run the project locally:
 
+'''
 Clone the Repository:
 
 git clone https://github.com/makmodol1173/Software-project-lab-2.git
@@ -54,9 +55,9 @@ cd Software-project-lab-2
 
 Set Up a Virtual Environment:
 
-python -m venv env
+python -m venv venv
 
-On Windows, use "env\Scripts\activate"
+On Windows, use ".\venv\Scripts\activate"
 
 Install Dependencies:
 
@@ -75,8 +76,9 @@ python manage.py runserver
 Access the Application:
 
 Open http://127.0.0.1:8000/ in your browser.
+'''
 
-🤝 Contributing
+#🤝 Contributing
 
 I welcome contributions to enhance TechJobHub! To contribute:
 
@@ -90,7 +92,7 @@ Push to your branch: git push origin feature-name.
 
 Submit a pull request.
 
-📧 Contact
+#📧 Contact
 
 For any questions or suggestions, feel free to reach out:
 
