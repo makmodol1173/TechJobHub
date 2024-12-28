@@ -32,47 +32,47 @@ Django (v4.0+)
 
 Frontend:
 
-    HTML, CSS, JavaScript
+HTML, CSS, JavaScript
 
 Backend:
 
-    Django (Python Framework)
+Django (Python Framework)
 
 Database:
 
-    Mysql (Planned)
+Mysql (Planned)
 
 # 📜 How to Run the Project
 
 Follow these steps to set up and run the project locally:
 
-    Clone the Repository:
+Clone the Repository:
 
     git clone https://github.com/makmodol1173/Software-project-lab-2.git
 
     cd Software-project-lab-2
 
-    Set Up a Virtual Environment:
+Set Up a Virtual Environment:
 
     python -m venv venv
 
     On Windows, use ".\venv\Scripts\activate"
 
-    Install Dependencies:
+Install Dependencies:
 
     pip install -r requirements.txt
 
-    Run Migrations:
+Run Migrations:
 
     python manage.py makemigrations
 
     python manage.py migrate
 
-    Start the Development Server:
+Start the Development Server:
 
     python manage.py runserver
 
-    Access the Application:
+Access the Application:
 
     Open http://127.0.0.1:8000/ in your browser.
 
