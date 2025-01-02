@@ -22,4 +22,6 @@ urlpatterns = [
     path('assessment/', include('app.assessment.urls')),
     path('assessment-mark/', include('app.assessment-mark.urls')),
     path('rating/', include('app.rating.urls')),
+    path('applicant-list/', include('app.applicant-list.urls')),
+    path('virtual-interview/', include('app.virtual-interview.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
