@@ -25,7 +25,7 @@ def profile(request):
                     'fname': user_data[1],
                     'lname': user_data[2],
                     'role': role,
-                    'profile_picture': user_data[5]
+                    'profile_picture': user_data[5]  # This is the actual profile picture column
                 }
         elif role == 'job_seeker':
             query = "SELECT * FROM job_seeker WHERE email = %s"
@@ -36,37 +36,40 @@ def profile(request):
                     'fname': user_data[1],
                     'lname': user_data[2],
                     'role': role,
-                    'profile_picture': user_data[6]
+                    'profile_picture': user_data[6]  # Profile picture column for job seekers
                 }
 
                 skills_query = "SELECT skill_name FROM skill WHERE job_seeker_id = %s"
                 cursor.execute(skills_query, (user_data[0],))
                 skills = [row[0] for row in cursor.fetchall()]
 
+        # Profile picture upload logic
         if request.method == 'POST' and 'profile_picture' in request.FILES:
             uploaded_file = request.FILES['profile_picture']
             fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'profile_pictures'))
             filename = fs.save(uploaded_file.name, uploaded_file)
             
-            with connection.cursor() as cursor:
-                if role == 'job_seeker':
-                    update_query = "UPDATE job_seeker SET profile_picture = %s WHERE email = %s"
-                elif role == 'recruiter':
-                    update_query = "UPDATE recruiter SET profile_picture = %s WHERE email = %s"
-                cursor.execute(update_query, (filename, auth_token))
-                connection.commit()
+            # Update profile picture in the database
+            update_query = "UPDATE job_seeker SET profile_picture = %s WHERE email = %s" if role == 'job_seeker' else "UPDATE recruiter SET profile_picture = %s WHERE email = %s"
+            cursor.execute(update_query, (filename, auth_token))
+            connection.commit()
 
-            user['profile_picture'] = filename  
+            # Update the profile picture in the user dictionary
+            user['profile_picture'] = filename
 
-        profile_picture_url = settings.MEDIA_URL + 'profile_pictures/' + (user['profile_picture'] or 'image.png')
-        print(profile_picture_url)
+        # Use the profile picture if available, else default to 'image.png'
+        if user['profile_picture']:
+            profile_picture_url = settings.MEDIA_URL + 'profile_pictures/' + user['profile_picture']
+        else:
+            profile_picture_url = "{% static 'image/image.png' %}"  # Use default static image if no profile picture
 
     context = {
         'fname': user.get('fname'),
         'lname': user.get('lname'),
         'role': user.get('role'),
-        'profile_picture_url': profile_picture_url,
+        'profile_picture': profile_picture_url,
         'skills': skills,
+        'MEDIA_URL': settings.MEDIA_URL,
     }
 
     return render(request, 'profile.html', context)
