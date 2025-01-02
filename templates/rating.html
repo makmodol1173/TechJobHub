@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechJobHub</title>
     <link rel="stylesheet" href="{% static 'css/rating.css' %}">
-    {% comment %} <script src="{% static 'js/Rating.js' %}"></script> {% endcomment %}
 </head>
 <body>
     <div class="container">
@@ -69,40 +68,19 @@
             </div>
 
             <!-- Ratings Section -->
-            {% if role == 'recruiter' %}
+            {% if role == 'job_seeker' %}
                 <div class="ratings-section">
-                    <div class="overall-rating">
-                        <div class="overall-score">
-                            <h2>Ratings for Job Seekers</h2>
-                            <div class="company-name">
-                                <h3>Ratings for Company: {{ company_name }}</h3>
-                            </div>
-                            <div class="rating-list">
-                                {% for rating in ratings %}
-                                    <div class="rating-item">
-                                        <p><strong>{{ rating.0 }}</strong> - Rating: {{ rating.1|floatformat:1 }}</p>
-                                        <div class="rating-bar">
-                                            <div class="bar" style="width: {{ rating.1|floatformat:1 }}%"></div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                    <h2>Your Recent Rating</h2>
+                    <div class="rating-circle">
+                        <p><strong>Job Title: {{ job_title }}</strong></p>
+                        <p>Recent Rating: {{ recent_rating|floatformat:1 }}</p>
+                        <div class="score-circle">
+                            <span>{{ recent_rating|floatformat:1 }}</span>
                         </div>
                     </div>
                 </div>
-            {% elif role == 'job_seeker' %}
                 <div class="ratings-section">
-                    <h2>Your Rating</h2>
-                    <div class="rating-circle">
-                        {% for rating in ratings %}
-                            <div class="rating-item">
-                                <p><strong>{{ rating.0 }}</strong> - Rating: {{ rating.1|floatformat:1 }}</p>
-                                <div class="score-circle">
-                                    <span>{{ rating.1|floatformat:1 }}</span>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
+                    <p><strong>Average Rating: {{ average_rating|floatformat:1 }}</strong></p>
                 </div>
             {% endif %}
         </div>
