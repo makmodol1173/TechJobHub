@@ -154,5 +154,13 @@ nav {
 }
 
 .job-card {
-    width: 300px;
+    background-color: #e0f0fa;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
