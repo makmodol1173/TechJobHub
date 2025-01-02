@@ -6,15 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/Virtual_int.css' %}">
-    <script src="{% static 'js/Virtual_int.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/virtual-interview.css' %}">
+    {% comment %} <script src="{% static 'js/Virtual_int.js' %}"></script> {% endcomment %}
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
-                <img src="{% static 'images/logo.png' %}" alt="TechJobHub">
+                <img src="{% static 'image/logo.png' %}" alt="TechJobHub">
                 <h1>TechJobHub</h1>
             </div>
             <ul class="nav-links">
@@ -28,7 +28,7 @@
                         <li><a href="/assessment">Assessment Q&A</a></li>
                         <li><a href="/assessment-mark">Assessment Mark</a></li>
                         <li><a href="/rating">Ratings</a></li>
-                        <li><a href="#">Virtual Interview</a></li>
+                        <li><a href="/virtual-interview">Virtual Interview</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><span class="icon">&#9881;</span> Settings</a></li>
@@ -69,15 +69,22 @@
             </div>
             
             <!-- Applicant List -->
-            <div class="applicant-container">
-                <h2>Applicant List</h2>
-                <ul class="applicant-list">
-                    <li>
-                        <img src="{% static 'images/Formal 1.jpg' %}" alt="Makmudul Hasan Rabbi">
-                        <span>Makmudul Hasan Rabbi</span>
-                        <a href="{% url 'set_interview' %}" target="_blank" class="interview-button">Set Interview</a>
-                    </li>
-                </ul>
+            <div class="form-section">
+                <form>
+                    <div class="form-group">
+                        <label for="set-date">Set Date</label>
+                        <input type="date" id="set-date" name="set-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="set-time">Set Time</label>
+                        <input type="time" id="set-time" name="set-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="meet-link">Meet link:</label>
+                        <a href="http://meet.google.com/zod-xzaw-wni?hs=179&authuser=0" id="meet-link" target="_blank">http://meet.google.com/zod-xzaw-wni?hs=179&authuser=0</a>
+                    </div>
+                    <button type="submit" class="invite-btn">Invite</button>
+                </form>
             </div>
 
         </div>
