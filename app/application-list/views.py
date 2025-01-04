@@ -4,6 +4,8 @@ from decouple import config
 
 def application_list(request):
   auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
+  data = []
+  
   with connection.cursor() as cursor:
     query_job_seeker = "SELECT job_seeker_id FROM job_seeker WHERE email = %s"
     cursor.execute(query_job_seeker, (auth_token,))
