@@ -70,7 +70,16 @@
             
             <!-- Applicant List -->
             <div class="form-section">
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="applicant-email">Select Applicant Email</label>
+                        <select name="applicant-email" id="applicant-email">
+                            {% for email in applicant_emails %}
+                                <option value="{{ email }}">{{ email }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="set-date">Set Date</label>
                         <input type="date" id="set-date" name="set-date">
@@ -81,10 +90,11 @@
                     </div>
                     <div class="form-group">
                         <label for="meet-link">Meet link:</label>
-                        <a href="http://meet.google.com/zod-xzaw-wni?hs=179&authuser=0" id="meet-link" target="_blank">http://meet.google.com/zod-xzaw-wni?hs=179&authuser=0</a>
+                        <input type="text" id="meet-link" name="meet-link" value="http://meet.google.com/zod-xzaw-wni?hs=179&authuser=0">
                     </div>
                     <button type="submit" class="invite-btn">Invite</button>
                 </form>
+                
             </div>
 
         </div>
