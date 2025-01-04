@@ -109,3 +109,13 @@ CREATE TABLE assessment (
     mark INT,
     FOREIGN KEY (answer_id) REFERENCES answers(answer_id)
 );
+
+CREATE TABLE interview (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    interview_date DATE NOT NULL,
+    interview_time TIME NOT NULL,
+    meet_link VARCHAR(500) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (email) REFERENCES job_seeker(email)
+);
