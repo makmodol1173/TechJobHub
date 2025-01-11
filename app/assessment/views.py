@@ -14,7 +14,7 @@ def assessment(request):
         query_job_seeker = "SELECT job_seeker_id FROM job_seeker WHERE email = %s"
         cursor.execute(query_job_seeker, (auth_token,))
         job_seeker = cursor.fetchone()
-
+        
         if not job_seeker:
             return redirect('/login')
 
@@ -34,6 +34,7 @@ def assessment(request):
             return redirect('/dashboard')
 
         job_post_id = job_post[0]
+        print(job_post_id)
 
         query_questions = """
             SELECT question_1, question_2, question_3, question_4, question_5,
@@ -43,6 +44,7 @@ def assessment(request):
         """
         cursor.execute(query_questions, (job_post_id,))
         questions_data = cursor.fetchone()
+        print(questions_data)
 
     if not questions_data:
         messages.error(request, "No questions found for this job post.")
@@ -53,7 +55,7 @@ def assessment(request):
     if request.method == 'POST':
         answers = [request.POST.get(f'question-{i + 1}') for i in range(len(questions))]
 
-        if not any(answers):
+        if not all(answers):
             messages.error(request, "Please provide answers to all the questions.")
             return render(request, 'assessment.html', {'questions': questions})
 
