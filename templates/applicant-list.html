@@ -6,17 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/applicant-list.css' %}">
-    {% comment %} <script src="{% static 'js/Rating.js' %}"></script> {% endcomment %}
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
+    {% include 'topbar.html' %}
+    <main>
+      <div class="main-container">
         {% include 'sidebar.html' %}
-
-
-        <div class="main-content">
-            {% include 'topbar.html' %}
+        <div class="main-content-container">
 
             <div class="job-seeker-container">
               <h2>Applicants for Your Job Posts</h2>
@@ -35,10 +33,12 @@
                       <li>No applicants found for your job posts.</li>
                   {% endfor %}
               </ul>
-          </div>
+            </div>
           
         </div>
     </div>
-    <script src="{% static 'js/profile.js' %}" > </script>
+  </main>
+
+  <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

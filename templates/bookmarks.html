@@ -1,53 +1,51 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bookmarks.css' %}" />
-    {% comment %}
-    <script src="{% static 'js/Bookmarks.js' %}"></script>
-    {% endcomment %}
   </head>
+
   <body>
-    <div class="container">
-      {% include 'sidebar.html' %}
-
-      <div class="main-content">
-        {% include 'topbar.html' %}
-
-        <!-- Bookmark Section -->
-        <div class="bookmark-section">
-          <div class="bookmark-search">
-            <input type="text" placeholder="Search bookmarks" />
-          </div>
-          <div class="bookmark-list">
-            {% if bookmarks %} {% for bookmark in bookmarks %}
-            <a href="#">
-              <div class="bookmark-item">
-                <div class="bookmark-details">
-                  <h3>Company Name: {{ bookmark.0 }}</h3>
-                  <p>Job Title: {{ bookmark.1 }}</p>
+    {% include 'topbar.html' %}
+    <main>
+      <div class="main-container">
+        {% include 'sidebar.html' %}
+        <div class="main-content-container">
+          <!-- Bookmark Section -->
+          <div class="bookmark-section">
+            <div class="bookmark-search">
+              <input type="text" placeholder="Search bookmarks" />
+            </div>
+            <div class="bookmark-list">
+              {% if bookmarks %} {% for bookmark in bookmarks %}
+              <a href="#">
+                <div class="bookmark-item">
+                  <div class="bookmark-details">
+                    <h3>Company Name: {{ bookmark.0 }}</h3>
+                    <p>Job Title: {{ bookmark.1 }}</p>
+                  </div>
                 </div>
-              </div>
-            </a>
-            {% endfor %} {% else %}
-            <p>No job posts available.</p>
-            {% endif %}
+              </a>
+              {% endfor %} {% else %}
+              <p>No job posts available.</p>
+              {% endif %}
+            </div>
           </div>
-        </div>
-        <div class="messages">
-          {% if messages %} {% for message in messages %}
-          <p style="color: rgb(33, 32, 32); font-weight: bold">{{ message }}</p>
-          {% endfor %} {% endif %}
+          <div class="messages">
+            {% if messages %} {% for message in messages %}
+            <p style="color: rgb(33, 32, 32); font-weight: bold">
+              {{ message }}
+            </p>
+            {% endfor %} {% endif %}
+          </div>
         </div>
       </div>
+    </main>
 
-      {% if message %} {{ message }} {% endif %}
-    </div>
-
-    <script src="{% static 'js/profile.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
   </body>
 </html>

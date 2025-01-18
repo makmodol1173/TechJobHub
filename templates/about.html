@@ -2,51 +2,39 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    {% comment %} <script src="{% static 'js/Post.js' %}"></script> {% endcomment %}
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo">
-                <h1>TechJobHub</h1>
-            </div>
-            <div class="nav-links">
-              {% if role == 'recruiter' %}
-                <a href="/create-post">Create Post</a>
-              {% endif %}
-              <a href="/dashboard">Home</a>
-              <a href="/about">About Us</a>
-              <a href="/contact">Contact</a>
-            </div>
-            {% include 'topbar.html' %}
-        </nav>
-    </header>
-
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/about.css' %}" />
+  </head>
+  <body>
+    {% include 'topbar.html' %}
     <main>
       <section class="job-post">
-          <div class="job-card">
-              <p>TechJobHub is an all-in-one web application designed to streamline recruitment in the tech industry. 
-                It simplifies key processes like job posting, application submission, and candidate evaluation, providing
-                 a user-friendly experience for both recruiters and job seekers. Recruiters can post job openings, manage 
-                 applications, and communicate with candidates, while job seekers can build profiles, search for jobs, and 
-                 apply to relevant positions.
-
-                Unique features include virtual interviews directly on the platform, custom assessments for candidate shortlisting, 
-                and automated skill extraction from resumes. Built with HTML, CSS, JavaScript, and Django, the platform ensures 
-                responsiveness, robust data management, and seamless integration.
-                
-                TechJobHub supports scalability with advanced search features, personalized job recommendations, and detailed 
-                analytics for employers, all while maintaining industry-leading security and data privacy. The platform is designed
-                 to revolutionize the tech recruitment process, fostering connections and empowering career growth in the industry.</p>
-          </div>
+        <div class="job-card">
+          <p>
+            TechJobHub is an all-in-one web application designed to streamline
+            recruitment in the tech industry. It simplifies key processes like
+            job posting, application submission, and candidate evaluation,
+            providing a user-friendly experience for both recruiters and job
+            seekers. Recruiters can post job openings, manage applications, and
+            communicate with candidates, while job seekers can build profiles,
+            search for jobs, and apply to relevant positions. Unique features
+            include virtual interviews directly on the platform, custom
+            assessments for candidate shortlisting, and automated skill
+            extraction from resumes. Built with HTML, CSS, JavaScript, and
+            Django, the platform ensures responsiveness, robust data management,
+            and seamless integration. TechJobHub supports scalability with
+            advanced search features, personalized job recommendations, and
+            detailed analytics for employers, all while maintaining
+            industry-leading security and data privacy. The platform is designed
+            to revolutionize the tech recruitment process, fostering connections
+            and empowering career growth in the industry.
+          </p>
+        </div>
       </section>
-  </main>
-        
-</body>
+    </main>
+  </body>
 </html>
