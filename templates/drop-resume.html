@@ -15,6 +15,7 @@
       <div class="main-container">
         {% include 'sidebar.html' %}
         <div class="main-content-container">
+
           <div class="upload-section">
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
@@ -35,6 +36,7 @@
             {% endfor %}
           </ul>
           {% endif %}
+          
         </div>
       </div>
     </main>
