@@ -24,7 +24,7 @@ nav a {
   display: flex;
   align-items: center;
   gap: 5px;
-  margin: 0 20px;
+  margin: 10px 20px;
 }
 
 .logo img {
@@ -39,7 +39,7 @@ nav a {
 }
 
 .topbutton{
-  margin: auto;
+  margin-left: auto;
 }
 
 .topbutton a{
@@ -49,7 +49,7 @@ nav a {
 
 .nav-icons{
   width: 20px;
-  margin-left: auto;
+  margin-left: 30px;
 }
 
 /* MAIN CONTAINER */
@@ -72,6 +72,7 @@ nav a {
 .nav-links{
   list-style-type: none;
   margin-left: 20px;
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -99,4 +100,5 @@ nav a {
 
 body{
   background-color: #f5f0f0;
+  font-size: 18px;
 }
