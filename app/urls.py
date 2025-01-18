@@ -25,4 +25,5 @@ urlpatterns = [
     path('rating/', include('app.rating.urls')),
     path('applicant-list/', include('app.applicant-list.urls')),
     path('virtual-interview/', include('app.virtual-interview.urls')),
+    path('logout/', views.logout_view, name='logout'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
