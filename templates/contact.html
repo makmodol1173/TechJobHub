@@ -6,27 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo">
-                <h1>TechJobHub</h1>
-            </div>
-            <div class="nav-links">
-              {% if role == 'recruiter' %}
-                <a href="/create-post">Create Post</a>
-              {% endif %}
-              <a href="/dashboard">Home</a>
-              <a href="/about">About Us</a>
-              <a href="/contact">Contact</a>
-            </div>
-            {% include 'topbar.html' %}
-        </nav>
-    </header>
-
+  {% include 'topbar.html' %}
     <main>
       <section class="job-post">
           <div class="job-card">

@@ -6,15 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/rating.css' %}">
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
+    {% include 'topbar.html' %}
+    <main>
+      <div class="main-container">
         {% include 'sidebar.html' %}
-
-        <div class="main-content">
-            {% include 'topbar.html' %}
+        <div class="main-content-container">
 
             <!-- Ratings Section -->
             {% if role == 'job_seeker' %}
@@ -32,8 +32,11 @@
                     <p><strong>Average Rating: {{ average_rating|floatformat:1 }}</strong></p>
                 </div>
             {% endif %}
+
         </div>
     </div>
-    <script src="{% static 'js/profile.js' %}" > </script>
+  </main>
+
+  <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

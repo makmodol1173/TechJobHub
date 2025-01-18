@@ -6,15 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/job-posts.css' %}">
-    {% comment %} <script src="{% static 'js/Post.js' %}"></script> {% endcomment %}
 </head>
 <body>
-    <header>
-        <nav>
-            {% include 'topbar.html' %}
-        </nav>
-    </header>
+    {% include 'topbar.html' %}
 
     <main>
         <section class="job-post">

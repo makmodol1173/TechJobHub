@@ -18,7 +18,7 @@ def company_details(request):
       
       if not company_name or not address:
         messages.error(request, "Please filled required field!")
-        return render(request, 'company-details.html')
+        return render(request, 'company-details.html', { 'role' : role })
       
       with connection.cursor() as cursor:
         query_recruiter = "SELECT recruiter_id FROM recruiter WHERE email = %s"
@@ -37,4 +37,4 @@ def company_details(request):
         connection.commit()
         return redirect('/dashboard')
 
-    return render(request, 'company-details.html')
+    return render(request, 'company-details.html', { 'role' : role })

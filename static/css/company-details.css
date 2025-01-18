@@ -1,49 +1,11 @@
 body {
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
-    background-color: #1a0439;
+    background-color: white;
     color: #fff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #1a0439;
-    border-bottom: 1px solid #bab6b6;
-}
-
-header .logo {
-    display: flex;
-    align-items: center;
-}
-
-header .logo img {
-    width: 50px;
-    margin-right: 15px;
-    border-radius: 50%;
-}
-
-header nav a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-header nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
 }
 
 .form-container {
@@ -57,7 +19,7 @@ main {
 form {
     display: flex;
     flex-direction: column;
-    background-color: #2b0554;
+    background-color: #0A2A47;
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
