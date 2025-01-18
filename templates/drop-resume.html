@@ -1,49 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/drop-resume.css' %}">
-    {% comment %} <script src="{% static 'js/Drop_resume.js' %}"></script> {% endcomment %}
-</head>
-<body>
-    <div class="container">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/drop-resume.css' %}" />
+  </head>
+
+  <body>
+    {% include 'topbar.html' %}
+    <main>
+      <div class="main-container">
         {% include 'sidebar.html' %}
+        <div class="main-content-container">
+          <div class="upload-section">
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input
+                type="file"
+                name="resume"
+                accept=".pdf, .docx, .png, .jpeg"
+                required
+              />
+              <button type="submit" class="upload-btn">Upload Resume</button>
+            </form>
+          </div>
 
-        <div class="main-content">
-            {% include 'topbar.html' %}
-            
-            <!-- Upload Section -->
-            <div class="upload-section">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input type="file" name="resume" accept=".pdf, .docx, .png, .jpeg" required>
-                    <button type="submit" class="upload-btn">Upload Resume</button>
-                </form>
-            </div>
-
-            {% comment %} <div class="view-section">
-                {% if resume %}
-                    <a href="{{ resume.url }}" class="view-btn" target="_blank">View Resume</a>
-                {% else %}
-                    <p>No resume uploaded yet. Please upload one to view it here.</p>
-                {% endif %}
-            </div>
-             {% endcomment %}
-
-             {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="message-{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            </div>
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li class="message-{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </div>
-    </div>
+      </div>
+    </main>
 
-    <script src="{% static 'js/profile.js' %}" > </script>
-</body>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
 </html>

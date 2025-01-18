@@ -1,43 +1,38 @@
 {% load static %}
-<div class="sidebar">
-    <div class="logo">
-        <img src="{% static 'image/logo.png' %}" alt="Logo">
-        <h1>TechJobHub</h1>
-    </div>
+<div class="sidebar-container">
     <ul class="nav-links">
         {% if role == 'job_seeker' %}
-          <li><a href="/recommend-job"><span class="icon">&#10148;</span> Recommended Job</a></li>
-          <li><a href="/bookmarks"><span class="icon">&#128213;</span> Bookmarks</a></li>
-          <li><a href="/drop-resume"><span class="icon">&#128193;</span> Drop Resume</a></li>
-          <li><a href="/application-list"><span class="icon">&#9998;</span> Apply List</a></li>
+        <li><a href="/recommend-job"><span class="icon">&#10148;</span> Recommended Job</a></li>
+        <li><a href="/bookmarks"><span class="icon">&#128213;</span> Bookmarks</a></li>
+        <li><a href="/drop-resume"><span class="icon">&#128193;</span> Drop Resume</a></li>
+        <li><a href="/application-list"><span class="icon">&#9998;</span> Apply List</a></li>
         {% endif %}
-        
+      
         {% if role == 'recruiter' %}
-          <li><a href="/company-details"><span class="icon">&#127970;</span> Company Details</a></li>
-          <li><a href="/create-post"><span class="icon">&#127760;</span> Create Post</a></li>
+        <li><a href="/company-details"><span class="icon">&#127970;</span> Company Details</a></li>
+        <li><a href="/create-post"><span class="icon">&#127760;</span> Create Post</a></li>
         {% endif %}
-    
-        <li><a href="#" id="assessifyBtn"><span class="icon" >&#128196;</span> Assessify</a>
-            <ul id="assessifyDec" style="display:none; list-style-type: none">
-
-                {% if role == 'recruiter' %}
-                    <li><a href="/set-assessment">Set Assessment</a></li>
-                {% endif %}
-                {% if role == 'job_seeker' %}
-                    <li><a href="/assessment">Assessment Q&A</a></li>
-                {% endif %}
-                {% if role == 'recruiter' %}
-                    <li><a href="/assessment-mark">Assessment Mark</a></li>
-                {% endif %}
-                {% if role == 'job_seeker' %}
-                    <li><a href="/rating">Ratings</a></li>
-                {% endif %}
-                {% if role == 'recruiter' %}
-                    <li><a href="/applicant-list">Virtual Interview</a></li>
-                {% endif %}
-            </ul>
-        </li>
-        <li><a href="#"><span class="icon">&#9881;</span> Settings</a></li>
-        <li><a href="/logout"><span class="icon">&#8962;</span> Logout</a></li>
+  
+      <li><a href="#" id="assessifyBtn"><span class="icon" >&#128196;</span> Assessify</a>
+        <ul id="assessifyDec" style="display:none; list-style-type: none">
+            {% if role == 'recruiter' %}
+                <li><a href="/set-assessment">Set Assessment</a></li>
+            {% endif %}
+            {% if role == 'job_seeker' %}
+                <li><a href="/assessment">Assessment Q&A</a></li>
+            {% endif %}
+            {% if role == 'recruiter' %}
+                <li><a href="/assessment-mark">Assessment Mark</a></li>
+            {% endif %}
+            {% if role == 'job_seeker' %}
+                <li><a href="/rating">Ratings</a></li>
+            {% endif %}
+            {% if role == 'recruiter' %}
+                <li><a href="/applicant-list">Virtual Interview</a></li>
+            {% endif %}
+        </ul>
+      </li>
+      <li><a href="#"><span class="icon">&#9881;</span> Settings</a></li>
+      <li><a href="/logout"><span class="icon">&#8962;</span> Logout</a></li>
     </ul>
-</div>
+  </div>
