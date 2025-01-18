@@ -4,6 +4,7 @@ from decouple import config
 
 def application_list(request):
   auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
+  role = request.COOKIES.get(config('COOKIE_KEY_2'))
   data = []
   
   with connection.cursor() as cursor:
@@ -32,4 +33,4 @@ def application_list(request):
             """
       cursor.execute(query, (job_seeker_id,))
       data = cursor.fetchall()
-  return render(request, 'application-list.html', {'jobs':data})
+  return render(request, 'application-list.html', {'jobs':data , 'role': role})

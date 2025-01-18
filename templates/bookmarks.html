@@ -2,69 +2,52 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/bookmarks.css' %}">
-    {% comment %} <script src="{% static 'js/Bookmarks.js' %}"></script> {% endcomment %}
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/bookmarks.css' %}" />
+    {% comment %}
+    <script src="{% static 'js/Bookmarks.js' %}"></script>
+    {% endcomment %}
+  </head>
+  <body>
     <div class="container">
-        {% include 'sidebar.html' %}
-       
-        <div class="main-content">
-            <div class="top-nav">
-                <div class="topbutton">
-                    <a href="/dashboard">Home</a>
-                    <a href="/about">About Us</a>
-                    <a href="/contact">Contact</a>
-                </div>
-                <div class="nav-icons">
-                    <a href="/profile" title="Profile" class="icon profile-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                    </a>                       
-                    <a href="/menu-options" title="Menu" class="icon menu-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+      {% include 'sidebar.html' %}
 
-            <!-- Bookmark Section -->
-            <div class="bookmark-section">
-                <div class="bookmark-search">
-                    <input type="text" placeholder="Search bookmarks">
+      <div class="main-content">
+        {% include 'topbar.html' %}
+
+        <!-- Bookmark Section -->
+        <div class="bookmark-section">
+          <div class="bookmark-search">
+            <input type="text" placeholder="Search bookmarks" />
+          </div>
+          <div class="bookmark-list">
+            {% if bookmarks %} {% for bookmark in bookmarks %}
+            <a href="#">
+              <div class="bookmark-item">
+                <div class="bookmark-details">
+                  <h3>Company Name: {{ bookmark.0 }}</h3>
+                  <p>Job Title: {{ bookmark.1 }}</p>
                 </div>
-                <div class="bookmark-list">
-                    <a href="#">
-                    <div class="bookmark-item">
-                        <div class="bookmark-details">
-                            <h3>Company Name: {{ company_title }}</h3>
-                            <p>Job Title: {{ job_post_title }}</p>
-                        </div>
-                    </div>
-                </a>
-                </div>
-            </div>
-            <div class="messages">
-                {% if messages %}
-                  {% for message in messages %}
-                    <p style="color: rgb(33, 32, 32); font-weight: bold;">{{ message }}</p>
-                  {% endfor %}
-                {% endif %}
-            </div>
+              </div>
+            </a>
+            {% endfor %} {% else %}
+            <p>No job posts available.</p>
+            {% endif %}
+          </div>
         </div>
+        <div class="messages">
+          {% if messages %} {% for message in messages %}
+          <p style="color: rgb(33, 32, 32); font-weight: bold">{{ message }}</p>
+          {% endfor %} {% endif %}
+        </div>
+      </div>
 
-
-        {% if message %}
-            {{ message }}
-        {% endif %}
-        
+      {% if message %} {{ message }} {% endif %}
     </div>
 
-</body>
+    <script src="{% static 'js/profile.js' %}"></script>
+  </body>
 </html>

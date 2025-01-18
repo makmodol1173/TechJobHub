@@ -74,4 +74,4 @@ def assessment(request):
         messages.success(request, "Your answers have been submitted successfully.")
         return redirect('/assessment-mark')
 
-    return render(request, 'assessment.html', {'questions': questions})
+    return render(request, 'assessment.html', {'questions': questions, 'role':role})

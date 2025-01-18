@@ -5,46 +5,64 @@ body {
   padding: 0;
   background-color: #f5f0f0;
 }
-
-header {
-  background-color: #123456;
-  color: #ffffff;
-  padding: 10px 0;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  margin-right: 500px;
-}
-
 .logo img {
   width: 35px;
   height: 35px;
-  margin-right: 20px;
   border-radius: 150px;
+  margin-left: 25px;
+  margin-right: 10px;
 }
 
-.nav-links a {
-  color: #ffffff;
+.logo{
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  position: fixed;
+  z-index: 500;
+  width: 300px;
+  background: inherit;
+}
+
+
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+  font-size: 18px;
+  position: absolute;
+  top: 89px;
+  z-index: 100;
+}
+
+.nav-links li {
+margin-left: 25px;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
   text-decoration: none;
-  margin: 0 25px;
-  font-weight: bold;
-  
+  color: #fff;
+  width: 100%;
+  transition: background-color 0.3s;
 }
 
-.nav-links a:hover {
-  color: #cceeff;
+.nav-links li a:hover,
+.nav-links li a.active1 {
+  background-color: #294774;
 }
 
+.nav-links .icon {
+  margin-right: 10px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f0f0;
+}
 
 .nav-icons {
   display: flex;
@@ -60,13 +78,38 @@ nav {
   margin: 0 10px;
 }
 
-.search-icon {
-  background-image: url('icons/search.svg');
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0A2A47;
+  color: #fff;
+  z-index: 0;
 }
 
-.notification-icon {
-  background-image: url('icons/notification.svg');
+.top-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 15px 20px;
+  font-weight: bold;
 }
+
+.topbutton{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 820px;
+}
+
+.top-nav-icons {
+  display: flex;
+}
+
+.top-nav-icons a {
+  margin-left: 10px;
+}
+
 
 .profile-icon {
   background-image: url('icons/profile.svg');

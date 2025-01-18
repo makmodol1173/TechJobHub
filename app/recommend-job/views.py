@@ -4,6 +4,8 @@ from decouple import config
 
 def recommend_job(request):
     auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
+    role = request.COOKIES.get(config('COOKIE_KEY_2'))
+    
     data = [] 
     with connection.cursor() as cursor:
         query_job_seeker = "SELECT job_seeker_id FROM job_seeker WHERE email = %s"
@@ -33,4 +35,4 @@ def recommend_job(request):
             cursor.execute(query, (job_seeker_id,))
             data = cursor.fetchall()  
 
-    return render(request, 'recommend-job.html', {'jobs': data})
+    return render(request, 'recommend-job.html', {'jobs': data, 'role':role})

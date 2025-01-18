@@ -35,7 +35,7 @@ def set_assessment(request):
 
         if not any(questions):
             messages.error(request, "Please provide at least one question.")
-            return render(request, 'set-assessment.html', {'question_range': range(1, 11)})
+            return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role})
 
         with connection.cursor() as cursor:
             insert_query = """
@@ -49,4 +49,4 @@ def set_assessment(request):
         messages.success(request, "Assessment questions have been set successfully.")
         return redirect('/assessment')
 
-    return render(request, 'set-assessment.html', {'question_range': range(1, 11)})
+    return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role})

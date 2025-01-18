@@ -20,7 +20,6 @@ def applicant_list(request):
 
         recruiter_id = recruiter[0]
 
-        # Simplified query without DISTINCT; assuming one resume per applicant
         query_job_seekers = """
             SELECT DISTINCT
                 js.job_seeker_id,
@@ -41,7 +40,6 @@ def applicant_list(request):
         cursor.execute(query_job_seekers, [recruiter_id])
         job_seekers = cursor.fetchall()
 
-    # Render the list of job seekers with resume URL
     context = {
         'job_seekers': [
             {
@@ -54,4 +52,4 @@ def applicant_list(request):
         ],
     }
     
-    return render(request, 'applicant-list.html', context)
+    return render(request, 'applicant-list.html', {'context':context, 'role':role})

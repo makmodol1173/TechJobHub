@@ -36,19 +36,19 @@ def bookmarks(request):
 
     cursor.execute(query, (job_seeker_id,))
     data = cursor.fetchall()
-    if data:
-      company_title, job_post_title = data[0] 
-      user = {
-        'company_title': company_title,
-        'job_post_title': job_post_title,
-      }
+    # if data:
+    #   company_title, job_post_title = data[0] 
+    #   user = {
+    #     'company_title': company_title,
+    #     'job_post_title': job_post_title,
+    #   }
     
     query_job_post = "SELECT job_post_id FROM job_post WHERE job_post_id = %s"
     cursor.execute(query_job_post, (job_post_id,))
     job_post = cursor.fetchone()
     if not job_post:
       messages.error(request, "Invalid Job Post")
-      return render(request, 'bookmarks.html',user)
+      return render(request, 'bookmarks.html',{'bookmarks': data, 'role':role})
     job_post_id = job_post[0]
     
     query_bookmark = "SELECT * FROM bookmark WHERE job_seeker_id = %s AND job_post_id = %s"
@@ -56,13 +56,15 @@ def bookmarks(request):
     bookmark = cursor.fetchone()
     if bookmark:
       messages.error(request, "Already Bookmarked")
-      return render(request, 'bookmarks.html',user)
+      return render(request, 'bookmarks.html',{'bookmarks': data, 'role':role})
     
     if job_post_id and job_seeker_id:
       bookmark_insert_query = """INSERT INTO bookmark (job_seeker_id, job_post_id) VALUES (%s, %s)"""
       cursor.execute(bookmark_insert_query, (job_seeker_id, job_post_id))
       connection.commit()
       messages.success(request, "Bookmark added successfully")
-      return render(request, 'bookmarks.html',user)
+      return render(request, 'bookmarks.html',{'bookmarks': data, 'role':role})
+
       
-  return render(request, 'bookmarks.html',user)
+  return render(request, 'bookmarks.html',{'bookmarks': data, 'role':role})
+

@@ -4,16 +4,13 @@ from django.db import connection
 from decouple import config
 
 def assessment_mark(request):
-    # Get the auth token and role from cookies
     auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
     role = request.COOKIES.get(config('COOKIE_KEY_2'))
 
-    # Ensure the user is a recruiter
     if not auth_token or role != 'recruiter':
         return redirect('/login')
 
     with connection.cursor() as cursor:
-        # Get recruiter ID from the email in the auth_token
         query_recruiter = "SELECT recruiter_id FROM recruiter WHERE email = %s"
         cursor.execute(query_recruiter, (auth_token,))
         recruiter = cursor.fetchone()
@@ -23,7 +20,6 @@ def assessment_mark(request):
 
         recruiter_id = recruiter[0]
 
-        # Fetch job seeker answers for marking
         query_answers = """
             SELECT a.answer_id, a.answer_1, a.answer_2, a.answer_3, 
                    a.answer_4, a.answer_5, a.answer_6, a.answer_7, 
@@ -39,7 +35,6 @@ def assessment_mark(request):
         cursor.execute(query_answers)
         answers_data = cursor.fetchall()
 
-        # If no answers are found, show an error message
         if not answers_data:
             messages.error(request, "No answers available for marking.")
             return redirect('/dashboard')
@@ -67,4 +62,4 @@ def assessment_mark(request):
             messages.success(request, "Marks have been saved successfully.")
             return redirect('/assessment-mark')
 
-    return render(request, 'assessment-mark.html', {'answers': answers_data})
+    return render(request, 'assessment-mark.html', {'answers': answers_data, 'role':role})

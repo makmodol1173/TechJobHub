@@ -48,4 +48,4 @@ def drop_resume(request):
           cursor.execute(insert_skill_query, (job_seeker_id, skill))
       connection.commit()
       messages.success(request,"Resume uploaded successfully.")
-  return render(request, 'drop-resume.html')
+  return render(request, 'drop-resume.html', {'role':role})
