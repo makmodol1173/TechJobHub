@@ -27,13 +27,12 @@
                         <span class="company-name">{{ job.5 }}</span><br><br>
                         <span class="job-title">{{job.1}}</span>
                     </div>
-                    <a href="/assessment" class="applied-button" >Participate</a>
+                    <a href="/assessment?job_post_id={{ job.0 }}" class="applied-button" >Participate</a>
                 </div>
                 {% endfor %} {% else %}
                     <p>You haven't applied anywhere.</p>
                 {% endif %}
-            </div>
-
+                
         </div>
     </div>
   </main>

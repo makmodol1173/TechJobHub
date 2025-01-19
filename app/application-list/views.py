@@ -13,24 +13,42 @@ def application_list(request):
     job_seeker = cursor.fetchone()
     if job_seeker:
       job_seeker_id = job_seeker[0]
-
       query = """
-                SELECT DISTINCT 
-                    jp.job_post_id, 
+SELECT 
+             jp.job_post_id, 
                     jp.title, 
                     jp.description, 
                     jp.key_responsibilities, 
                     jp.deadline, 
                     c.name AS company_name
-                FROM skill s
-                JOIN job_seeker js ON s.job_seeker_id = js.job_seeker_id
-                JOIN job_post jp ON 
-                    jp.description LIKE CONCAT('%%', s.skill_name, '%%') OR
-                    jp.key_responsibilities LIKE CONCAT('%%', s.skill_name, '%%')
-                JOIN recruiter r ON jp.recruiter_id = r.recruiter_id
-                JOIN company c ON r.recruiter_id = c.recruiter_id
-                WHERE js.job_seeker_id = %s;
-            """
+FROM 
+    application a
+JOIN 
+    job_post jp ON a.job_post_id = jp.job_post_id
+JOIN 
+    company c ON jp.recruiter_id = c.recruiter_id
+WHERE 
+    a.job_seeker_id = %s;
+                
+      """
+       # query = """
+      #           SELECT DISTINCT 
+      #               jp.job_post_id, 
+      #               jp.title, 
+      #               jp.description, 
+      #               jp.key_responsibilities, 
+      #               jp.deadline, 
+      #               c.name AS company_name
+      #           FROM skill s
+      #           JOIN job_seeker js ON s.job_seeker_id = js.job_seeker_id
+      #           JOIN job_post jp ON 
+      #               jp.description LIKE CONCAT('%%', s.skill_name, '%%') OR
+      #               jp.key_responsibilities LIKE CONCAT('%%', s.skill_name, '%%')
+      #           JOIN recruiter r ON jp.recruiter_id = r.recruiter_id
+      #           JOIN company c ON r.recruiter_id = c.recruiter_id
+      #           WHERE js.job_seeker_id = %s;
+      #       """
       cursor.execute(query, (job_seeker_id,))
       data = cursor.fetchall()
+      # data = None
   return render(request, 'application-list.html', {'jobs':data , 'role': role})

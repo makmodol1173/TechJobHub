@@ -26,9 +26,11 @@
                 <a href="/application?job_post_id={{ job_post_id }}&&job_seeker_id={{ job_seeker_id }}">Apply Here</a>
             </div>
         </section>
-        {% if message %}
-            {{ message }}
-        {% endif %}
+        <div class="job-card">
+            {% if message %}
+                {{ message }}
+            {% endif %}
+        </div>
     </main>
 </body>
 </html>

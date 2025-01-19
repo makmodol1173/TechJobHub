@@ -1,7 +1,8 @@
 .job-cards-section {
     display: flex;
-    padding: 20px;
-    background-color: #f5f0f0;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 15px;
 }
 
 .job-card {
@@ -10,10 +11,9 @@
     border-radius: 10px;
     width: 30%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .job-card-header {

@@ -2,55 +2,67 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/set-assessment.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/set-assessment.css' %}" />
+  </head>
+  <body>
     {% include 'topbar.html' %}
     <main>
       <div class="main-container">
         {% include 'sidebar.html' %}
         <div class="main-content-container">
-
-            <div class="content-area">
-              <h1 class="page-title">Set Assessment Questions</h1>
-              {% if messages %}
-              <ul class="messages">
-                  {% for message in messages %}
-                  <li class="{{ message.tags }}">{{ message }}</li>
-                  {% endfor %}
-              </ul>
-              {% endif %}
-              <form action="/set-assessment/" method="POST">
-                
-                {% csrf_token %}
-                <input type="hidden" name="application_id" value="{{ application_id }}">
-                <div class="questions-container">
-                    {% for i in question_range %}
-                    <div class="question-item">
-                        <label for="question{{ i }}" class="question-label">Question {{ i }}:</label>
-                        <textarea 
-                            id="question{{ i }}" 
-                            name="question{{ i }}" 
-                            placeholder="Enter your question here..." 
-                            maxlength="300" 
-                            class="question-input"
-                            required></textarea>
-                    </div>
-                    {% endfor %}
+          <div class="content-area">
+            {% if messages %}
+            <ul class="messages" style="list-style-type: none">
+              {% for message in messages %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/set-assessment/" method="POST">
+              {% csrf_token %}
+              <div
+                style="display: flex
+    justify-content: space-between;
+    width: 86%;
+    margin: auto;
+    margin-bottom: 10px;"
+              >
+                <h1 class="page-title">Set Assessment Questions</h1>
+                <select name="job_post_id">
+                  {% if job_post %} {% for job in job_post %}
+                  <option value="{{ job.0 }}">{{ job.1 }}</option>
+                  {% endfor %} {% endif %}
+                </select>
+              </div>
+              <div class="questions-container">
+                {% for i in question_range %}
+                <div class="question-item">
+                  <label for="question{{ i }}" class="question-label"
+                    >Question {{ i }}:</label
+                  >
+                  <textarea
+                    id="question{{ i }}"
+                    name="question{{ i }}"
+                    placeholder="Enter your question here..."
+                    maxlength="300"
+                    class="question-input"
+                    required
+                  ></textarea>
                 </div>
-                  <button type="submit" class="next-button">Save Questions</button>
-              </form>
+                {% endfor %}
+              </div>
+              <button type="submit" class="next-button">Save Questions</button>
+            </form>
           </div>
-            
         </div>
-    </div>
-  </main>
+      </div>
+    </main>
 
-  <script src="{% static 'js/index.js' %}"></script>
-</body>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
 </html>

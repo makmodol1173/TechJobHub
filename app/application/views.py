@@ -18,11 +18,11 @@ def application(request):
       if job_post is None:
           return redirect(f"/job-posts/{job_post_id}?message='Invalid Request'")
       
-      query_application = "SELECT * FROM application WHERE job_seeker_id = %s & job_post_id = %s"
+      query_application = "SELECT * FROM application WHERE job_seeker_id = %s && job_post_id = %s"
       cursor.execute(query_application, (job_seeker_id, job_post_id))
       application = cursor.fetchone()
       if application:
-          return redirect(f"/job-posts/{job_post_id}?message='Already applied'")
+          return redirect(f"/job-posts/{job_post_id}?message=Already applied")
           
       job_seeker_insert_query = """INSERT INTO application (job_seeker_id, job_post_id) VALUES (%s, %s)"""
       cursor.execute(job_seeker_insert_query, (job_seeker_id, job_post_id))

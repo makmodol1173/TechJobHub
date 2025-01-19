@@ -20,33 +20,39 @@ def set_assessment(request):
 
         recruiter_id = recruiter[0]
 
-        query_job_post = "SELECT job_post_id FROM job_post WHERE recruiter_id = %s LIMIT 1"
+        query_job_post = "SELECT job_post_id, title FROM job_post WHERE recruiter_id = %s"
         cursor.execute(query_job_post, (recruiter_id,))
-        job_post = cursor.fetchone()
+        job_post = cursor.fetchall()
 
         if not job_post:
             messages.error(request, "No job post found for this recruiter.")
             return redirect('/dashboard')
 
-        job_post_id = job_post[0]
-
     if request.method == 'POST':
         questions = [request.POST.get(f'question{i}') for i in range(1, 11)]
+        job_post_id = request.POST.get("job_post_id")
+        print(questions)
+        print(job_post_id)
 
-        if not any(questions):
+        if not any(questions) or not job_post_id:
             messages.error(request, "Please provide at least one question.")
-            return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role})
+            return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role, 'job_post': job_post})
 
         with connection.cursor() as cursor:
-            insert_query = """
-                INSERT INTO questions (
-                    job_post_id, question_1, question_2, question_3, question_4,
-                    question_5, question_6, question_7, question_8, question_9, question_10
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """
-            cursor.execute(insert_query, (job_post_id, *questions))
 
-        messages.success(request, "Assessment questions have been set successfully.")
-        return redirect('/assessment')
+            query_job_post = "SELECT * FROM questions WHERE job_post_id = %s"
+            cursor.execute(query_job_post, (job_post_id,))
+            job_post_questions = cursor.fetchall()
+            if not job_post_questions:
+                insert_query = """
+                    INSERT INTO questions (
+                        job_post_id, question_1, question_2, question_3, question_4,
+                        question_5, question_6, question_7, question_8, question_9, question_10
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """
+                cursor.execute(insert_query, (job_post_id, *questions))
 
-    return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role})
+                messages.success(request, "Assessment questions have been set successfully.")
+        return redirect('/assessment-mark')
+
+    return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role, 'job_post': job_post})
