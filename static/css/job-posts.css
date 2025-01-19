@@ -1,5 +1,6 @@
 .job-card{
   display: grid;
-  font-size: 15px;
+  font-size: 18px;
   padding: 40px;
+  gap: 10px;
 }

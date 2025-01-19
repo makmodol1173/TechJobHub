@@ -61,7 +61,8 @@ def profile(request):
         if user['profile_picture']:
             profile_picture_url = settings.MEDIA_URL + 'profile_pictures/' + user['profile_picture']
         else:
-            profile_picture_url = "{% static 'image/image.png' %}"  # Use default static image if no profile picture
+            # profile_picture_url = "{% static 'image/image.png' %}"  # Use default static image if no profile picture
+            profile_picture_url = None
 
     context = {
         'fname': user.get('fname'),

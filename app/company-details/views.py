@@ -29,12 +29,23 @@ def company_details(request):
             return redirect('/login')
           
         recruiter_id = recruiter[0]
-        insert_query = """
-                    INSERT INTO company (recruiter_id, name, address, trade_license_number, website_url) 
-                    VALUES (%s, %s, %s, %s, %s)
-                """
-        cursor.execute(insert_query, (recruiter_id, company_name, address, trade_license, website))
-        connection.commit()
+
+        select_query ="SELECT * FROM company WHERE recruiter_id = %s"
+        cursor.execute(select_query, (recruiter_id,))
+        company = cursor.fetchone()
+        
+        if not company:
+          insert_query = """
+                      INSERT INTO company (recruiter_id, name, address, trade_license_number, website_url) 
+                      VALUES (%s, %s, %s, %s, %s)
+                  """
+          cursor.execute(insert_query, (recruiter_id, company_name, address, trade_license, website))
+          connection.commit()
+        else:
+          update_query = "UPDATE company SET name = %s, address = %s, trade_license_number = %s, website_url = %s WHERE recruiter_id = %s"
+          cursor.execute(update_query, (company_name, address, trade_license, website, recruiter_id))
+          messages.success(request, "Company details updated successfully!")
+          
         return redirect('/dashboard')
 
     return render(request, 'company-details.html', { 'role' : role })

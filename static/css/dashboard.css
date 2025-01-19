@@ -41,18 +41,11 @@
 
 .posts-container {
     display: flex;
+    gap: 15px;
+    flex: wrap;
     width: 80%;
     margin: auto;
-    background-color: #e0f0fa;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    /* width: 30%; */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 30px
+    padding: 15px 0;
 }
 
 .job-card-header {
@@ -82,5 +75,4 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }

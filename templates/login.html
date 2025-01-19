@@ -42,6 +42,13 @@
             <button type="submit" class="sign-in-btn">Sign In</button>
           </form>
           <a href="#" class="forgot-password">Forgot Password?</a>
+          {% if messages %}
+          <ul class="messages" style="list-style-type: none">
+            {% for message in messages %}
+            <li class="message-{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </div>
       </div>
     </div>

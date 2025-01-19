@@ -1,9 +1,10 @@
 /* Job Cards Section */
 .job-cards-section {
     display: flex;
-    padding: 20px;
-    background-color: #f5f0f0;
-    height: 100%;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 15px;
+
 }
 
 .job-card {
@@ -15,8 +16,6 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: fit-content;
 }
 
 .job-card-header {

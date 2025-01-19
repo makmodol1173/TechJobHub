@@ -9,7 +9,11 @@
     <div class="topbutton">
       <a href="/dashboard">Home</a>
       <a href="/about">About Us</a>
+      {% if role == 'recruiter' %}
+      <a href="/company-details">Company</a>
+      {% elif role == 'job_seeker' %}
       <a href="/recommend-job">Jobs</a>
+      {% endif %}
     </div>
     <div class="nav-icons">
       <a href="/profile" title="Profile" class="icon profile-icon">

@@ -20,10 +20,10 @@
           {% if profile_picture %}
               <img src="{{ profile_picture }}" class="profile-picture" id="profile-picture-preview" alt="Profile Picture Preview">
           {% else %}
-              <img src="/static/image/image.png" class="profile-picture" id="profile-picture-preview" alt="Profile Picture Preview">
+              <img src="{% static 'image/image.png' %}" class="profile-picture" id="profile-picture-preview" alt="Profile Picture Preview">
           {% endif %}
       </div>
-
+      
           <form method="POST" enctype="multipart/form-data" style="display: inline;">
             {% csrf_token %}
             <label for="profile-picture-upload" class="edit-icon">&#9998;</label>
@@ -38,7 +38,14 @@
         </div>
       
       <div class="profile-details">
-        <h2>{{ fname }} {{ lname }} - {{ role }}</h2>
+        <h2> 
+          {% if role == 'job_seeker' %}
+          Job Seeker's
+          {% elif role == 'recruiter' %}
+          Recruiter's
+          {% endif %}
+          
+          Name: {{ fname }} {{ lname }}</h2>
       </div>
 
       {% if role == 'job_seeker' %}

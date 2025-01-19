@@ -35,7 +35,7 @@
         <div class="sign-up-form">
           <div class="form-header">
             <h3>Sign Up</h3>
-            <a href="{% url 'login' %}">Sign In</a>
+            <a href="/login">Sign In</a>
           </div>
           <!-- <div class="messages">
             {% if messages %}
@@ -61,12 +61,19 @@
             <label for="role">Role</label>
             <input list="con" name="role" id="role" />
             <datalist id="con">
-              <option value="recruiter"></option>
-              <option value="job_seeker"></option>
+              <option value="recruiter">Recruiter</option>
+              <option value="job_seeker">Job Seeker</option>
             </datalist>
 
             <button type="submit" class="sign-up-btn">Sign Up</button>
           </form>
+          {% if messages %}
+          <ul class="messages" style="list-style-type: none">
+            {% for message in messages %}
+            <li class="message-{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </div>
       </div>
     </div>
