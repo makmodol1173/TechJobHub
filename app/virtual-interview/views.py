@@ -7,9 +7,18 @@ from decouple import config
 
 def virtual_interview(request):
     role = request.COOKIES.get(config('COOKIE_KEY_2'))
+    job_seeker_id = request.GET.get('job_seeker_id')
+    print(job_seeker_id)
+
+    if not job_seeker_id:
+        return redirect('/applicant-list')
+    
     with connection.cursor() as cursor:
-        cursor.execute("SELECT email FROM job_seeker")
-        applicant_emails = [row[0] for row in cursor.fetchall()]
+        query = "SELECT * FROM job_seeker WHERE job_seeker_id = %s"
+        cursor.execute(query, (job_seeker_id))
+        job_seeker = cursor.fetchone()
+        applicant_emails = job_seeker[3]
+    
 
     if request.method == 'POST':
         applicant_email = request.POST.get('applicant-email') 

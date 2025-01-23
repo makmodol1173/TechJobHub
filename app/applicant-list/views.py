@@ -26,7 +26,8 @@ def applicant_list(request):
                 js.fname AS first_name,
                 js.lname AS last_name,
                 js.email AS email,
-                js.resume AS resume
+                # js.resume AS resume,  -- Added a comma here
+                jp.title AS title
             FROM 
                 job_post jp
             JOIN 
@@ -43,10 +44,11 @@ def applicant_list(request):
     context = {
         'job_seekers': [
             {
+                'job_seeker_id': seeker[0],
                 'first_name': seeker[1],
                 'last_name': seeker[2],
                 'email': seeker[3],
-                'resume': f"{settings.MEDIA_URL}resume/{seeker[4]}" if seeker[4] else None,
+                'title': seeker[4]
             }
             for seeker in job_seekers
         ],

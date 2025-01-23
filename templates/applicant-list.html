@@ -22,12 +22,8 @@
                   {% for seeker in context.job_seekers %}
                       <li>
                           <span>{{ seeker.first_name }} {{ seeker.last_name }}</span>
-                          {% if seeker.resume %}
-                              <a href="{{ seeker.resume }}" target="_blank" class="view-button">View Resume</a>
-                          {% else %}
-                              <span>No Resume Available</span>
-                          {% endif %}
-                          <a href="/virtual-interview" target="_blank" class="view-button">Interview</a>
+                          <span>{{ seeker.title }} </span>
+                          <a href="/virtual-interview?job_seeker_id={{seeker.job_seeker_id}}" target="_blank" class="view-button">Interview</a>
                       </li>
                   {% empty %}
                       <li>No applicants found for your job posts.</li>

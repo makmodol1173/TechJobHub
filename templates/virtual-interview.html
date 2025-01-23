@@ -20,14 +20,10 @@
             <div class="form-section">
                 <form method="POST">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="applicant-email">Select Applicant Email</label>
-                        <select name="applicant-email" id="applicant-email">
-                            {% for email in applicant_emails %}
-                                <option value="{{ email }}">{{ email }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+                     <div class="form-group">
+                        <label for="applicant-email">Applicant Email</label>
+                        <input type="text" name="applicant-email" id="applicant-email" value="{{ applicant_emails }}" readonly />
+                    </div> 
                     <div class="form-group">
                         <label for="set-date">Set Date</label>
                         <input type="date" id="set-date" name="set-date">
