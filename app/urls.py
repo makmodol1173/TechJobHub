@@ -24,6 +24,7 @@ urlpatterns = [
     path('assessment/', include('app.assessment.urls')),
     path('assessment-mark/', include('app.assessment-mark.urls')),
     path('rating/', include('app.rating.urls')),
+    path('settings/', include('app.settings.urls')),
     path('applicant-list/', include('app.applicant-list.urls')),
     path('virtual-interview/', include('app.virtual-interview.urls')),
     path('logout/', views.logout_view, name='logout'),

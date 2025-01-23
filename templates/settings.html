@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/application-list.css' %}">
+</head>
+<body>
+    {% include 'topbar.html' %}
+    <main>
+      <div class="main-container">
+        {% include 'sidebar.html' %}
+        <div class="main-content-container">
+
+
+
+
+
+        </div>
+      </div>
+    </main>
+  
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+  </html>
