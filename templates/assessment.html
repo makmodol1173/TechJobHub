@@ -23,9 +23,9 @@
                     {% for question in questions %}
                       <div class="question-item">
                         <h2>{{ forloop.counter }}. {{ question }}</h2>
-                        <textarea id="question-{{ forloop.counter }}" name="question-{{ forloop.counter }}" maxlength="150" placeholder="Type your answer here..."></textarea>
+                        <textarea id="question-{{ forloop.counter }}" name="question-{{ forloop.counter }}" maxlength="150" placeholder="Type your answer here..." required></textarea>
                       </div>
-                    {% endfor %}
+                    {% endfor %} 
                     <button type="submit" class="next-button">Submit</button>
                   </form>
                 </div>
@@ -35,7 +35,7 @@
         </main>
       
         <script src="{% static 'js/index.js' %}"></script>
-        {% comment %} <script src="{% static 'js/preventpaste.js' %}"></script> {% endcomment %}
+        <script src="{% static 'js/preventpaste.js' %}"></script>
       </body>
       </html>
       

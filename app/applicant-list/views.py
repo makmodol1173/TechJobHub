@@ -37,7 +37,7 @@ def applicant_list(request):
                 jp.recruiter_id = %s;
         """
 
-        cursor.execute(query_job_seekers, [recruiter_id])
+        cursor.execute(query_job_seekers, recruiter_id)
         job_seekers = cursor.fetchall()
 
     context = {

@@ -19,7 +19,7 @@
             <div class="job-seeker-container">
               <h2>Applicants for Your Job Posts</h2>
               <ul class="job-seeker-list">
-                  {% for seeker in job_seekers %}
+                  {% for seeker in context.job_seekers %}
                       <li>
                           <span>{{ seeker.first_name }} {{ seeker.last_name }}</span>
                           {% if seeker.resume %}

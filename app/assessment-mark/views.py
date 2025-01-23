@@ -25,41 +25,35 @@ def assessment_mark(request):
                    a.answer_4, a.answer_5, a.answer_6, a.answer_7, 
                    a.answer_8, a.answer_9, a.answer_10
             FROM answers a
-            WHERE NOT EXISTS (
-                SELECT 1 
-                FROM assessment 
-                WHERE assessment.answer_id = a.answer_id
-            )
-            LIMIT 1
+            WHERE a.application_id = %s
         """
-        cursor.execute(query_answers)
+        # FIXED APPLICATION ID
+        cursor.execute(query_answers,4)
         answers_data = cursor.fetchall()
 
         if not answers_data:
             messages.error(request, "No answers available for marking.")
             return redirect('/dashboard')
 
-        # Process form submission for marking the answers
         if request.method == 'POST':
             marks = request.POST.get('marks')
             answer_id = request.POST.get('answer_id')
 
-        # Debugging: Print submitted data
-            print(f"Submitted Marks: {marks}, Submitted Answer ID: {answer_id}")
-
-        # Ensure marks and answer_id are provided
             if not marks or not answer_id:
                 messages.error(request, "Please provide marks.")
                 return render(request, 'assessment-mark.html', {'answers': answers_data})
 
+            query = "SELECT * FROM assessment WHERE answer_id = %s"
+            cursor.execute(query, (answer_id,))
+            assessment = cursor.fetchone()
+            if not assessment:
+                insert_marks_query = """
+                    INSERT INTO assessment (answer_id, mark)
+                    VALUES (%s, %s)
+                """
+                cursor.execute(insert_marks_query, (answer_id, marks))
 
-            insert_marks_query = """
-                INSERT INTO assessment (answer_id, mark)
-                VALUES (%s, %s)
-            """
-            cursor.execute(insert_marks_query, (answer_id, marks))
-
-            messages.success(request, "Marks have been saved successfully.")
-            return redirect('/assessment-mark')
+                messages.success(request, "Marks have been saved successfully.")
+                return redirect('/dashboard')
 
     return render(request, 'assessment-mark.html', {'answers': answers_data, 'role':role})

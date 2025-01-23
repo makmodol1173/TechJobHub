@@ -25,7 +25,7 @@
 
                         {% for answer in answers %}
                             <div class="question-item">
-                                <h3>Answer of Job Seeker: {{ answer.0 }}</h3>
+                                {% comment %} <h3>Answer of Job Seeker: {{ answer.0 }}</h3> {% endcomment %}
                                     <h3>Answer for Question 1:</h3>
                                     <textarea readonly>{{ answer.1 }}</textarea>  
                                     <h3>Answer for Question 2:</h3>

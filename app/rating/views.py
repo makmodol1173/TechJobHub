@@ -19,16 +19,16 @@ def rating(request):
 
     with connection.cursor() as cursor:
         query_recent_rating = """
-            SELECT ass.mark, jp.title
-            FROM job_post jp
-            JOIN application app ON jp.job_post_id = app.job_post_id
-            JOIN answers ans ON app.application_id = ans.application_id
-            LEFT JOIN assessment ass ON ans.answer_id = ass.answer_id
-            WHERE app.job_seeker_id = (
-                SELECT job_seeker_id FROM job_seeker WHERE email = %s
-            )
-            ORDER BY ass.assessment_id DESC
-            LIMIT 1
+        SELECT ass.mark, jp.title
+        FROM job_post jp
+        JOIN application app ON jp.job_post_id = app.job_post_id
+        JOIN answers ans ON app.application_id = ans.application_id
+        LEFT JOIN assessment ass ON ans.answer_id = ass.answer_id
+        WHERE app.job_seeker_id = (
+            SELECT job_seeker_id FROM job_seeker WHERE email = %s
+        )
+        ORDER BY ass.assessment_id DESC
+        LIMIT 1
         """
         cursor.execute(query_recent_rating, (auth_token,))
         recent_rating_data = cursor.fetchone()
@@ -51,7 +51,7 @@ def rating(request):
         if avg_rating_data:
             average_rating = avg_rating_data[0]
 
-    if average_rating and average_rating >= 7.0:
+    if average_rating and average_rating >= 3.0:
         has_high_rating = True
 
     context = {

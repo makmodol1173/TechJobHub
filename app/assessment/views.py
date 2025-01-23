@@ -51,9 +51,6 @@ def assessment(request):
     #     messages.error(request, "No questions found for this job post.")
     #     return redirect('/set-assessment')
 
-    print(questions_data)
-    print(job_post_id)
-    print(job_seeker_id)
     questions=None
     if not questions_data:
         return redirect("/application-list")
@@ -61,26 +58,35 @@ def assessment(request):
         questions = [q for q in questions_data if q] 
 
 
-    # if request.method == 'POST':
-    #     answers = [request.POST.get(f'question-{i + 1}') for i in range(len(questions))]
+    if request.method == 'POST':
+        answers = [request.POST.get(f'question-{i + 1}') for i in range(len(questions))]
 
-    #     if not all(answers):
-    #         messages.error(request, "Please provide answers to all the questions.")
-    #         return render(request, 'assessment.html', {'questions': questions})
+        if not all(answers):
+            messages.error(request, "Please provide answers to all the questions.")
+            return render(request, 'assessment.html', {'questions': questions, 'role':role})
 
-    #     with connection.cursor() as cursor:
-    #         insert_answers_query = """
-    #             INSERT INTO answers (
-    #                 application_id, answer_1, answer_2, answer_3, answer_4,
-    #                 answer_5, answer_6, answer_7, answer_8, answer_9, answer_10
-    #             ) VALUES (
-    #                 (SELECT application_id FROM application WHERE job_seeker_id = %s AND job_post_id = %s LIMIT 1),
-    #                 %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
-    #             )
-    #         """
-    #         cursor.execute(insert_answers_query, (job_seeker_id, job_post_id, *answers))
+        with connection.cursor() as cursor:
+            query_application = "SELECT application_id FROM application WHERE job_post_id=%s AND job_seeker_id=%s"
+            cursor.execute(query_application, (job_post_id, job_seeker_id))
+            application_id = cursor.fetchone()[0]
+            
+            query_answer = "SELECT * FROM answers WHERE application_id = %s"
+            cursor.execute(query_answer, (application_id,))
+            application = cursor.fetchone()
 
-    #     messages.success(request, "Your answers have been submitted successfully.")
-    #     return redirect('/assessment-mark')
+            if not application:
+                insert_answers_query = """
+                    INSERT INTO answers (
+                        application_id, answer_1, answer_2, answer_3, answer_4,
+                        answer_5, answer_6, answer_7, answer_8, answer_9, answer_10
+                    ) VALUES (
+                        (SELECT application_id FROM application WHERE job_seeker_id = %s AND job_post_id = %s LIMIT 1),
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                    )
+                """
+                cursor.execute(insert_answers_query, (job_seeker_id, job_post_id, *answers))
+
+                messages.success(request, "Your answers have been submitted successfully.")
+                return redirect('/rating')
 
     return render(request, 'assessment.html', {'questions': questions, 'role':role})
