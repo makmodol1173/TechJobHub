@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
     <link rel="stylesheet" href="{% static 'css/registration.css' %}" />
-    <!-- <script src="{% static 'js/Signup.js' %}" defer></script> -->
   </head>
   <body>
+
     <div class="overlay">
-      <div class="header">
-        <img
-          src="{% static 'image/logo.png' %}"
-          alt="TechJobHub Logo"
-          class="logo"
-        />
-        <h1 class="title">TechJobHub</h1>
-      </div>
+
+      <nav>
+        <a href="/" class="logo">
+          <img src="{% static 'image/logo.png' %}"  alt="TechJobHub Logo" />
+          <h1>TechJobHub</h1>
+        </a>
+      </nav>
+
       <div class="container">
         <div class="content">
           <h2 class="main-heading">TECHJOBHUB</h2>
@@ -35,15 +35,9 @@
         <div class="sign-up-form">
           <div class="form-header">
             <h3>Sign Up</h3>
-            <a href="/login">Sign In</a>
+<p>Already have an account? <a href="/login">Sign In</a> </p>
           </div>
-          <!-- <div class="messages">
-            {% if messages %}
-              {% for message in messages %}
-                <p style="color: rgb(33, 32, 32); font-weight: bold;">{{ message }}</p>
-              {% endfor %}
-            {% endif %}
-          </div> -->
+         
           <form class="form" method="POST">
             {% csrf_token %}
             <label for="fname">First Name</label>
@@ -76,6 +70,8 @@
           {% endif %}
         </div>
       </div>
+      
     </div>
+
   </body>
 </html>

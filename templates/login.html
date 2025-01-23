@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechJobHub</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <!-- <script src="{% static 'js/Login.js' %}" defer></script> -->
   </head>
   <body>
     <div class="overlay">
-      <div class="header">
-        <img src="{% static 'image/logo.png' %}" alt="TechJobHub Logo" class="logo" />
-        <h1 class="title">TechJobHub</h1>
-      </div>
+
+      <nav>
+        <a href="/" class="logo">
+          <img src="{% static 'image/logo.png' %}"  alt="TechJobHub Logo" />
+          <h1>TechJobHub</h1>
+        </a>
+      </nav>
+
       <div class="container">
         <div class="content">
           <h2 class="main-heading">TECHJOBHUB</h2>
@@ -51,6 +54,8 @@
           {% endif %}
         </div>
       </div>
+
     </div>
+
   </body>
 </html>

@@ -1,27 +1,49 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
+  }
+body {
     height: 100vh;
     background: url('../image/backgrnd.png') no-repeat center center fixed;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
-
 .overlay {
     background: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    }
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 15px;
+  }
+  
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+.logo{
     display: flex;
     align-items: center;
-}
+    gap: 5px;
+    margin: 10px 20px;
+  }
 
-.container {
+  .logo img {
+    width: 35px;
+    height: 35px;
+    border-radius: 150px;
+  }
+
+  .container {
     text-align: left;
-    margin-left: 50px;
-    width: 100%;
-    max-width: 1300px;
+    width: 90%;
+    margin: auto;
     padding: 30px;
     color: white;
     display: flex;
@@ -29,24 +51,6 @@ body {
     align-items: flex-start;
 }
 
-.header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    position: absolute;
-    top: 0;
-    color: white;
-}
-
-.logo {
-    width: 35px;
-    height: 35px;
-    margin-right: 20px;
-    border-radius: 150px;
-    padding: 5px;
-}
 
 .title {
     font-size: 25px;
@@ -73,7 +77,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     max-width: 40%;
-    width: 25%;
+    width: 30%;
 }
 
 .form-header {
@@ -123,3 +127,12 @@ input {
 .sign-up-btn:hover {
     background-color: #45a049;
 }
+
+.forgot-password {
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+} 
+
