@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/application-list.css' %}">
+</head>
+<body>
+    {% include 'topbar.html' %}
+    <main>
+      <div class="main-container">
+        {% include 'sidebar.html' %}
+        <div class="main-content-container">
+
+          <div class="job-cards-section">
+            {% if jobs %} {% for job in jobs %}
+            <div class="job-card">
+                <div class="job-card-header">
+                    <span class="date">{{job.4}}</span>
+                </div>
+                <div class="job-card-body">
+                    <span class="company-name">{{ job.5 }}</span><br><br>
+                    <span class="job-title">{{job.1}}</span>
+                </div>
+                <a href="/job-posts/{{ job.0 }}" class="applied-button" >View Details</a>
+            </div>
+            {% endfor %} {% else %}
+                <p>You haven't applied anywhere.</p>
+            {% endif %}
+        </div>
+
+        </div>
+      </div>
+    </main>
+  
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+  </html>
