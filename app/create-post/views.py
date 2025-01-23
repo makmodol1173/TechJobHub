@@ -19,7 +19,7 @@ def create_post(request):
           return redirect('/login')
         recruiter_id = recruiter[0]
         
-        query = "SELECT * FROM company_details WHERE recruiter_id= %s"
+        query = "SELECT * FROM company WHERE recruiter_id= %s"
         cursor.execute(query, (recruiter_id,))
         company_details = cursor.fetchall()
         if not company_details:

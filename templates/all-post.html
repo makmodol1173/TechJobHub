@@ -16,8 +16,9 @@
         {% include 'sidebar.html' %}
         <div class="main-content-container">
 
+          {% if jobs %}
           <div class="job-cards-section">
-            {% if jobs %} {% for job in jobs %}
+            {% for job in jobs %}
             <div class="job-card">
                 <div class="job-card-header">
                     <span class="date">{{job.4}}</span>
@@ -28,10 +29,14 @@
                 </div>
                 <a href="/job-posts/{{ job.0 }}" class="applied-button" >View Details</a>
             </div>
-            {% endfor %} {% else %}
-                <p>You haven't applied anywhere.</p>
+            {% endfor %}
+          </div>
+            
+            {% else %}
+            <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+              <p style="font-size: 50px;">You haven't post anything yet.</p>
+            </div>
             {% endif %}
-        </div>
 
         </div>
       </div>

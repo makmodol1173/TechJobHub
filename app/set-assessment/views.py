@@ -38,7 +38,7 @@ def set_assessment(request):
 
         if not job_post:
             messages.error(request, "No job post found for this recruiter.")
-            return redirect('/dashboard')
+            return redirect('/all-post')
 
     if request.method == 'POST':
         questions = [request.POST.get(f'question{i}') for i in range(1, 11)]
