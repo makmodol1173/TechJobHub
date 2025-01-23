@@ -58,7 +58,7 @@ def virtual_interview(request):
         send_mail(
             subject,
             message,
-            'makmodol1173@gmail.com',
+            config("EMAIL_HOST_USER"),
             [applicant_email]
         )
 

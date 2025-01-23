@@ -18,6 +18,13 @@ def create_post(request):
         if not recruiter:
           return redirect('/login')
         recruiter_id = recruiter[0]
+        
+        query = "SELECT * FROM company_details WHERE recruiter_id= %s"
+        cursor.execute(query, (recruiter_id,))
+        company_details = cursor.fetchall()
+        if not company_details:
+            return redirect("/company-details")
+        
 
     if request.method == 'POST':
         title = request.POST.get('title')
