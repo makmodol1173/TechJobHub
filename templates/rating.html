@@ -22,14 +22,17 @@
                     <h2>Your Recent Rating</h2>
                     <div class="rating-circle">
                         <p><strong>Job Title: {{ job_title }}</strong></p>
-                        <p>Recent Rating: {{ recent_rating|floatformat:1 }}</p>
+                        <p>Recent Rating: {{ recent_rating }}</p>
+                        {% comment %} <p>Recent Rating: {{ recent_rating|floatformat:1 }}</p> {% endcomment %}
                         <div class="score-circle">
-                            <span>{{ recent_rating|floatformat:1 }}</span>
+                            {% comment %} <span>{{ recent_rating|floatformat:1 }}</span> {% endcomment %}
+                            <span>{{ recent_rating }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="ratings-section">
-                    <p><strong>Average Rating: {{ average_rating|floatformat:1 }}</strong></p>
+                    {% comment %} <p><strong>Average Rating: {{ average_rating|floatformat:1 }}</strong></p> {% endcomment %}
+                    <p><strong>Average Rating: {{ average_rating }}</strong></p>
                 </div>
             {% endif %}
 

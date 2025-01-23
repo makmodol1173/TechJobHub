@@ -22,9 +22,9 @@
           {% else %}
               <img src="{% static 'image/image.png' %}" class="profile-picture" id="profile-picture-preview" alt="Profile Picture Preview">
           {% endif %}
-      </div>
+        </div>
       
-          <form method="POST" enctype="multipart/form-data" style="display: inline;">
+          <form method="POST" enctype="multipart/form-data" style="position: relative;">
             {% csrf_token %}
             <label for="profile-picture-upload" class="edit-icon">&#9998;</label>
             <input 

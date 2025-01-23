@@ -16,12 +16,15 @@
         {% include 'sidebar.html' %}
         <div class="main-content-container">
           <!-- Bookmark Section -->
+
+          {% if bookmarks %}
+
           <div class="bookmark-section">
-            <div class="bookmark-search">
+            {% comment %} <div class="bookmark-search">
               <input type="text" placeholder="Search bookmarks" />
-            </div>
-            <div class="bookmark-list">
-              {% if bookmarks %} {% for bookmark in bookmarks %}
+            </div> {% endcomment %}
+            <div class="bookmark-list">            
+              {% for bookmark in bookmarks %}
               <a href="/job-posts/{{ bookmark.2 }}">
                 <div class="bookmark-item">
                   <div class="bookmark-details">
@@ -30,19 +33,25 @@
                   </div>
                 </div>
               </a>
-              {% endfor %} {% else %}
-              <p>You haven't bookmarked anything.</p>
-              {% endif %}
-            </div>
-            <div class="messages">
-              {% if messages %} {% for message in messages %}
-              <p style="color: rgb(33, 32, 32); font-weight: bold">
-                {{ message }}
-              </p>
-              {% endfor %} {% endif %}
+              {% endfor %}
             </div>
           </div>
+          {% else %}
+          <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+            <p style="font-size: 50px;">You haven't bookmarked anything.</p>
+          </div>
+          {% endif %}
           
+
+          <div class="messages">
+            {% if messages %} {% for message in messages %}
+            <p style="color: rgb(33, 32, 32); font-weight: bold">
+              {{ message }}
+            </p>
+            {% endfor %} {% endif %}
+          </div>
+
+
         </div>
       </div>
     </main>

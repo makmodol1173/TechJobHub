@@ -16,23 +16,27 @@
         {% include 'sidebar.html' %}
         <div class="main-content-container">
             
+            {% if jobs %}
             <div class="job-cards-section">
-                {% if jobs %} {% for job in jobs %}
-                <div class="job-card">
-                    <div class="job-card-header">
-                        <span class="date">{{job.4}}</span>
-                        <a href="/bookmarks?job_post_id={{ job.0 }}">★</a> 
+                {% for job in jobs %}
+                    <div class="job-card">
+                        <div class="job-card-header">
+                            <span class="date">{{job.4}}</span>
+                            <a href="/bookmarks?job_post_id={{ job.0 }}">★</a> 
+                        </div>
+                        <div class="job-card-body">
+                            <span class="company-name">{{ job.5 }}</span><br><br>
+                            <span class="job-title">{{job.1}}</span>
+                        </div>
+                        <a href="/assessment?job_post_id={{ job.0 }}" class="applied-button" >Participate</a>
                     </div>
-                    <div class="job-card-body">
-                        <span class="company-name">{{ job.5 }}</span><br><br>
-                        <span class="job-title">{{job.1}}</span>
-                    </div>
-                    <a href="/assessment?job_post_id={{ job.0 }}" class="applied-button" >Participate</a>
-                </div>
-                {% endfor %} {% else %}
-                    <p>You haven't applied anywhere.</p>
-                {% endif %}
+                {% endfor %}
             </div>
+            {% else %}
+            <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+                <p style="font-size: 50px;">You haven't applied anywhere.</p>
+              </div>
+            {% endif %}
                 
         </div>
     </div>
