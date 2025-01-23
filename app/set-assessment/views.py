@@ -6,6 +6,7 @@ from decouple import config
 def set_assessment(request):
     auth_token = request.COOKIES.get(config('COOKIE_KEY_1'))
     role = request.COOKIES.get(config('COOKIE_KEY_2'))
+    job_post_id = request.GET.get("job_post_id")
 
     if not auth_token or role != 'recruiter':
         return redirect('/login')
@@ -20,7 +21,18 @@ def set_assessment(request):
 
         recruiter_id = recruiter[0]
 
-        query_job_post = "SELECT job_post_id, title FROM job_post WHERE recruiter_id = %s"
+        query_job_post = """
+                 SELECT DISTINCT 
+                                 jp.job_post_id, 
+                                 jp.title, 
+                                 jp.description, 
+                                 jp.key_responsibilities, 
+                                 jp.deadline, 
+                                 c.name AS company_name
+                     FROM job_post jp
+                     JOIN company c ON jp.recruiter_id = c.recruiter_id
+                     WHERE jp.recruiter_id = %s
+         """
         cursor.execute(query_job_post, (recruiter_id,))
         job_post = cursor.fetchall()
 
@@ -30,9 +42,6 @@ def set_assessment(request):
 
     if request.method == 'POST':
         questions = [request.POST.get(f'question{i}') for i in range(1, 11)]
-        job_post_id = request.POST.get("job_post_id")
-        print(questions)
-        print(job_post_id)
 
         if not any(questions) or not job_post_id:
             messages.error(request, "Please provide at least one question.")
@@ -55,4 +64,4 @@ def set_assessment(request):
                 messages.success(request, "Assessment questions have been set successfully.")
         return redirect('/assessment-mark')
 
-    return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role, 'job_post': job_post})
+    return render(request, 'set-assessment.html', {'question_range': range(1, 11), 'role':role, 'job_post': job_post, 'job_post_id': job_post_id})

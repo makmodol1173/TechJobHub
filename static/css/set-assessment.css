@@ -45,3 +45,72 @@ textarea:focus {
 .next-button:hover {
   background-color: #294774;
 }
+
+
+.job-cards-section {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 0;
+}
+
+.job-card {
+  background-color: #e0f0fa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-size: 14px;
+  color: #454444;
+}
+
+.bookmark-icon {
+  font-size: 20px;
+  color: #0A2A47;
+  cursor: pointer;
+}
+
+.job-card-body {
+  margin-bottom: 20px;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0A2A47;
+}
+
+.job-title {
+  font-size: 18px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.applied-button {
+  background-color: #0A2A47;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.applied-button:hover {
+  background-color: #294774;
+}

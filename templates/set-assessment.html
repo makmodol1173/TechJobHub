@@ -15,30 +15,40 @@
       <div class="main-container">
         {% include 'sidebar.html' %}
         <div class="main-content-container">
+
+
+
           <div class="content-area">
-            {% if messages %}
-            <ul class="messages" style="list-style-type: none">
-              {% for message in messages %}
-              <li class="{{ message.tags }}">{{ message }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-            <form action="/set-assessment/" method="POST">
-              {% csrf_token %}
-              <div
-                style="display: flex
-    justify-content: space-between;
-    width: 86%;
-    margin: auto;
-    margin-bottom: 10px;"
-              >
-                <h1 class="page-title">Set Assessment Questions</h1>
-                <select name="job_post_id">
-                  {% if job_post %} {% for job in job_post %}
-                  <option value="{{ job.0 }}">{{ job.1 }}</option>
-                  {% endfor %} {% endif %}
-                </select>
+            <h1 class="page-title">Set Assessment Questions</h1>
+
+            {% if not job_post_id %}
+
+            <div class="job-cards-section">
+              {% if job_post %} {% for job in job_post %}
+              <div class="job-card">
+                <div class="job-card-header">
+                  <span class="date">{{job.4}}</span>
+                </div>
+                <div class="job-card-body">
+                  <span class="company-name">{{ job.5 }}</span><br /><br />
+                  <span class="job-title">{{job.1}}</span>
+                </div>
+                <a href="?job_post_id={{ job.0 }}" class="applied-button"
+                  >Select</a
+                >
               </div>
+              {% endfor %} {% else %}
+              <p>You haven't post anything.</p>
+              {% endif %}
+            </div>
+            {% endif %}
+
+
+
+
+            {% if job_post_id %}
+            <form action="" method="POST">
+              {% csrf_token %}
               <div class="questions-container">
                 {% for i in question_range %}
                 <div class="question-item">
@@ -56,9 +66,20 @@
                 </div>
                 {% endfor %}
               </div>
+
               <button type="submit" class="next-button">Save Questions</button>
+
             </form>
+
+            {% endif %}
+
+
           </div>
+
+
+
+
+
         </div>
       </div>
     </main>
