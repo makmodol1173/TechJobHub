@@ -27,15 +27,20 @@ def applicant_list(request):
                 js.lname AS last_name,
                 js.email AS email,
                 # js.resume AS resume,  -- Added a comma here
-                jp.title AS title
+                jp.title AS title,
+                ass.mark
             FROM 
                 job_post jp
             JOIN 
                 application a ON jp.job_post_id = a.job_post_id
             JOIN 
+                answers ans ON a.application_id = ans.application_id
+            JOIN 
+                assessment ass ON ans.answer_id = ass.answer_id
+            JOIN
                 job_seeker js ON a.job_seeker_id = js.job_seeker_id
             WHERE 
-                jp.recruiter_id = %s;
+                jp.recruiter_id = %s AND ass.mark>=7;
         """
 
         cursor.execute(query_job_seekers, recruiter_id)
@@ -48,7 +53,8 @@ def applicant_list(request):
                 'first_name': seeker[1],
                 'last_name': seeker[2],
                 'email': seeker[3],
-                'title': seeker[4]
+                'title': seeker[4],
+                'mark': seeker[5]
             }
             for seeker in job_seekers
         ],

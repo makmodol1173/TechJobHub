@@ -45,3 +45,18 @@ textarea:focus {
 .next-button:hover {
   background-color: #294774;
 }
+
+.timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.timeout-message {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

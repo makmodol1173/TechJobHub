@@ -16,8 +16,9 @@
         {% include 'sidebar.html' %}
         <div class="main-content-container">
 
-            {% if jobs %} {% for job in jobs %}
+            {% if jobs %}
             <div class="job-cards-section">
+                {% for job in jobs %}
                 <div class="job-card">
                     <div class="job-card-header">
                         <span class="date">{{job.4}}</span>
@@ -29,8 +30,9 @@
                     </div>
                     <a href="/job-posts/{{ job.0 }}" class="details-button" >Details</a>
                 </div>
+                {% endfor %} 
             </div>
-                {% endfor %} {% else %}
+                {% else %}
                 <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
                     <p style="font-size: 50px;">No job recommended yet.</p>
                 </div>

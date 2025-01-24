@@ -23,7 +23,7 @@
                 <p><b>Deadline</b>: {{ deadline }}</p>
                 <p><b>Year of Experience</b>: {{ year_of_experience }}</p>
                 <p><b>Job Type</b>: {{ type }}</p>
-                {% if role == 'recruiter' %}
+                {% if role == 'job_seeker' %}
                 <a href="/application?job_post_id={{ job_post_id }}&&job_seeker_id={{ job_seeker_id }}">Apply Here</a>
                 {% endif %}
 

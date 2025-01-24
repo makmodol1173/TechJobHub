@@ -16,26 +16,31 @@
       {% include 'sidebar.html' %}
       <div class="main-content-container">
 
-              <div class="content-area">
-                <div class="assessment-container">
-                  <form id="assessment-form" method="POST">
-                    {% csrf_token %}
-                    {% for question in questions %}
-                      <div class="question-item">
-                        <h2>{{ forloop.counter }}. {{ question }}</h2>
-                        <textarea id="question-{{ forloop.counter }}" name="question-{{ forloop.counter }}" maxlength="150" placeholder="Type your answer here..." required></textarea>
-                      </div>
-                    {% endfor %} 
-                    <button type="submit" class="next-button">Submit</button>
-                  </form>
+        <div class="content-area">
+          <div class="assessment-container">
+            <div id="timer" class="timer">Time Remaining: 30:00</div>
+            <form id="assessment-form" method="POST">
+              {% csrf_token %}
+              {% for question in questions %}
+                <div class="question-item">
+                  <h2>{{ forloop.counter }}. {{ question }}</h2>
+                  <textarea id="question-{{ forloop.counter }}" name="question-{{ forloop.counter }}" maxlength="150" placeholder="Type your answer here..." required></textarea>
                 </div>
-              </div>              
+              {% endfor %} 
+              <button type="submit" class="next-button">Submit</button>
+            </form>
+            <div id="timeoutMessage" class="timeout-message" style="display:none;">
+              <p>Time is up! The assessment has ended.</p>
+            </div>
+          </div>
+        </div>        
             </div>
           </div>
         </main>
       
         <script src="{% static 'js/index.js' %}"></script>
         <script src="{% static 'js/preventpaste.js' %}"></script>
+        <script src="{% static 'js/timer.js' %}"></script>
       </body>
       </html>
       

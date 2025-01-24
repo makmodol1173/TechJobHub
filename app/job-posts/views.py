@@ -60,7 +60,8 @@ def job_posts(request, job_post_id):
                 'company_name': data[11],
                 'job_post_id': data[0],
                 'job_seeker_id': job_seeker_id,
-                'message': message
+                'message': message,
+                'role':role
             }
   
   return render(request, 'job-posts.html',user)

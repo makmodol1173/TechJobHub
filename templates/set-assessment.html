@@ -19,9 +19,9 @@
 
 
           <div class="content-area">
-            <h1 class="page-title">Set Assessment Questions</h1>
-
+            
             {% if not job_post_id %}
+            <h1 class="page-title">Select Job Post for Set Assessment Questions</h1>
 
             <div class="job-cards-section">
               {% if job_post %} {% for job in job_post %}
@@ -47,6 +47,7 @@
 
 
             {% if job_post_id %}
+            <h1 class="page-title">Set Assessment Questions</h1>
             <form action="" method="POST">
               {% csrf_token %}
               <div class="questions-container">

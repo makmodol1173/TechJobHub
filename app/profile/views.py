@@ -24,6 +24,7 @@ def profile(request):
                 user = {
                     'fname': user_data[1],
                     'lname': user_data[2],
+                    'email': user_data[3],
                     'role': role,
                     'profile_picture': user_data[5]  # This is the actual profile picture column
                 }
@@ -35,6 +36,7 @@ def profile(request):
                 user = {
                     'fname': user_data[1],
                     'lname': user_data[2],
+                    'email': user_data[3],
                     'role': role,
                     'profile_picture': user_data[6]  # Profile picture column for job seekers
                 }
@@ -67,6 +69,7 @@ def profile(request):
     context = {
         'fname': user.get('fname'),
         'lname': user.get('lname'),
+        'email': user.get('email'),
         'role': user.get('role'),
         'profile_picture': profile_picture_url,
         'skills': skills,

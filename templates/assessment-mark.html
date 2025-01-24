@@ -18,9 +18,9 @@
 
             <div class="content-area">
                 <div class="assessment-container">
-                  <h2>Job Seeker's Assessment Answers</h2>
                   
                   {% if not job_post_id and not job_seekers %}
+                  <h2>Select Job Post for Job Seeker's Assessment Answers</h2>
 
                     <div class="job-cards-section">
                       {% if job_post %} {% for job in job_post %}
@@ -47,9 +47,9 @@
                     <ul class="job-seeker-list">
                       {% for seeker in job_seekers %}
                           <li>
-                              <span>{{ seeker.0 }} {{ seeker.1 }}</span>
+                              <span>{{ seeker.1 }} {{ seeker.2 }}</span>
                               {% if seeker.4 %}
-                                  <a href="{{ seeker.4 }}" target="_blank" class="view-button">View Resume</a>
+                                  <a href="/media/resume/{{ seeker.4 }}" target="_blank" class="view-button">View Resume</a>
                               {% else %}
                                   <span>No Resume Available</span>
                               {% endif %}
@@ -96,11 +96,21 @@
                               <input type="number" name="marks" min="0" max="10" required>
                               <input type="hidden" name="answer_id" value="{{ answer.0 }}">
                       </div>
+                      <button type="submit" class="next-button">Submit Marks</button>
                       {% endfor %}
                   
-                      <button type="submit" class="next-button">Submit Marks</button>
                   </form>
+                  {% endif %}
                  
+                  {% if not answers and job_post_id and job_seeker_id %}
+                  <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+                    <p style="font-size: 50px;">Job seeker doesn't participate yet</p>
+                  </div>
+                  {% endif %}
+                  {% if not job_seekers and job_post_id %}
+                  <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+                    <p style="font-size: 50px;">Empty applicant.</p>
+                  </div>
                   {% endif %}
                 </div>
             </div>
