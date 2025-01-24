@@ -5,12 +5,11 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
     path('login/', include('app.login.urls')),
     path('registration/', include('app.registration.urls')),
     path('profile/', include('app.profile.urls')),
     path('dashboard/', include('app.dashboard.urls')),
+    path('extractify/', include('app.extractify.urls')),
     path('company-details/', include('app.company-details.urls')),
     path('create-post/', include('app.create-post.urls')),
     path('all-post/', include('app.all-post.urls')),

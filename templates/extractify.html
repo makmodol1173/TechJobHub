@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechJobHub</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/extractify.css' %}">
+</head>
+<body>
+    {% include 'topbar.html' %}
+    <main>
+
+        {% if not resume_data %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="upload-container" id="upload-container">
+                <p>Drag & Drop files here or click to upload</p>
+            </div>
+            <input type="file" id="file-input" class="file-input" name="resume" accept=".pdf" required>
+            <button id="upload-btn" type="submit" class="upload-btn">Upload</button>
+        </form>
+        {% endif %}
+
+        {% if resume_data %}
+
+        <div class="main-container">
+            <div class="left-container">
+                <div class="header">
+                    <h1>Analysis</h1>
+                </div>
+    
+                <div class="stat">
+                    <h3>Introduction</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: {{ resume_data.introduction_score }}%; background: #27ae60;"></div>
+                    </div>
+                    <span class="percentage">{{ resume_data.introduction_score}} %</span>
+                </div>
+    
+                <div class="stat">
+                    <h3>Projects</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: {{ resume_data.projects_score }}%;background: #8e44ad;"></div>
+                    </div>
+                    <span class="percentage">{{ resume_data.projects_score }}%</span>
+                </div>
+    
+                <div class="stat">
+                    <h3>Skills</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: {{ resume_data.skills_score }}%;background: #8e44ad;"></div>
+                    </div>
+                    <span class="percentage">{{ resume_data.skills_score }}%</span>
+                </div>
+            </div>
+    
+            <div class="right-container">
+                <div class="header">
+                    <h1>Your Score</h1>
+                    <div class="score">{{ resume_data.overall_resume_score }}/100</div>
+                </div>
+    
+                <div class="progress-bar" >
+                    <div class="progress" style="width: {{ resume_data.overall_resume_score }}%;background: green;" ></div>
+                </div>
+    
+                <div class="content">
+                    <h2>Some Suggestion</h2>
+                    {% if resume_data.suggestions %}
+                        <ul class="suggestion-container">
+                            {% for sug in resume_data.suggestions %}
+                            <li>{{ sug }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+            </div>
+        </div>
+
+        {% endif %}
+
+
+
+
+
+        </div>
+      </div>
+    </main>
+  
+    <script src="{% static 'js/index.js' %}"></script>
+    <script>
+
+        const uploadContainer = document.getElementById("upload-container");
+        const fileInput = document.getElementById("file-input");
+        uploadContainer.addEventListener("click", () => {
+            fileInput.click();
+        });
+        
+    </script>
+  </body>
+  </html>
