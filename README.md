@@ -4,7 +4,7 @@ Welcome to TechJobHub! TechJobHub is a dynamic platform that bridges the gap bet
 
 # 🌐 Prjoct Preview
 
-<img src="/dashborad.png">
+<img src="/dashboard.png">
 <a href="https://github.com/makmodol1173/Software-project-lab-2" target="_blank">Project Preview</a>
 
 The project is being developed as part of a software project lab, with a focus on full-stack development using HTML, CSS, JavaScript, and Django.
