@@ -1,6 +1,6 @@
 # TechJobHub
 
-Welcome to TechJobHub! TechJobHub is a dynamic platform that bridges the gap between tech professionals and job opportunities. With features tailored for both job seekers and recruiters, it simplifies job searching, application tracking, and hiring processes.
+Welcome to TechJobHub! TechJobHub is a dynamic platform that bridges the gap between tech professionals and job opportunities. With features tailored for both job seekers and recruiters, it simplifies job searching, application tracking, and hiring processes. It offers personalized resume feedback via Mistral AI.
 
 # 🌐 Prjoct Preview
 
