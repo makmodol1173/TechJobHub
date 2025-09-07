@@ -1,0 +1,23 @@
+# render.yaml
+services:
+  - type: web
+    name: techjobhub
+    env: python
+    region: oregon      
+    plan: starter       
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn techjobhub.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        value: ${SECRET_KEY}   
+      - key: DATABASE_NAME
+        value: ${DATABASE_NAME}
+      - key: DATABASE_USER
+        value: ${DATABASE_USER}
+      - key: DATABASE_PASS
+        value: ${DATABASE_PASS}
+      - key: DATABASE_HOST
+        value: ${DATABASE_HOST}
+      - key: DATABASE_PORT
+        value: ${DATABASE_PORT}
+    autoDeploy: true
